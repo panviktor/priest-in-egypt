@@ -16,24 +16,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqp-p2-IY0">
-                                <rect key="frame" x="156.5" y="433" width="101" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SHU-ov-yhI">
+                                <rect key="frame" x="156.5" y="409" width="101" height="78"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqp-p2-IY0">
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kA4-30-fQC">
+                                        <rect key="frame" x="17.5" y="38" width="66" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="launchTheGame" destination="BYZ-38-t0r" eventType="touchUpInside" id="hlw-tM-lvR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="qqp-p2-IY0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="WDK-TX-c5K"/>
-                            <constraint firstItem="qqp-p2-IY0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YgW-Ig-Xqk"/>
+                            <constraint firstItem="SHU-ov-yhI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FYP-1J-DLo"/>
+                            <constraint firstItem="SHU-ov-yhI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kKK-0K-ehP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="77" y="8"/>
+            <point key="canvasLocation" x="84" y="-52"/>
         </scene>
     </scenes>
 </document>

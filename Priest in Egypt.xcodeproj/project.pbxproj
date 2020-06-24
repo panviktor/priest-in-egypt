@@ -35,6 +35,8 @@
 		1484113124A3812D00AC46F3 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1484112924A3812D00AC46F3 /* Level.swift */; };
 		1484113224A3812D00AC46F3 /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1484112A24A3812D00AC46F3 /* Swap.swift */; };
 		1484113324A3812D00AC46F3 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1484112B24A3812D00AC46F3 /* Tile.swift */; };
+		1484113624A383FA00AC46F3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1484113524A383FA00AC46F3 /* GameViewController.swift */; };
+		1484113B24A38C0100AC46F3 /* MenuGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1484113A24A38C0100AC46F3 /* MenuGameController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		1484112924A3812D00AC46F3 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		1484112A24A3812D00AC46F3 /* Swap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
 		1484112B24A3812D00AC46F3 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		1484113524A383FA00AC46F3 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		1484113A24A38C0100AC46F3 /* MenuGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGameController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,15 +134,8 @@
 		1484110024A375AC00AC46F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1484112724A3812D00AC46F3 /* Array2D.swift */,
-				1484112424A3812C00AC46F3 /* Chain.swift */,
-				1484112624A3812C00AC46F3 /* Cookie.swift */,
-				1484112524A3812C00AC46F3 /* GameScene.swift */,
-				1484112924A3812D00AC46F3 /* Level.swift */,
-				1484112824A3812D00AC46F3 /* LevelData.swift */,
-				1484112A24A3812D00AC46F3 /* Swap.swift */,
-				1484112B24A3812D00AC46F3 /* Tile.swift */,
 				1484110124A375BC00AC46F3 /* Levels */,
+				1484113424A383BA00AC46F3 /* GameModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */,
+				1484113A24A38C0100AC46F3 /* MenuGameController.swift */,
+				1484113524A383FA00AC46F3 /* GameViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -197,6 +196,21 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
+		1484113424A383BA00AC46F3 /* GameModel */ = {
+			isa = PBXGroup;
+			children = (
+				1484112724A3812D00AC46F3 /* Array2D.swift */,
+				1484112424A3812C00AC46F3 /* Chain.swift */,
+				1484112624A3812C00AC46F3 /* Cookie.swift */,
+				1484112524A3812C00AC46F3 /* GameScene.swift */,
+				1484112924A3812D00AC46F3 /* Level.swift */,
+				1484112824A3812D00AC46F3 /* LevelData.swift */,
+				1484112A24A3812D00AC46F3 /* Swap.swift */,
+				1484112B24A3812D00AC46F3 /* Tile.swift */,
+			);
+			path = GameModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -213,6 +227,8 @@
 			dependencies = (
 			);
 			name = "Priest in Egypt";
+			packageProductDependencies = (
+			);
 			productName = "Priest in Egypt";
 			productReference = 148410E724A3745A00AC46F3 /* Priest in Egypt.app */;
 			productType = "com.apple.product-type.application";
@@ -241,6 +257,8 @@
 				Base,
 			);
 			mainGroup = 148410DE24A3745A00AC46F3;
+			packageReferences = (
+			);
 			productRefGroup = 148410E824A3745A00AC46F3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -284,8 +302,10 @@
 			files = (
 				1484112F24A3812D00AC46F3 /* Array2D.swift in Sources */,
 				1484112D24A3812D00AC46F3 /* GameScene.swift in Sources */,
+				1484113B24A38C0100AC46F3 /* MenuGameController.swift in Sources */,
 				1484112E24A3812D00AC46F3 /* Cookie.swift in Sources */,
 				1484113124A3812D00AC46F3 /* Level.swift in Sources */,
+				1484113624A383FA00AC46F3 /* GameViewController.swift in Sources */,
 				1484113224A3812D00AC46F3 /* Swap.swift in Sources */,
 				1484111E24A378A500AC46F3 /* Device.swift in Sources */,
 				1484113024A3812D00AC46F3 /* LevelData.swift in Sources */,
@@ -368,7 +388,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -422,7 +442,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

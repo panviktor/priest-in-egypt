@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YMC-9U-Qs6">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -13,21 +13,33 @@
             <objects>
                 <viewController id="QND-fA-flR" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XlI-LT-ngd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aV-O5-KId">
-                                <rect key="frame" x="186" y="438" width="46" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aV-O5-KId">
+                                <rect key="frame" x="137" y="273.5" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOh-zo-L6D">
+                                <rect key="frame" x="118.5" y="269" width="83" height="30"/>
+                                <state key="normal" title="Start Game!"/>
+                                <connections>
+                                    <segue destination="FRh-HI-4uh" kind="show" id="zCJ-eQ-Nue"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7aV-O5-KId" firstAttribute="centerX" secondItem="XlI-LT-ngd" secondAttribute="centerX" id="Q6K-4W-kac"/>
+                            <constraint firstItem="VOh-zo-L6D" firstAttribute="centerX" secondItem="XlI-LT-ngd" secondAttribute="centerX" id="RlO-QX-pju"/>
+                            <constraint firstItem="VOh-zo-L6D" firstAttribute="centerY" secondItem="XlI-LT-ngd" secondAttribute="centerY" id="YHO-6C-1xj"/>
+                            <constraint firstItem="7aV-O5-KId" firstAttribute="centerY" secondItem="XlI-LT-ngd" secondAttribute="centerY" id="qRE-8U-qoa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7cC-bl-XDx"/>
                     </view>
-                    <navigationItem key="navigationItem" id="CVh-dp-Li0"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="CVh-dp-Li0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jJp-vN-b70" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -36,10 +48,9 @@
         <!--Navigation Controller-->
         <scene sceneID="gBu-YT-Dhb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YMC-9U-Qs6" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="YMC-9U-Qs6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kMY-h0-CXq">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -51,5 +62,126 @@
             </objects>
             <point key="canvasLocation" x="28.985507246376812" y="207.58928571428569"/>
         </scene>
+        <!--Game View Controller-->
+        <scene sceneID="5eQ-7M-IFM">
+            <objects>
+                <viewController id="FRh-HI-4uh" customClass="GameViewController" customModule="CookieCrunch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="RMK-7L-owd" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="foe-4A-Wg6">
+                                <rect key="frame" x="8" y="30" width="304" height="44"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EiE-CL-RVe">
+                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRp-lH-mxf" userLabel="Target">
+                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="16"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fR-db-avV" userLabel="Target Label">
+                                                <rect key="frame" x="0.0" y="20" width="101.5" height="24"/>
+                                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VpE-YA-k9E">
+                                        <rect key="frame" x="101.5" y="0.0" width="101" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moves:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0k-kb-dhD" userLabel="Moves">
+                                                <rect key="frame" x="0.0" y="0.0" width="101" height="20"/>
+                                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="16"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P0-5t-Rne" userLabel="Moves Label">
+                                                <rect key="frame" x="0.0" y="20" width="101" height="24"/>
+                                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nfm-sX-PI9">
+                                        <rect key="frame" x="202.5" y="0.0" width="101.5" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFt-cu-dgP" userLabel="Score">
+                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="16"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEa-Ma-kOz" userLabel="Score Label">
+                                                <rect key="frame" x="0.0" y="20" width="101.5" height="24"/>
+                                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.47027504279999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uno-SX-gDC">
+                                <rect key="frame" x="0.0" y="163" width="320" height="225"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="225" id="wdy-DM-zcO"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGi-sj-Rfi">
+                                <rect key="frame" x="132.5" y="493" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="3aX-oR-W4V"/>
+                                    <constraint firstAttribute="width" constant="55" id="ZJt-6E-I04"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
+                                <state key="normal" title="SHUFFLE" backgroundImage="Button">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shuffleButtonPressed:" destination="FRh-HI-4uh" eventType="touchUpInside" id="OOR-71-bVC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ngG-rW-UOa" firstAttribute="trailing" secondItem="foe-4A-Wg6" secondAttribute="trailing" constant="8" id="5U4-PY-xF5"/>
+                            <constraint firstItem="foe-4A-Wg6" firstAttribute="top" secondItem="ngG-rW-UOa" secondAttribute="top" constant="30" id="CBQ-av-JgG"/>
+                            <constraint firstItem="uno-SX-gDC" firstAttribute="leading" secondItem="ngG-rW-UOa" secondAttribute="leading" id="E9W-AP-olD"/>
+                            <constraint firstItem="uno-SX-gDC" firstAttribute="top" secondItem="foe-4A-Wg6" secondAttribute="bottom" constant="89" id="PO5-uD-DSS"/>
+                            <constraint firstItem="ngG-rW-UOa" firstAttribute="bottom" secondItem="jGi-sj-Rfi" secondAttribute="bottom" constant="20" id="a4k-fY-1UZ"/>
+                            <constraint firstItem="jGi-sj-Rfi" firstAttribute="centerX" secondItem="uno-SX-gDC" secondAttribute="centerX" id="g70-wd-0Yo"/>
+                            <constraint firstItem="uno-SX-gDC" firstAttribute="trailing" secondItem="ngG-rW-UOa" secondAttribute="trailing" id="iXW-Vx-sxc"/>
+                            <constraint firstItem="foe-4A-Wg6" firstAttribute="leading" secondItem="ngG-rW-UOa" secondAttribute="leading" constant="8" id="xEb-ps-xDm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ngG-rW-UOa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6SE-hj-cmZ"/>
+                    <connections>
+                        <outlet property="gameOverPanel" destination="uno-SX-gDC" id="5hA-BS-YJD"/>
+                        <outlet property="movesLabel" destination="0P0-5t-Rne" id="AJP-hi-mup"/>
+                        <outlet property="scoreLabel" destination="dEa-Ma-kOz" id="oGI-cu-7XT"/>
+                        <outlet property="shuffleButton" destination="jGi-sj-Rfi" id="mc2-1r-LOF"/>
+                        <outlet property="targetLabel" destination="4fR-db-avV" id="bom-FY-f7r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pp7-IH-c7H" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1846" y="208"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Button" width="128" height="128"/>
+    </resources>
 </document>

@@ -11,7 +11,13 @@ import UIKit
 class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    @IBAction func launchTheGame() {
+        let sb = UIStoryboard(name: "Game", bundle: .main)
+        let navigationVC = sb.instantiateInitialViewController() ?? UIViewController()
+        navigationVC.modalPresentationStyle = .fullScreen
+        present(navigationVC, animated: true, completion: nil)
     }
 }
 
