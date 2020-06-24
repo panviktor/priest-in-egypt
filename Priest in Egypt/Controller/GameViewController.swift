@@ -12,19 +12,6 @@ class GameViewController: UIViewController {
     var tapGestureRecognizer: UITapGestureRecognizer!
     var currentLevelNum = 1
     
-    lazy var backgroundMusic: AVAudioPlayer? = {
-        guard let url = Bundle.main.url(forResource: "Mining by Moonlight", withExtension: "mp3") else {
-            return nil
-        }
-        do {
-            let player = try AVAudioPlayer(contentsOf: url)
-            player.numberOfLoops = -1
-            return player
-        } catch {
-            return nil
-        }
-    }()
-    
     // MARK: - IBOutlets
     @IBOutlet var gameOverPanel: UIImageView!
     @IBOutlet var targetLabel: UILabel!
@@ -35,11 +22,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setup view with level 1
         setupLevel(number: currentLevelNum)
-        
-        // Start the background music.
-        backgroundMusic?.play()
     }
     
     func setupLevel(number levelNumber: Int) {
