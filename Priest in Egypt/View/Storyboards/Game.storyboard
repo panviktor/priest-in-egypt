@@ -23,7 +23,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOh-zo-L6D">
-                                <rect key="frame" x="118.5" y="269" width="83" height="30"/>
+                                <rect key="frame" x="119" y="311" width="83" height="30"/>
                                 <state key="normal" title="Start Game!"/>
                                 <connections>
                                     <segue destination="FRh-HI-4uh" kind="show" id="zCJ-eQ-Nue"/>
@@ -34,7 +34,7 @@
                         <constraints>
                             <constraint firstItem="7aV-O5-KId" firstAttribute="centerX" secondItem="XlI-LT-ngd" secondAttribute="centerX" id="Q6K-4W-kac"/>
                             <constraint firstItem="VOh-zo-L6D" firstAttribute="centerX" secondItem="XlI-LT-ngd" secondAttribute="centerX" id="RlO-QX-pju"/>
-                            <constraint firstItem="VOh-zo-L6D" firstAttribute="centerY" secondItem="XlI-LT-ngd" secondAttribute="centerY" id="YHO-6C-1xj"/>
+                            <constraint firstItem="VOh-zo-L6D" firstAttribute="centerY" secondItem="XlI-LT-ngd" secondAttribute="centerY" constant="42" id="YHO-6C-1xj"/>
                             <constraint firstItem="7aV-O5-KId" firstAttribute="centerY" secondItem="XlI-LT-ngd" secondAttribute="centerY" id="qRE-8U-qoa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7cC-bl-XDx"/>
@@ -65,7 +65,7 @@
         <!--Game View Controller-->
         <scene sceneID="5eQ-7M-IFM">
             <objects>
-                <viewController id="FRh-HI-4uh" customClass="GameViewController" customModule="CookieCrunch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FRh-HI-4uh" customClass="GameViewController" customModule="Priest_in_Egypt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="RMK-7L-owd" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pp7-IH-c7H" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1846" y="208"/>
+            <point key="canvasLocation" x="1823" y="207"/>
         </scene>
     </scenes>
     <resources>

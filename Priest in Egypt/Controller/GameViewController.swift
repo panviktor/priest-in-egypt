@@ -1,4 +1,5 @@
 import SpriteKit
+import UIKit
 import AVFoundation
 
 class GameViewController: UIViewController {
@@ -10,7 +11,6 @@ class GameViewController: UIViewController {
     var score = 0
     var tapGestureRecognizer: UITapGestureRecognizer!
     var currentLevelNum = 1
-    
     
     lazy var backgroundMusic: AVAudioPlayer? = {
         guard let url = Bundle.main.url(forResource: "Mining by Moonlight", withExtension: "mp3") else {
