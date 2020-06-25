@@ -17,6 +17,9 @@ protocol MenuViewControllerDelegate: class {
 
 class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuViewControllerDelegate {
     @IBOutlet var levelLabel: UILabel!
+    @IBOutlet var musicButton: UIButton!
+    @IBOutlet var playButton: UIButton!
+    @IBOutlet var topScoreButton: UIButton!
     
     lazy var backgroundMusic: AVAudioPlayer? = {
         guard let url = Bundle.main.url(forResource: "Mining by Moonlight", withExtension: "mp3") else {
@@ -32,12 +35,12 @@ class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuView
     }()
     
     private var musicStatus = true
-    
     private let scoreManager = ScoreManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         playMusic()
+        setupButtons()
         levelLabel.text = "You unlocked a level \(scoreManager.currentLevel)"
     }
     
@@ -53,7 +56,8 @@ class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuView
         }
     }
     
-    @IBAction func musicToggle() {
+    @IBAction func musicToggle(_ sender: UIButton) {
+        sender.pulsate(_repeatCount: 3)
         musicStatus.toggle()
         musicStatus == true ? playMusic() : backgroundMusic?.stop()
     }
@@ -93,6 +97,12 @@ class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuView
     }
     
     @IBAction func unwind( _ segue: UIStoryboardSegue) {}
+    
+    func setupButtons() {
+        musicButton.layer.cornerRadius = 15
+        playButton.layer.cornerRadius = 15
+        topScoreButton.layer.cornerRadius = 15
+    }
 }
 
 

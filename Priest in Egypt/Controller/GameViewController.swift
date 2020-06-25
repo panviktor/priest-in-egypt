@@ -55,8 +55,9 @@ class GameViewController: UIViewController {
     }
     
     // MARK: IBActions
-    @IBAction func shuffleButtonPressed(_: AnyObject) {
+    @IBAction func shuffleButtonPressed(_ sender: UIButton) {
         shuffle()
+        sender.rotate()
         decrementMoves()
     }
     

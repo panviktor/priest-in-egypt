@@ -37,7 +37,7 @@
                                 </constraints>
                                 <state key="normal" title="Music"/>
                                 <connections>
-                                    <action selector="musicToggle" destination="QND-fA-flR" eventType="touchUpInside" id="hmO-Bo-gce"/>
+                                    <action selector="musicToggle:" destination="QND-fA-flR" eventType="touchUpInside" id="e3H-ff-6c9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Yz-pX-Jeo">
@@ -52,8 +52,8 @@
                                     <action selector="topScore" destination="QND-fA-flR" eventType="touchUpInside" id="BDQ-B2-twL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 10 out of 10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j21-sv-kRV">
-                                <rect key="frame" x="40" y="100" width="240" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;You unlocked a level \(maxLevel) out of 10" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j21-sv-kRV">
+                                <rect key="frame" x="40" y="20" width="240" height="144"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
                                 <color key="textColor" red="0.7987404755037657" green="0.29886949812677821" blue="0.21454731215313808" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -69,18 +69,21 @@
                             <constraint firstItem="7cC-bl-XDx" firstAttribute="trailing" secondItem="0Yz-pX-Jeo" secondAttribute="trailing" constant="30" id="Uje-Gh-ZmH"/>
                             <constraint firstItem="j21-sv-kRV" firstAttribute="leading" secondItem="7cC-bl-XDx" secondAttribute="leading" constant="40" id="VdV-PL-Tqr"/>
                             <constraint firstItem="7cC-bl-XDx" firstAttribute="bottom" secondItem="VOh-zo-L6D" secondAttribute="bottom" constant="30" id="dxy-gc-PeF"/>
-                            <constraint firstItem="j21-sv-kRV" firstAttribute="top" secondItem="7cC-bl-XDx" secondAttribute="top" constant="100" id="pYA-QQ-B15"/>
+                            <constraint firstItem="j21-sv-kRV" firstAttribute="top" secondItem="7cC-bl-XDx" secondAttribute="top" constant="20" id="pYA-QQ-B15"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7cC-bl-XDx"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="CVh-dp-Li0"/>
                     <connections>
                         <outlet property="levelLabel" destination="j21-sv-kRV" id="Nyi-FO-Wkl"/>
+                        <outlet property="musicButton" destination="RQu-Gu-sCg" id="rwy-7u-3hi"/>
+                        <outlet property="playButton" destination="VOh-zo-L6D" id="ppp-WB-v94"/>
+                        <outlet property="topScoreButton" destination="0Yz-pX-Jeo" id="WhQ-TX-35c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jJp-vN-b70" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="937.5" y="207.04225352112675"/>
+            <point key="canvasLocation" x="922.5" y="94.014084507042256"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gBu-YT-Dhb">
@@ -176,20 +179,6 @@
                                     <constraint firstAttribute="height" constant="225" id="wdy-DM-zcO"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGi-sj-Rfi">
-                                <rect key="frame" x="132.5" y="483" width="55" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="3aX-oR-W4V"/>
-                                    <constraint firstAttribute="width" constant="55" id="ZJt-6E-I04"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
-                                <state key="normal" title="SHUFFLE" backgroundImage="Button">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="shuffleButtonPressed:" destination="FRh-HI-4uh" eventType="touchUpInside" id="OOR-71-bVC"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="by6-sS-Nee">
                                 <rect key="frame" x="30" y="483" width="55" height="55"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -201,6 +190,20 @@
                                 <connections>
                                     <action selector="exitPressed:" destination="FRh-HI-4uh" eventType="touchUpInside" id="aVG-Vg-6gs"/>
                                     <segue destination="bco-di-mti" kind="unwind" unwindAction="unwind:" id="Pin-fb-ojq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGi-sj-Rfi">
+                                <rect key="frame" x="133" y="483" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="3aX-oR-W4V"/>
+                                    <constraint firstAttribute="width" constant="55" id="ZJt-6E-I04"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
+                                <state key="normal" title="SHUFFLE" backgroundImage="Button">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shuffleButtonPressed:" destination="FRh-HI-4uh" eventType="touchUpInside" id="VNo-jj-6Yw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -224,7 +227,7 @@
                         <outlet property="gameOverPanel" destination="uno-SX-gDC" id="5hA-BS-YJD"/>
                         <outlet property="movesLabel" destination="0P0-5t-Rne" id="AJP-hi-mup"/>
                         <outlet property="scoreLabel" destination="dEa-Ma-kOz" id="oGI-cu-7XT"/>
-                        <outlet property="shuffleButton" destination="jGi-sj-Rfi" id="mc2-1r-LOF"/>
+                        <outlet property="shuffleButton" destination="jGi-sj-Rfi" id="MVz-Gg-qVb"/>
                         <outlet property="targetLabel" destination="4fR-db-avV" id="bom-FY-f7r"/>
                     </connections>
                 </viewController>
