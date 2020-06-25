@@ -14,6 +14,7 @@ protocol BlurViewControllerDelegate: class {
 
 class ScoreViewController: UIViewController {
     
+    
     @IBOutlet var images: UIImageView!
     @IBOutlet var firstScore: UILabel!
     @IBOutlet var secondScore: UILabel!

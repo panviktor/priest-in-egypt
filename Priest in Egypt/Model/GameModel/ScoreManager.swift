@@ -12,14 +12,24 @@ class ScoreManager {
     let defaults = UserDefaults.standard
     
     private var allScore = [Int]()
+    
+    private(set) var currentLevel: Int
     private(set) var firstScore: Int
     private(set) var secondScore: Int
     private(set) var thirdScore : Int
+    
     
     func appendNewScore(_ score: Int) {
         allScore.append(score)
         sortedScore()
         saveScore()
+    }
+    
+    func addNewUnlockedLevel(_ level: Int) {
+        if currentLevel < level {
+            currentLevel = level
+            defaults.set(currentLevel, forKey: "unlockedLevel")
+        }
     }
     
     private func sortedScore() {
@@ -39,16 +49,14 @@ class ScoreManager {
     }
     
     init(){
+        self.currentLevel = 1
+        self.firstScore = 0
+        self.secondScore = 0
+        self.thirdScore = 0
+        
         self.allScore = defaults.object(forKey:"savedScore") as? [Int] ?? [Int]()
-        if allScore.isEmpty {
-            self.firstScore = 0
-            self.secondScore = 0
-            self.thirdScore = 0
-        } else {
-            self.firstScore = 0
-            self.secondScore = 0
-            self.thirdScore = 0
-            sortedScore()
-        }
+        self.currentLevel =  defaults.object(forKey:"unlockedLevel") as? Int ?? 1
+
+        if !allScore.isEmpty { sortedScore() }
     }
 }

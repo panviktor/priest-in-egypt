@@ -14,6 +14,9 @@ class GameViewController: UIViewController {
     var currentLevelNum = 1
     let scoreManager = ScoreManager()
     
+    
+    weak var delegate: MenuViewControllerDelegate?
+    
     // MARK: - IBOutlets
     @IBOutlet var gameOverPanel: UIImageView!
     @IBOutlet var targetLabel: UILabel!
@@ -135,21 +138,25 @@ class GameViewController: UIViewController {
         scoreLabel.text = String(format: "%ld", score)
     }
     
+    @IBAction func exitPressed(_ sender: UIButton) {
+        delegate?.update(maxLevel: currentLevelNum)
+    }
+    
     func decrementMoves() {
         movesLeft -= 1
         updateLabels()
-        
         if score >= level.targetScore {
             totalScore += score
             gameOverPanel.image = UIImage(named: "LevelComplete")
             
             if currentLevelNum < numLevels {
                 currentLevelNum += 1
+                delegate?.update(maxLevel: currentLevelNum)
+                self.scoreManager.addNewUnlockedLevel(currentLevelNum)
             } else {
                 print("WINNNNNNNNNNNNNN")
                 currentLevelNum = 1
             }
-            
             showGameOver()
         } else if movesLeft == 0 {
             gameOverPanel.image = UIImage(named: "GameOver")
@@ -159,6 +166,7 @@ class GameViewController: UIViewController {
     
     func showGameOver() {
         scoreManager.appendNewScore(totalScore)
+        
         totalScore = 0
         gameOverPanel.isHidden = false
         scene.isUserInteractionEnabled = false

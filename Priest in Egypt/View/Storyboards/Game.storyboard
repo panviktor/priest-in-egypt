@@ -16,12 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aV-O5-KId">
-                                <rect key="frame" x="137" y="273.5" width="46" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOh-zo-L6D">
                                 <rect key="frame" x="132.5" y="483" width="55" height="55"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -58,21 +52,31 @@
                                     <action selector="topScore" destination="QND-fA-flR" eventType="touchUpInside" id="BDQ-B2-twL"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 10 out of 10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j21-sv-kRV">
+                                <rect key="frame" x="40" y="100" width="240" height="48"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                <color key="textColor" red="0.7987404755037657" green="0.29886949812677821" blue="0.21454731215313808" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="RQu-Gu-sCg" firstAttribute="leading" secondItem="7cC-bl-XDx" secondAttribute="leading" constant="30" id="3Cs-jO-Yf0"/>
                             <constraint firstItem="7cC-bl-XDx" firstAttribute="bottom" secondItem="RQu-Gu-sCg" secondAttribute="bottom" constant="30" id="7Gk-RU-0aP"/>
                             <constraint firstItem="7cC-bl-XDx" firstAttribute="bottom" secondItem="0Yz-pX-Jeo" secondAttribute="bottom" constant="30" id="Bq5-jQ-1Rx"/>
                             <constraint firstItem="VOh-zo-L6D" firstAttribute="centerX" secondItem="XlI-LT-ngd" secondAttribute="centerX" id="Egi-XP-HrZ"/>
-                            <constraint firstItem="7aV-O5-KId" firstAttribute="centerX" secondItem="XlI-LT-ngd" secondAttribute="centerX" id="Q6K-4W-kac"/>
+                            <constraint firstItem="7cC-bl-XDx" firstAttribute="trailing" secondItem="j21-sv-kRV" secondAttribute="trailing" constant="40" id="SWY-TX-RYM"/>
                             <constraint firstItem="7cC-bl-XDx" firstAttribute="trailing" secondItem="0Yz-pX-Jeo" secondAttribute="trailing" constant="30" id="Uje-Gh-ZmH"/>
+                            <constraint firstItem="j21-sv-kRV" firstAttribute="leading" secondItem="7cC-bl-XDx" secondAttribute="leading" constant="40" id="VdV-PL-Tqr"/>
                             <constraint firstItem="7cC-bl-XDx" firstAttribute="bottom" secondItem="VOh-zo-L6D" secondAttribute="bottom" constant="30" id="dxy-gc-PeF"/>
-                            <constraint firstItem="7aV-O5-KId" firstAttribute="centerY" secondItem="XlI-LT-ngd" secondAttribute="centerY" id="qRE-8U-qoa"/>
+                            <constraint firstItem="j21-sv-kRV" firstAttribute="top" secondItem="7cC-bl-XDx" secondAttribute="top" constant="100" id="pYA-QQ-B15"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7cC-bl-XDx"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="CVh-dp-Li0"/>
+                    <connections>
+                        <outlet property="levelLabel" destination="j21-sv-kRV" id="Nyi-FO-Wkl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jJp-vN-b70" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -195,6 +199,7 @@
                                 </constraints>
                                 <state key="normal" title="exit"/>
                                 <connections>
+                                    <action selector="exitPressed:" destination="FRh-HI-4uh" eventType="touchUpInside" id="aVG-Vg-6gs"/>
                                     <segue destination="bco-di-mti" kind="unwind" unwindAction="unwind:" id="Pin-fb-ojq"/>
                                 </connections>
                             </button>
