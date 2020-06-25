@@ -13,6 +13,7 @@
 		1411B2A924A4C7F3007D4C0D /* Extension+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411B2A824A4C7F3007D4C0D /* Extension+UIButton.swift */; };
 		1411B2AC24A4D35D007D4C0D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1411B2AB24A4D35D007D4C0D /* Lottie */; };
 		1411B2B224A4E649007D4C0D /* 987-estimate.json in Resources */ = {isa = PBXBuildFile; fileRef = 1411B2B124A4E649007D4C0D /* 987-estimate.json */; };
+		1411B2B624A4F238007D4C0D /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411B2B524A4F238007D4C0D /* LevelCell.swift */; };
 		148410EB24A3745A00AC46F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148410EA24A3745A00AC46F3 /* AppDelegate.swift */; };
 		148410EF24A3745A00AC46F3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */; };
 		148410F224A3745A00AC46F3 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148410F024A3745A00AC46F3 /* Welcome.storyboard */; };
@@ -61,6 +62,7 @@
 		1411B2A524A4ACCA007D4C0D /* WinViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WinViewController.xib; sourceTree = "<group>"; };
 		1411B2A824A4C7F3007D4C0D /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
 		1411B2B124A4E649007D4C0D /* 987-estimate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "987-estimate.json"; sourceTree = "<group>"; };
+		1411B2B524A4F238007D4C0D /* LevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
 		148410E724A3745A00AC46F3 /* Priest in Egypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Priest in Egypt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		148410EA24A3745A00AC46F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1411B2B724A4F245007D4C0D /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				1411B2B524A4F238007D4C0D /* LevelCell.swift */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
 		148410DE24A3745A00AC46F3 = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				1484110224A375F800AC46F3 /* Storyboards */,
+				1411B2B724A4F245007D4C0D /* CollectionCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -376,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1411B2B624A4F238007D4C0D /* LevelCell.swift in Sources */,
 				1484112F24A3812D00AC46F3 /* Array2D.swift in Sources */,
 				1484112D24A3812D00AC46F3 /* GameScene.swift in Sources */,
 				1484113B24A38C0100AC46F3 /* MenuGameController.swift in Sources */,

@@ -49,7 +49,7 @@ class WelcomeViewController: UIViewController {
     fileprivate func startAnimating() {
         animationView.play(fromProgress: 0,
                            toProgress: 1,
-                           loopMode: LottieLoopMode.repeat(2),
+                           loopMode: LottieLoopMode.repeat(0.5),
                            completion: { (finished) in
                             if finished {
                                 print("Animation Complete")

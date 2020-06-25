@@ -20,6 +20,8 @@ class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuView
     @IBOutlet var musicButton: UIButton!
     @IBOutlet var playButton: UIButton!
     @IBOutlet var topScoreButton: UIButton!
+    //
+    weak var collectionView: UICollectionView!
     
     lazy var backgroundMusic: AVAudioPlayer? = {
         guard let url = Bundle.main.url(forResource: "Mining by Moonlight", withExtension: "mp3") else {
@@ -35,19 +37,40 @@ class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuView
     }()
     
     private var musicStatus = true
+    private var currentLevel = 1
     private let scoreManager = ScoreManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         playMusic()
         setupButtons()
+        currentLevel = scoreManager.currentLevel
         levelLabel.text = "You unlocked a level \(scoreManager.currentLevel)"
+        //
+        self.collectionView.backgroundColor = .white
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        
+        self.collectionView.register(MyCell.self, forCellWithReuseIdentifier: "MyCell")
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func loadView() {
+        super.loadView()
         
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsHorizontalScrollIndicator = false
+        self.view.addSubview(collectionView)
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: self.levelLabel.bottomAnchor, constant: 20),
+            collectionView.bottomAnchor.constraint(equalTo: self.playButton.topAnchor, constant: -20),
+            collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+            collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+        ])
+        self.collectionView = collectionView
     }
     
     private func playMusic() {
@@ -87,8 +110,10 @@ class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuView
     
     func update(maxLevel: Int) {
         if maxLevel >= scoreManager.currentLevel {
+            currentLevel = maxLevel
             self.levelLabel.text = "You unlocked a level \(maxLevel) out of 10"
         }
+        collectionView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -106,3 +131,56 @@ class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuView
 }
 
 
+extension MenuViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! MyCell
+        cell.textLabel.text = String(indexPath.row + 1)
+        
+        cell.openLevel(indexPath.row + 1 <= currentLevel)
+     
+        return cell
+    }
+}
+
+extension MenuViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row + 1)
+    }
+}
+
+extension MenuViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (collectionView.bounds.size.width / 1.5) , height: collectionView.bounds.size.height - 50)
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    
+    
+    
+}
