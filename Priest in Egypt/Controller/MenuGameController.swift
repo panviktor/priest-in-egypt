@@ -47,7 +47,7 @@ class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuView
         currentLevel = scoreManager.currentLevel
         levelLabel.text = "You unlocked a level \(scoreManager.currentLevel)"
         //
-        self.collectionView.backgroundColor = .white
+        self.collectionView.backgroundColor = .clear
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
@@ -63,6 +63,7 @@ class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuView
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.delaysContentTouches = false
         self.view.addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: self.levelLabel.bottomAnchor, constant: 20),
@@ -181,6 +182,6 @@ extension MenuViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8)
     }
     
-    
+
     
 }

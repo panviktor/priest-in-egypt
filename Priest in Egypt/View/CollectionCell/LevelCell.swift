@@ -9,8 +9,9 @@
 import UIKit
 
 class MyCell: UICollectionViewCell {
-
     weak var textLabel: UILabel!
+    
+    weak var imageLabel: UIImage!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,5 +50,22 @@ class MyCell: UICollectionViewCell {
     
     func openLevel(_ level: Bool) {
         level == true ? (textLabel.backgroundColor = .green) :  (textLabel.backgroundColor = .red)
+    }
+    
+    func shrink(down: Bool) {
+      UIView.animate(withDuration: 0.6) {
+        if down {
+          self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }  else {
+          self.transform = .identity
+        }
+      }
+    }
+    
+    
+    override var isHighlighted: Bool {
+      didSet {
+        shrink(down: isHighlighted)
+      }
     }
 }
