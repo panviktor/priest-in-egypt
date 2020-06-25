@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1411B2A324A4946F007D4C0D /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411B2A224A4946F007D4C0D /* ScoreManager.swift */; };
 		148410EB24A3745A00AC46F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148410EA24A3745A00AC46F3 /* AppDelegate.swift */; };
 		148410EF24A3745A00AC46F3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */; };
 		148410F224A3745A00AC46F3 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148410F024A3745A00AC46F3 /* Welcome.storyboard */; };
@@ -45,9 +46,12 @@
 		14A5F0F724A3973B00862E68 /* Drip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0F124A3973B00862E68 /* Drip.wav */; };
 		14A5F0F824A3973B00862E68 /* Chomp.wav in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0F224A3973B00862E68 /* Chomp.wav */; };
 		14A5F0F924A3973B00862E68 /* Error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0F324A3973B00862E68 /* Error.wav */; };
+		14A5F16924A48DE800862E68 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5F16724A48DE800862E68 /* ScoreViewController.swift */; };
+		14A5F16A24A48DE800862E68 /* ScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F16824A48DE800862E68 /* ScoreViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1411B2A224A4946F007D4C0D /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		148410E724A3745A00AC46F3 /* Priest in Egypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Priest in Egypt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		148410EA24A3745A00AC46F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 		14A5F0F124A3973B00862E68 /* Drip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Drip.wav; sourceTree = "<group>"; };
 		14A5F0F224A3973B00862E68 /* Chomp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Chomp.wav; sourceTree = "<group>"; };
 		14A5F0F324A3973B00862E68 /* Error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Error.wav; sourceTree = "<group>"; };
+		14A5F16724A48DE800862E68 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		14A5F16824A48DE800862E68 /* ScoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +191,7 @@
 				1484112024A37E7600AC46F3 /* Game.storyboard */,
 				1484112224A380AC00AC46F3 /* WKweb.storyboard */,
 				148410F524A3745E00AC46F3 /* LaunchScreen.storyboard */,
+				14A5F16B24A48F9300862E68 /* Xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -194,6 +201,7 @@
 			children = (
 				148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */,
 				1484113A24A38C0100AC46F3 /* MenuGameController.swift */,
+				14A5F16724A48DE800862E68 /* ScoreViewController.swift */,
 				1484113524A383FA00AC46F3 /* GameViewController.swift */,
 			);
 			path = Controller;
@@ -226,6 +234,7 @@
 				1484112824A3812D00AC46F3 /* LevelData.swift */,
 				1484112A24A3812D00AC46F3 /* Swap.swift */,
 				1484112B24A3812D00AC46F3 /* Tile.swift */,
+				1411B2A224A4946F007D4C0D /* ScoreManager.swift */,
 			);
 			path = GameModel;
 			sourceTree = "<group>";
@@ -241,6 +250,14 @@
 				14A5F0F324A3973B00862E68 /* Error.wav */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		14A5F16B24A48F9300862E68 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				14A5F16824A48DE800862E68 /* ScoreViewController.xib */,
+			);
+			path = Xib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +345,7 @@
 				1484111724A376B200AC46F3 /* Level_7.json in Resources */,
 				148410F424A3745E00AC46F3 /* Assets.xcassets in Resources */,
 				1484111524A376B200AC46F3 /* Level_3.json in Resources */,
+				14A5F16A24A48DE800862E68 /* ScoreViewController.xib in Resources */,
 				14A5F0E724A3940200862E68 /* Sprites.atlas in Resources */,
 				148410F224A3745A00AC46F3 /* Welcome.storyboard in Resources */,
 			);
@@ -347,10 +365,12 @@
 				1484113124A3812D00AC46F3 /* Level.swift in Sources */,
 				1484113624A383FA00AC46F3 /* GameViewController.swift in Sources */,
 				1484113224A3812D00AC46F3 /* Swap.swift in Sources */,
+				14A5F16924A48DE800862E68 /* ScoreViewController.swift in Sources */,
 				1484111E24A378A500AC46F3 /* Device.swift in Sources */,
 				1484113024A3812D00AC46F3 /* LevelData.swift in Sources */,
 				1484112C24A3812D00AC46F3 /* Chain.swift in Sources */,
 				148410EF24A3745A00AC46F3 /* WelcomeViewController.swift in Sources */,
+				1411B2A324A4946F007D4C0D /* ScoreManager.swift in Sources */,
 				1484113324A3812D00AC46F3 /* Tile.swift in Sources */,
 				148410EB24A3745A00AC46F3 /* AppDelegate.swift in Sources */,
 			);

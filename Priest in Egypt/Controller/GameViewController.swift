@@ -9,8 +9,10 @@ class GameViewController: UIViewController {
     var level: Level!
     var movesLeft = 0
     var score = 0
+    var totalScore = 0
     var tapGestureRecognizer: UITapGestureRecognizer!
     var currentLevelNum = 1
+    let scoreManager = ScoreManager()
     
     // MARK: - IBOutlets
     @IBOutlet var gameOverPanel: UIImageView!
@@ -21,7 +23,6 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupLevel(number: currentLevelNum)
     }
     
@@ -139,6 +140,7 @@ class GameViewController: UIViewController {
         updateLabels()
         
         if score >= level.targetScore {
+            totalScore += score
             gameOverPanel.image = UIImage(named: "LevelComplete")
             
             if currentLevelNum < numLevels {
@@ -156,6 +158,8 @@ class GameViewController: UIViewController {
     }
     
     func showGameOver() {
+        scoreManager.appendNewScore(totalScore)
+        totalScore = 0
         gameOverPanel.isHidden = false
         scene.isUserInteractionEnabled = false
         shuffleButton.isHidden = true
@@ -173,4 +177,5 @@ class GameViewController: UIViewController {
         scene.isUserInteractionEnabled = true
         setupLevel(number: currentLevelNum)
     }
+    
 }

@@ -54,6 +54,9 @@
                                     <constraint firstAttribute="width" constant="55" id="mvR-Aa-zZP"/>
                                 </constraints>
                                 <state key="normal" title="Top score:"/>
+                                <connections>
+                                    <action selector="topScore" destination="QND-fA-flR" eventType="touchUpInside" id="BDQ-B2-twL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

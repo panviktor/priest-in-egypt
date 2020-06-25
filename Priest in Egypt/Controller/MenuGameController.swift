@@ -10,8 +10,7 @@ import UIKit
 import SpriteKit
 import AVFoundation
 
-
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, BlurViewControllerDelegate {
     lazy var backgroundMusic: AVAudioPlayer? = {
         guard let url = Bundle.main.url(forResource: "Mining by Moonlight", withExtension: "mp3") else {
             return nil
@@ -44,12 +43,29 @@ class MenuViewController: UIViewController {
     }
     
     @IBAction func topScore() {
-       
-      
+        let blurVC = ScoreViewController()
+        blurVC.modalPresentationStyle = .custom
+        present(blurVC, animated: true, completion: nil)
+        setBlurView()
+        blurVC.delegate = self
     }
     
-    @IBAction func unwind( _ segue: UIStoryboardSegue) {
+    func setBlurView() {
+        let blurView = UIVisualEffectView()
+        blurView.frame = view.frame
+        blurView.effect = UIBlurEffect(style: .extraLight)
+        view.addSubview(blurView)
     }
+    
+    func removeBlurView() {
+        for subview in view.subviews {
+            if subview.isKind(of: UIVisualEffectView.self) {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
+    @IBAction func unwind( _ segue: UIStoryboardSegue) {}
 }
 
 
