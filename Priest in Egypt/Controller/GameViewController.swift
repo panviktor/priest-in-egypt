@@ -11,7 +11,7 @@ class GameViewController: UIViewController {
     var score = 0
     var totalScore = 0
     var tapGestureRecognizer: UITapGestureRecognizer!
-    var currentLevelNum = 1
+    var currentLevelNum: Int!
     let scoreManager = ScoreManager()
     
     
@@ -157,6 +157,7 @@ class GameViewController: UIViewController {
             } else {
                 print("WINNNNNNNNNNNNNN")
                 currentLevelNum = 1
+                presentWinController()
             }
             showGameOver()
         } else if movesLeft == 0 {
@@ -187,4 +188,30 @@ class GameViewController: UIViewController {
         setupLevel(number: currentLevelNum)
     }
     
+}
+
+//MARK: - WinViewController Present
+extension GameViewController: BlurViewDelegate {
+    func setBlurView() {
+        let blurView = UIVisualEffectView()
+        blurView.frame = view.frame
+        blurView.effect = UIBlurEffect(style: .extraLight)
+        view.addSubview(blurView)
+    }
+    
+    func removeBlurView() {
+        for subview in view.subviews {
+            if subview.isKind(of: UIVisualEffectView.self) {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
+    func presentWinController() {
+        let winVC = WinViewController()
+        winVC.modalPresentationStyle = .custom
+        present(winVC, animated: true, completion: nil)
+        setBlurView()
+        winVC.delegate = self
+    }
 }

@@ -15,12 +15,11 @@ protocol MenuViewControllerDelegate: class {
 }
 
 
-class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuViewControllerDelegate {
+class MenuViewController: UIViewController, BlurViewDelegate, MenuViewControllerDelegate {
     @IBOutlet var levelLabel: UILabel!
     @IBOutlet var musicButton: UIButton!
     @IBOutlet var playButton: UIButton!
     @IBOutlet var topScoreButton: UIButton!
-    //
     weak var collectionView: UICollectionView!
     
     lazy var backgroundMusic: AVAudioPlayer? = {
@@ -37,16 +36,19 @@ class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuView
     }()
     
     private var musicStatus = true
-    private var currentLevel = 1
+    private var currentUnlockedLevel = 1
+    private var selectedLevel: Int!
+    private var levelTapped = false
+    
     private let scoreManager = ScoreManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         playMusic()
         setupButtons()
-        currentLevel = scoreManager.currentLevel
+        currentUnlockedLevel = scoreManager.currentLevel
         levelLabel.text = "You unlocked a level \(scoreManager.currentLevel)"
-        //
+        
         self.collectionView.backgroundColor = .clear
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -111,14 +113,20 @@ class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuView
     
     func update(maxLevel: Int) {
         if maxLevel >= scoreManager.currentLevel {
-            currentLevel = maxLevel
+            currentUnlockedLevel = maxLevel
             self.levelLabel.text = "You unlocked a level \(maxLevel) out of 10"
         }
         collectionView.reloadData()
     }
     
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? GameViewController else { return }
+        if levelTapped {
+            destination.currentLevelNum = selectedLevel
+        } else {
+            destination.currentLevelNum = currentUnlockedLevel
+        }
         destination.delegate = self
     }
     
@@ -131,9 +139,8 @@ class MenuViewController: UIViewController, BlurViewControllerDelegate, MenuView
     }
 }
 
-
+//MARK: - UICollectionViewDataSource
 extension MenuViewController: UICollectionViewDataSource {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -145,19 +152,24 @@ extension MenuViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! MyCell
         cell.textLabel.text = String(indexPath.row + 1)
+        cell.openLevel(indexPath.row + 1 <= currentUnlockedLevel)
         
-        cell.openLevel(indexPath.row + 1 <= currentLevel)
-     
         return cell
     }
 }
 
+//MARK: - UICollectionViewDelegate
 extension MenuViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row + 1)
+        if (indexPath.row + 1) <= currentUnlockedLevel {
+            selectedLevel = indexPath.row + 1
+            levelTapped = true
+        }
     }
 }
 
+//MARK: - UICollectiUICollectionViewDelegateFlowLayoutonViewDelegate
 extension MenuViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -181,7 +193,4 @@ extension MenuViewController: UICollectionViewDelegateFlowLayout {
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8)
     }
-    
-
-    
 }

@@ -8,12 +8,23 @@
 
 import UIKit
 
-class WinViewController: UIViewController {
 
+class WinViewController: UIViewController {
+    @IBOutlet var tapView: UIView!
+    weak var delegate: BlurViewDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let tapToDismiss = UITapGestureRecognizer(target: self, action: #selector(tapToDismiss(_:)))
+        tapView.addGestureRecognizer(tapToDismiss)
     }
-
+    
+    
+    @objc func tapToDismiss(_ recognizer: UITapGestureRecognizer) {
+        delegate?.removeBlurView()
+        dismiss(animated: true, completion: nil)
+    }
 }
+
+
+

@@ -62,7 +62,6 @@ class MyCell: UICollectionViewCell {
       }
     }
     
-    
     override var isHighlighted: Bool {
       didSet {
         shrink(down: isHighlighted)

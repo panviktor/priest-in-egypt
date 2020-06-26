@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WinViewController" customModule="Priest_in_Egypt" customModuleProvider="target">
             <connections>
+                <outlet property="tapView" destination="i5M-Pr-FkT" id="Mg8-E2-QpJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,9 +18,23 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cupcake-Highlighted.png" translatesAutoresizingMaskIntoConstraints="NO" id="iw7-mi-dss">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="iw7-mi-dss" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="03E-yq-dmJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iw7-mi-dss" secondAttribute="trailing" id="CE7-Df-tDM"/>
+                <constraint firstItem="iw7-mi-dss" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mY5-pt-1AZ"/>
+                <constraint firstAttribute="bottom" secondItem="iw7-mi-dss" secondAttribute="bottom" id="pLz-l7-Sra"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="123"/>
         </view>
     </objects>
+    <resources>
+        <image name="Cupcake-Highlighted.png" width="32" height="36"/>
+    </resources>
 </document>

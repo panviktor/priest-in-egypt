@@ -8,13 +8,11 @@
 
 import UIKit
 
-protocol BlurViewControllerDelegate: class {
+protocol BlurViewDelegate: class {
     func removeBlurView()
 }
 
 class ScoreViewController: UIViewController {
-    
-    
     @IBOutlet var images: UIImageView!
     @IBOutlet var firstScore: UILabel!
     @IBOutlet var secondScore: UILabel!
@@ -22,7 +20,7 @@ class ScoreViewController: UIViewController {
     @IBOutlet var tapView: UIView!
     
     let scoreManager = ScoreManager()
-    weak var delegate: BlurViewControllerDelegate?
+    weak var delegate: BlurViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
