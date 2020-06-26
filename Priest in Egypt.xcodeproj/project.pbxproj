@@ -54,6 +54,7 @@
 		14A5F0F924A3973B00862E68 /* Error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0F324A3973B00862E68 /* Error.wav */; };
 		14A5F16924A48DE800862E68 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5F16724A48DE800862E68 /* ScoreViewController.swift */; };
 		14A5F16A24A48DE800862E68 /* ScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F16824A48DE800862E68 /* ScoreViewController.xib */; };
+		14C1EDBD24A664FC000FA936 /* Extension+DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1EDBC24A664FC000FA936 /* Extension+DispatchQueue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		14A5F0F324A3973B00862E68 /* Error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Error.wav; sourceTree = "<group>"; };
 		14A5F16724A48DE800862E68 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		14A5F16824A48DE800862E68 /* ScoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreViewController.xib; sourceTree = "<group>"; };
+		14C1EDBC24A664FC000FA936 /* Extension+DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+DispatchQueue.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 			children = (
 				1484111D24A378A500AC46F3 /* Device.swift */,
 				1411B2A824A4C7F3007D4C0D /* Extension+UIButton.swift */,
+				14C1EDBC24A664FC000FA936 /* Extension+DispatchQueue.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				1484113B24A38C0100AC46F3 /* MenuGameController.swift in Sources */,
 				1484112E24A3812D00AC46F3 /* Cookie.swift in Sources */,
 				1484113124A3812D00AC46F3 /* Level.swift in Sources */,
+				14C1EDBD24A664FC000FA936 /* Extension+DispatchQueue.swift in Sources */,
 				1484113624A383FA00AC46F3 /* GameViewController.swift in Sources */,
 				1484113224A3812D00AC46F3 /* Swap.swift in Sources */,
 				14A5F16924A48DE800862E68 /* ScoreViewController.swift in Sources */,

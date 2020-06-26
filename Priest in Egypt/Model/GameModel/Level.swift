@@ -5,10 +5,7 @@ class Level {
     let numRows: Int
     let curentLevel: Int
     let name: String
-    
-//    private var cookies = Array2D<Cookie>(columns: numColumns, rows: numRows)
-//    private var tiles = Array2D<Tile>(columns: numColumns, rows: numRows)
-    
+
     private var cookies: Array2D<Cookie>!
     private var tiles: Array2D<Tile>!
     

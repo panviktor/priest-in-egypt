@@ -33,7 +33,17 @@ class GameViewController: UIViewController {
         skView.isMultipleTouchEnabled = false
         
         // Create and configure the scene.
-        scene = GameScene(size: skView.bounds.size)
+        var tileWidth: CGFloat
+        var tileHeight: CGFloat
+        if currentLevelNum <= 10 {
+            tileWidth = 70
+            tileHeight = 70
+        } else {
+            tileWidth = 30
+            tileHeight = 30
+        }
+        
+        scene = GameScene(size: skView.bounds.size, tileWidth: tileWidth, tileHeight: tileHeight)
         scene.scaleMode = .aspectFill
         
         // Setup the level.

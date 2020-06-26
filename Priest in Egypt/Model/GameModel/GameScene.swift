@@ -2,27 +2,6 @@ import SpriteKit
 import UIKit
 import GameplayKit
 
-var tileWidth: CGFloat = 75.0
-var tileHeight: CGFloat = 76.25
-
-
-public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {
-    let dispatchTime = DispatchTime.now() + seconds
-    dispatchLevel.dispatchQueue.asyncAfter(deadline: dispatchTime, execute: closure)
-}
-
-public enum DispatchLevel {
-    case main, userInteractive, userInitiated, utility, background
-    var dispatchQueue: DispatchQueue {
-        switch self {
-        case .main:                 return DispatchQueue.main
-        case .userInteractive:      return DispatchQueue.global(qos: .userInteractive)
-        case .userInitiated:        return DispatchQueue.global(qos: .userInitiated)
-        case .utility:              return DispatchQueue.global(qos: .utility)
-        case .background:           return DispatchQueue.global(qos: .background)
-        }
-    }
-}
 
 class GameScene: SKScene {
     //MARK: - Sound FX
@@ -45,37 +24,75 @@ class GameScene: SKScene {
     private var swipeFromRow: Int?
     private var selectionSprite = SKSpriteNode()
     
+    //    var tileWidth: CGFloat = 75.0
+    //    var tileHeight: CGFloat = 76.25
+    
+    var tileWidth: CGFloat!
+    var tileHeight: CGFloat!
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder) is not used in this app")
     }
     
-    override init(size: CGSize) {
+     init(size: CGSize, tileWidth: CGFloat, tileHeight: CGFloat) {
         super.init(size: size)
-        
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        
+        self.tileWidth = tileWidth
+        self.tileHeight = tileHeight
         
         let background = SKSpriteNode(imageNamed: "Background")
         background.size = size
         addChild(background)
         
+        
         //MARK: - Add Background
         addChild(gameLayer)
         gameLayer.isHidden = true
         
+
+        
         delay(bySeconds: 0.2) {
-            let layerPosition = CGPoint(
-                x: -tileWidth * CGFloat(self.level.numColumns) / 2,
-                y: -tileHeight * CGFloat(self.level.numRows) / 2)
-            self.tilesLayer.position = layerPosition
-            self.maskLayer.position = layerPosition
-            self.cropLayer.maskNode = self.maskLayer
-            self.gameLayer.addChild(self.tilesLayer)
-            self.gameLayer.addChild(self.cropLayer)
-             
-            self.cookiesLayer.position = layerPosition
-            self.cropLayer.addChild(self.cookiesLayer)
-             let _ = SKLabelNode(fontNamed: "GillSans-BoldItalic")
+            print(#line, self.level.curentLevel)
+            
+            if self.level.curentLevel <= 10 {
+           
+                let layerPosition = CGPoint(
+                    x: -self.tileWidth * CGFloat(self.level.numColumns) / 2,
+                    y: -self.tileHeight * CGFloat(self.level.numRows) / 2)
+                self.tilesLayer.position = layerPosition
+                self.maskLayer.position = layerPosition
+                self.cropLayer.maskNode = self.maskLayer
+                self.gameLayer.addChild(self.tilesLayer)
+                self.gameLayer.addChild(self.cropLayer)
+                
+                self.cookiesLayer.position = layerPosition
+                self.cropLayer.addChild(self.cookiesLayer)
+                let _ = SKLabelNode(fontNamed: "GillSans-BoldItalic")
+            } else {
+               
+                let layerPosition = CGPoint(
+                        x: -self.tileWidth * CGFloat(self.level.numColumns) / 2,
+                        y: -self.tileHeight * CGFloat(self.level.numRows) / 2)
+                    self.tilesLayer.position = layerPosition
+                    self.maskLayer.position = layerPosition
+                    self.cropLayer.maskNode = self.maskLayer
+                    self.gameLayer.addChild(self.tilesLayer)
+                    self.gameLayer.addChild(self.cropLayer)
+                    
+                    self.cookiesLayer.position = layerPosition
+                    self.cropLayer.addChild(self.cookiesLayer)
+                    let _ = SKLabelNode(fontNamed: "GillSans-BoldItalic")
+            }
+            
+            
         }
+        
+        print(#line, #function, "IAM ALIVE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    }
+    
+    deinit {
+        print("IAMDEAD")
     }
     
     func addSprites(for cookies: Set<Cookie>) {
