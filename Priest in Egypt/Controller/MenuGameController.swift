@@ -21,7 +21,6 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
     @IBOutlet var playButton: UIButton!
     @IBOutlet var topScoreButton: UIButton!
     
-    
     weak var collectionView: UICollectionView!
     
     lazy var backgroundMusic: AVAudioPlayer? = {
@@ -49,7 +48,7 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
         playMusic()
         setupButtons()
         currentUnlockedLevel = scoreManager.currentLevel
-      
+        
         self.collectionView.backgroundColor = .clear
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -114,7 +113,6 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
     func update(maxLevel: Int) {
         if maxLevel >= scoreManager.currentLevel {
             currentUnlockedLevel = maxLevel
-//            self.levelLabel.text = "You unlocked a level \(maxLevel) out of 10"
         }
         collectionView.reloadData()
     }
@@ -138,19 +136,19 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
         playButton.layer.cornerRadius = 15
         topScoreButton.layer.cornerRadius = 15
     }
-//
-//    var double = false
-//    @IBAction func changeSize(_ sender: UIButton) {
-//
-//        if double {
-//        tileWidth = 30.0
-//        tileHeight = 30.0
-//        } else {
-//            tileWidth = 80.0
-//            tileHeight = 80.0
+//    
+//        var double = false
+//        @IBAction func changeSize(_ sender: UIButton) {
+//    
+//            if double {
+//            tileWidth = 30.0
+//            tileHeight = 30.0
+//            } else {
+//                tileWidth = 80.0
+//                tileHeight = 80.0
+//            }
+//            double.toggle()
 //        }
-//        double.toggle()
-//    }
 }
 //MARK: - UICollectionViewDataSource
 extension MenuViewController: UICollectionViewDataSource {
@@ -164,9 +162,10 @@ extension MenuViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! MyCell
-        cell.textLevelLabel.text = String(indexPath.row + 1)
-        cell.openLevel(indexPath.row + 1 <= currentUnlockedLevel)
-        
+        let text = String(indexPath.row + 1)
+        let image = UIImage(named: "number\(indexPath.row + 1)")
+        let openLevel = (indexPath.row + 1 <= currentUnlockedLevel)
+        cell.configure(CellLevelData(openLevel: openLevel, imageLevel: image, textLevel: text))
         return cell
     }
 }
