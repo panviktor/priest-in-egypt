@@ -11,10 +11,13 @@ import Lottie
 
 class WelcomeViewController: UIViewController {
     let animationView = AnimationView()
+    @IBOutlet var playButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        playButton.isHidden = true
         setupLoadingView()
+        playButton.pulsate(_repeatCount: 5)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,7 +56,8 @@ class WelcomeViewController: UIViewController {
                            completion: { (finished) in
                             if finished {
                                 print("Animation Complete")
-                                self.launchTheGame()
+                                self.animationView.isHidden = true
+                                self.playButton.isHidden = false
                             } else {
                                 print("Animation cancelled")
                             }
@@ -62,6 +66,11 @@ class WelcomeViewController: UIViewController {
     
     fileprivate func checkBOT() {
         
+    }
+    
+    @IBAction func playButtonPressed(_ sender: UIButton) {
+        
+        self.launchTheGame()
     }
 }
 

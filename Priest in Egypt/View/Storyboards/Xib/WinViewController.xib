@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cupcake-Highlighted.png" translatesAutoresizingMaskIntoConstraints="NO" id="iw7-mi-dss">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win" translatesAutoresizingMaskIntoConstraints="NO" id="iw7-mi-dss">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
             </subviews>
@@ -35,6 +35,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Cupcake-Highlighted.png" width="32" height="36"/>
+        <image name="win" width="544" height="478"/>
     </resources>
 </document>

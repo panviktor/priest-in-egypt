@@ -15,13 +15,43 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainBackground" translatesAutoresizingMaskIntoConstraints="NO" id="AlX-GG-7JN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eS6-cD-t3w">
+                                <rect key="frame" x="40" y="378" width="334" height="140"/>
+                                <state key="normal" image="startViewPlay"/>
+                                <connections>
+                                    <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LC8-Z3-Tvc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="AlX-GG-7JN" secondAttribute="bottom" id="9fL-Ef-Hh8"/>
+                            <constraint firstItem="eS6-cD-t3w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CZV-df-aiY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eS6-cD-t3w" secondAttribute="trailing" constant="40" id="DQX-q4-lAn"/>
+                            <constraint firstItem="AlX-GG-7JN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LL7-t9-DWP"/>
+                            <constraint firstItem="AlX-GG-7JN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LWA-3S-u42"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AlX-GG-7JN" secondAttribute="trailing" id="QYK-ZM-DKH"/>
+                            <constraint firstItem="eS6-cD-t3w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="RlO-UV-hUc"/>
+                            <constraint firstItem="eS6-cD-t3w" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iqD-hB-Pfp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="playButton" destination="eS6-cD-t3w" id="nUw-ll-Mz5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="84" y="-52"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mainBackground" width="588" height="768"/>
+        <image name="startViewPlay" width="236" height="140"/>
+    </resources>
 </document>

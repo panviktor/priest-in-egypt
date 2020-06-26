@@ -14,7 +14,6 @@ class GameViewController: UIViewController {
     var currentLevelNum: Int!
     let scoreManager = ScoreManager()
     
-    
     weak var delegate: MenuViewControllerDelegate?
     
     // MARK: - IBOutlets

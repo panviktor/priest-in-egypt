@@ -20,6 +20,8 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
     @IBOutlet var musicButton: UIButton!
     @IBOutlet var playButton: UIButton!
     @IBOutlet var topScoreButton: UIButton!
+    
+    
     weak var collectionView: UICollectionView!
     
     lazy var backgroundMusic: AVAudioPlayer? = {
@@ -47,15 +49,13 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
         playMusic()
         setupButtons()
         currentUnlockedLevel = scoreManager.currentLevel
-        levelLabel.text = "You unlocked a level \(scoreManager.currentLevel)"
-        
+      
         self.collectionView.backgroundColor = .clear
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
         self.collectionView.register(MyCell.self, forCellWithReuseIdentifier: "MyCell")
     }
-    
     
     override func loadView() {
         super.loadView()
@@ -114,7 +114,7 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
     func update(maxLevel: Int) {
         if maxLevel >= scoreManager.currentLevel {
             currentUnlockedLevel = maxLevel
-            self.levelLabel.text = "You unlocked a level \(maxLevel) out of 10"
+//            self.levelLabel.text = "You unlocked a level \(maxLevel) out of 10"
         }
         collectionView.reloadData()
     }
@@ -133,12 +133,25 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
     @IBAction func unwind( _ segue: UIStoryboardSegue) {}
     
     func setupButtons() {
+        playButton.pulsate(_repeatCount: 10)
         musicButton.layer.cornerRadius = 15
         playButton.layer.cornerRadius = 15
         topScoreButton.layer.cornerRadius = 15
     }
+//
+//    var double = false
+//    @IBAction func changeSize(_ sender: UIButton) {
+//
+//        if double {
+//        tileWidth = 30.0
+//        tileHeight = 30.0
+//        } else {
+//            tileWidth = 80.0
+//            tileHeight = 80.0
+//        }
+//        double.toggle()
+//    }
 }
-
 //MARK: - UICollectionViewDataSource
 extension MenuViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -151,7 +164,7 @@ extension MenuViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! MyCell
-        cell.textLabel.text = String(indexPath.row + 1)
+        cell.textLevelLabel.text = String(indexPath.row + 1)
         cell.openLevel(indexPath.row + 1 <= currentUnlockedLevel)
         
         return cell

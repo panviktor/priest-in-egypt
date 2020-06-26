@@ -23,6 +23,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="scoreWallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="C4o-8t-dOv">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ADe-Qi-L5t">
                     <rect key="frame" x="39.5" y="66" width="241.5" height="436"/>
                     <subviews>
@@ -76,10 +80,11 @@
                 <constraint firstItem="ADe-Qi-L5t" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="rs2-d4-VyE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="113"/>
+            <point key="canvasLocation" x="138.75" y="111.97183098591549"/>
         </view>
     </objects>
     <resources>
         <image name="SugarCookie-Highlighted.png" width="32" height="36"/>
+        <image name="scoreWallpaper" width="994" height="600"/>
     </resources>
 </document>
