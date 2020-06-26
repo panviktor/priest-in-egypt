@@ -1,22 +1,37 @@
 import Foundation
 
-var numColumns = 4
-var numRows = 5
-let numLevels = 10
-
 class Level {
-    private var cookies = Array2D<Cookie>(columns: numColumns, rows: numRows)
-    private var tiles = Array2D<Tile>(columns: numColumns, rows: numRows)
+    let numColumns: Int
+    let numRows: Int
+    let curentLevel: Int
+    let name: String
+    
+//    private var cookies = Array2D<Cookie>(columns: numColumns, rows: numRows)
+//    private var tiles = Array2D<Tile>(columns: numColumns, rows: numRows)
+    
+    private var cookies: Array2D<Cookie>!
+    private var tiles: Array2D<Tile>!
+    
     private var possibleSwaps: Set<Swap> = []
     private var comboMultiplier = 0
     
     var targetScore = 0
     var maximumMoves = 0
     
-    init(filename: String) {
+    init?(filename: String) {
         // 1
-        guard let levelData = LevelData.loadFrom(file: filename) else { return }
-        //
+        guard let levelData = LevelData.loadFrom(file: filename) else { return nil }
+        
+        self.numColumns = levelData.numColumns
+        self.numRows  = levelData.numRows
+        
+        cookies = Array2D<Cookie>(columns: numColumns, rows: numRows)
+        tiles = Array2D<Tile>(columns: numColumns, rows: numRows)
+            
+        
+        self.curentLevel = levelData.curentLevel
+        self.name = levelData.name ?? ""
+        
         let tilesArray = levelData.tiles
         for (row, rowArray) in tilesArray.enumerated() {
             let tileRow = numRows - row - 1
@@ -27,8 +42,8 @@ class Level {
             }
         }
         
-        targetScore = levelData.targetScore
-        maximumMoves = levelData.moves
+        self.targetScore = levelData.targetScore
+        self.maximumMoves = levelData.moves
     }
     
     func cookie(atColumn column: Int, row: Int) -> Cookie? {
@@ -57,7 +72,7 @@ class Level {
     private func createInitialCookies() -> Set<Cookie> {
         var set: Set<Cookie> = []
         
-
+        
         for row in 0..<numRows {
             for column in 0..<numColumns {
                 if tiles[column, row] != nil {

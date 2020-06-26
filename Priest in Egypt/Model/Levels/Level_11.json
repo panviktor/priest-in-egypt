@@ -11,5 +11,9 @@
 
   "targetScore" : 500,
   "moves" : 50,
-  "names" : "Luxury Level"
+  
+  "numColumns" : 7,
+  "numRows" : 7,
+  "curentLevel": 11,
+  "name" : "Luxury Level"
 }

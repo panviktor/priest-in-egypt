@@ -8,4 +8,8 @@
 
   "targetScore" : 175,
   "moves" : 20,
+  
+  "numColumns" : 4,
+  "numRows" : 5,
+  "curentLevel": 7,
 }

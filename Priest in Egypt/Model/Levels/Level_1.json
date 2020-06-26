@@ -8,4 +8,10 @@
   
   "targetScore" : 50,
   "moves" : 15,
+  
+  "numColumns" : 4,
+  "numRows" : 5,
+  "curentLevel": 1,
+  
+  "name" : "Level 1"
 }

@@ -38,6 +38,7 @@ class GameViewController: UIViewController {
         
         // Setup the level.
         level = Level(filename: "Level_\(levelNumber)")
+        print(#line, level.name)
         scene.level = level
         
         scene.addTiles()
@@ -149,7 +150,9 @@ class GameViewController: UIViewController {
             totalScore += score
             gameOverPanel.image = UIImage(named: "LevelComplete")
             
-            if currentLevelNum < numLevels {
+//            if currentLevelNum < numLevels {
+                
+             if currentLevelNum < 11 {
                 currentLevelNum += 1
                 delegate?.update(maxLevel: currentLevelNum)
                 self.scoreManager.addNewUnlockedLevel(currentLevelNum)

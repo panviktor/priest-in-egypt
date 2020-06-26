@@ -5,6 +5,25 @@ import GameplayKit
 var tileWidth: CGFloat = 75.0
 var tileHeight: CGFloat = 76.25
 
+
+public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {
+    let dispatchTime = DispatchTime.now() + seconds
+    dispatchLevel.dispatchQueue.asyncAfter(deadline: dispatchTime, execute: closure)
+}
+
+public enum DispatchLevel {
+    case main, userInteractive, userInitiated, utility, background
+    var dispatchQueue: DispatchQueue {
+        switch self {
+        case .main:                 return DispatchQueue.main
+        case .userInteractive:      return DispatchQueue.global(qos: .userInteractive)
+        case .userInitiated:        return DispatchQueue.global(qos: .userInitiated)
+        case .utility:              return DispatchQueue.global(qos: .utility)
+        case .background:           return DispatchQueue.global(qos: .background)
+        }
+    }
+}
+
 class GameScene: SKScene {
     //MARK: - Sound FX
     let swapSound = SKAction.playSoundFileNamed("Chomp.wav", waitForCompletion: false)
@@ -43,19 +62,20 @@ class GameScene: SKScene {
         addChild(gameLayer)
         gameLayer.isHidden = true
         
-        let layerPosition = CGPoint(
-            x: -tileWidth * CGFloat(numColumns) / 2,
-            y: -tileHeight * CGFloat(numRows) / 2)
-        
-        tilesLayer.position = layerPosition
-        maskLayer.position = layerPosition
-        cropLayer.maskNode = maskLayer
-        gameLayer.addChild(tilesLayer)
-        gameLayer.addChild(cropLayer)
-        
-        cookiesLayer.position = layerPosition
-        cropLayer.addChild(cookiesLayer)
-        let _ = SKLabelNode(fontNamed: "GillSans-BoldItalic")
+        delay(bySeconds: 0.2) {
+            let layerPosition = CGPoint(
+                x: -tileWidth * CGFloat(self.level.numColumns) / 2,
+                y: -tileHeight * CGFloat(self.level.numRows) / 2)
+            self.tilesLayer.position = layerPosition
+            self.maskLayer.position = layerPosition
+            self.cropLayer.maskNode = self.maskLayer
+            self.gameLayer.addChild(self.tilesLayer)
+            self.gameLayer.addChild(self.cropLayer)
+             
+            self.cookiesLayer.position = layerPosition
+            self.cropLayer.addChild(self.cookiesLayer)
+             let _ = SKLabelNode(fontNamed: "GillSans-BoldItalic")
+        }
     }
     
     func addSprites(for cookies: Set<Cookie>) {
@@ -83,8 +103,8 @@ class GameScene: SKScene {
     }
     
     func addTiles() {
-        for row in 0..<numRows {
-            for column in 0..<numColumns {
+        for row in 0..<level.numRows {
+            for column in 0..<level.numColumns {
                 if level.tileAt(column: column, row: row) != nil {
                     let tileNode = SKSpriteNode(imageNamed: "MaskTile")
                     
@@ -95,8 +115,8 @@ class GameScene: SKScene {
             }
         }
         
-        for row in 0..<numRows {
-            for column in 0..<numColumns {
+        for row in 0..<level.numRows {
+            for column in 0..<level.numColumns {
                 if let _ = level.tileAt(column: column, row: row) {
                     let tileNode = SKSpriteNode(imageNamed: "Tile")
                     tileNode.position = pointFor(column: column, row: row)
@@ -115,8 +135,8 @@ class GameScene: SKScene {
     }
     
     private func convertPoint(_ point: CGPoint) -> (success: Bool, column: Int, row: Int) {
-        if point.x >= 0 && point.x < CGFloat(numColumns) * tileWidth &&
-            point.y >= 0 && point.y < CGFloat(numRows) * tileHeight {
+        if point.x >= 0 && point.x < CGFloat(level.numColumns) * tileWidth &&
+            point.y >= 0 && point.y < CGFloat(level.numRows) * tileHeight {
             return (true, Int(point.x / tileWidth), Int(point.y / tileHeight))
         } else {
             return (false, 0, 0)  // invalid location
@@ -190,8 +210,8 @@ class GameScene: SKScene {
         let toColumn = swipeFromColumn! + horizontalDelta
         let toRow = swipeFromRow! + verticalDelta
         // 2
-        guard toColumn >= 0 && toColumn < numColumns else { return }
-        guard toRow >= 0 && toRow < numRows else { return }
+        guard toColumn >= 0 && toColumn < level.numColumns else { return }
+        guard toRow >= 0 && toRow < level.numRows else { return }
         // 3
         if let toCookie = level.cookie(atColumn: toColumn, row: toRow),
             let fromCookie = level.cookie(atColumn: swipeFromColumn!, row: swipeFromRow!) {
