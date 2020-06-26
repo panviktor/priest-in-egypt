@@ -18,7 +18,6 @@ class ScoreManager {
     private(set) var secondScore: Int
     private(set) var thirdScore : Int
     
-    
     func appendNewScore(_ score: Int) {
         allScore.append(score)
         sortedScore()

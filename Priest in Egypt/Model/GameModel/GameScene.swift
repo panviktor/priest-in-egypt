@@ -24,9 +24,6 @@ class GameScene: SKScene {
     private var swipeFromRow: Int?
     private var selectionSprite = SKSpriteNode()
     
-    //    var tileWidth: CGFloat = 75.0
-    //    var tileHeight: CGFloat = 76.25
-    
     var tileWidth: CGFloat!
     var tileHeight: CGFloat!
     
@@ -34,7 +31,7 @@ class GameScene: SKScene {
         fatalError("init(coder) is not used in this app")
     }
     
-     init(size: CGSize, tileWidth: CGFloat, tileHeight: CGFloat) {
+    init(size: CGSize, tileWidth: CGFloat, tileHeight: CGFloat) {
         super.init(size: size)
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
@@ -45,47 +42,23 @@ class GameScene: SKScene {
         background.size = size
         addChild(background)
         
-        
         //MARK: - Add Background
         addChild(gameLayer)
         gameLayer.isHidden = true
         
-
-        
         delay(bySeconds: 0.2) {
-            print(#line, self.level.curentLevel)
+            let layerPosition = CGPoint(
+                x: -self.tileWidth * CGFloat(self.level.numColumns) / 2,
+                y: -self.tileHeight * CGFloat(self.level.numRows) / 2)
+            self.tilesLayer.position = layerPosition
+            self.maskLayer.position = layerPosition
+            self.cropLayer.maskNode = self.maskLayer
+            self.gameLayer.addChild(self.tilesLayer)
+            self.gameLayer.addChild(self.cropLayer)
             
-            if self.level.curentLevel <= 10 {
-           
-                let layerPosition = CGPoint(
-                    x: -self.tileWidth * CGFloat(self.level.numColumns) / 2,
-                    y: -self.tileHeight * CGFloat(self.level.numRows) / 2)
-                self.tilesLayer.position = layerPosition
-                self.maskLayer.position = layerPosition
-                self.cropLayer.maskNode = self.maskLayer
-                self.gameLayer.addChild(self.tilesLayer)
-                self.gameLayer.addChild(self.cropLayer)
-                
-                self.cookiesLayer.position = layerPosition
-                self.cropLayer.addChild(self.cookiesLayer)
-                let _ = SKLabelNode(fontNamed: "GillSans-BoldItalic")
-            } else {
-               
-                let layerPosition = CGPoint(
-                        x: -self.tileWidth * CGFloat(self.level.numColumns) / 2,
-                        y: -self.tileHeight * CGFloat(self.level.numRows) / 2)
-                    self.tilesLayer.position = layerPosition
-                    self.maskLayer.position = layerPosition
-                    self.cropLayer.maskNode = self.maskLayer
-                    self.gameLayer.addChild(self.tilesLayer)
-                    self.gameLayer.addChild(self.cropLayer)
-                    
-                    self.cookiesLayer.position = layerPosition
-                    self.cropLayer.addChild(self.cookiesLayer)
-                    let _ = SKLabelNode(fontNamed: "GillSans-BoldItalic")
-            }
-            
-            
+            self.cookiesLayer.position = layerPosition
+            self.cropLayer.addChild(self.cookiesLayer)
+            let _ = SKLabelNode(fontNamed: "GillSans-BoldItalic")
         }
         
         print(#line, #function, "IAM ALIVE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
