@@ -8,14 +8,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Web View Controller-->
         <scene sceneID="ucx-0n-bpB">
             <objects>
-                <viewController id="zpJ-nT-Nbh" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zpJ-nT-Nbh" customClass="WebViewController" customModule="Priest_in_Egypt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oLM-hR-gKX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WkWeb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4M-SC-HcO">
+                                <rect key="frame" x="154" y="429.5" width="106" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="l4M-SC-HcO" firstAttribute="centerY" secondItem="oLM-hR-gKX" secondAttribute="centerY" id="EyH-C4-tcX"/>
+                            <constraint firstItem="l4M-SC-HcO" firstAttribute="centerX" secondItem="oLM-hR-gKX" secondAttribute="centerX" id="Yhd-ui-qmz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="sxh-zh-Z79"/>
                     </view>
                 </viewController>

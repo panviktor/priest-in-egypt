@@ -14,7 +14,6 @@ protocol MenuViewControllerDelegate: class {
     func update(maxLevel: Int)
 }
 
-
 class MenuViewController: UIViewController, BlurViewDelegate, MenuViewControllerDelegate {
     @IBOutlet var levelLabel: UILabel!
     @IBOutlet var musicButton: UIButton!
@@ -136,20 +135,8 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
         playButton.layer.cornerRadius = 15
         topScoreButton.layer.cornerRadius = 15
     }
-//    
-//        var double = false
-//        @IBAction func changeSize(_ sender: UIButton) {
-//    
-//            if double {
-//            tileWidth = 30.0
-//            tileHeight = 30.0
-//            } else {
-//                tileWidth = 80.0
-//                tileHeight = 80.0
-//            }
-//            double.toggle()
-//        }
 }
+
 //MARK: - UICollectionViewDataSource
 extension MenuViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {

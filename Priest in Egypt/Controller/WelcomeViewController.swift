@@ -10,6 +10,7 @@ import UIKit
 import Lottie
 
 class WelcomeViewController: UIViewController {
+    let service = DifferentServices.shared
     let animationView = AnimationView()
     @IBOutlet var playButton: UIButton!
     
@@ -64,12 +65,7 @@ class WelcomeViewController: UIViewController {
         })
     }
     
-    fileprivate func checkBOT() {
-        
-    }
-    
     @IBAction func playButtonPressed(_ sender: UIButton) {
-        
         self.launchTheGame()
     }
 }
