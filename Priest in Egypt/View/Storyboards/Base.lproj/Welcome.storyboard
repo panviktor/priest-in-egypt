@@ -42,6 +42,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="mainBackgroundView" destination="AlX-GG-7JN" id="TrO-Jp-u83"/>
                         <outlet property="playButton" destination="eS6-cD-t3w" id="nUw-ll-Mz5"/>
                     </connections>
                 </viewController>

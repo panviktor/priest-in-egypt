@@ -16,6 +16,12 @@
 		1411B2B624A4F238007D4C0D /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411B2B524A4F238007D4C0D /* LevelCell.swift */; };
 		1457CEFE24A9D05D00A21D2F /* DifferentServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CEFD24A9D05D00A21D2F /* DifferentServices.swift */; };
 		1457CF0324A9E40500A21D2F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF0224A9E40500A21D2F /* WebViewController.swift */; };
+		1457CF0824A9EF8D00A21D2F /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 1457CF0724A9EF8D00A21D2F /* Reachability */; };
+		1457CF0A24AA015500A21D2F /* ReachabilityObserverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF0924AA015500A21D2F /* ReachabilityObserverDelegate.swift */; };
+		1457CF1024AA0E0600A21D2F /* NoInternet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1457CF0F24AA0E0600A21D2F /* NoInternet.storyboard */; };
+		1457CF1224AA0E3A00A21D2F /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF1124AA0E3A00A21D2F /* NoInternetViewController.swift */; };
+		1457CF1424AA10A300A21D2F /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF1324AA10A200A21D2F /* ScoreViewController.swift */; };
+		1457CF1824AA233A00A21D2F /* no-internet-connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 1457CF1524AA233A00A21D2F /* no-internet-connection.json */; };
 		148410EB24A3745A00AC46F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148410EA24A3745A00AC46F3 /* AppDelegate.swift */; };
 		148410EF24A3745A00AC46F3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */; };
 		148410F224A3745A00AC46F3 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148410F024A3745A00AC46F3 /* Welcome.storyboard */; };
@@ -54,7 +60,6 @@
 		14A5F0F724A3973B00862E68 /* Drip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0F124A3973B00862E68 /* Drip.wav */; };
 		14A5F0F824A3973B00862E68 /* Chomp.wav in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0F224A3973B00862E68 /* Chomp.wav */; };
 		14A5F0F924A3973B00862E68 /* Error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0F324A3973B00862E68 /* Error.wav */; };
-		14A5F16924A48DE800862E68 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5F16724A48DE800862E68 /* ScoreViewController.swift */; };
 		14A5F16A24A48DE800862E68 /* ScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F16824A48DE800862E68 /* ScoreViewController.xib */; };
 		14C1EDBD24A664FC000FA936 /* Extension+DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1EDBC24A664FC000FA936 /* Extension+DispatchQueue.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +73,11 @@
 		1411B2B524A4F238007D4C0D /* LevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
 		1457CEFD24A9D05D00A21D2F /* DifferentServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferentServices.swift; sourceTree = "<group>"; };
 		1457CF0224A9E40500A21D2F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		1457CF0924AA015500A21D2F /* ReachabilityObserverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityObserverDelegate.swift; sourceTree = "<group>"; };
+		1457CF0F24AA0E0600A21D2F /* NoInternet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoInternet.storyboard; sourceTree = "<group>"; };
+		1457CF1124AA0E3A00A21D2F /* NoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetViewController.swift; sourceTree = "<group>"; };
+		1457CF1324AA10A200A21D2F /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		1457CF1524AA233A00A21D2F /* no-internet-connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "no-internet-connection.json"; sourceTree = "<group>"; };
 		148410E724A3745A00AC46F3 /* Priest in Egypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Priest in Egypt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		148410EA24A3745A00AC46F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +118,6 @@
 		14A5F0F124A3973B00862E68 /* Drip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Drip.wav; sourceTree = "<group>"; };
 		14A5F0F224A3973B00862E68 /* Chomp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Chomp.wav; sourceTree = "<group>"; };
 		14A5F0F324A3973B00862E68 /* Error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Error.wav; sourceTree = "<group>"; };
-		14A5F16724A48DE800862E68 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		14A5F16824A48DE800862E68 /* ScoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreViewController.xib; sourceTree = "<group>"; };
 		14C1EDBC24A664FC000FA936 /* Extension+DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+DispatchQueue.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1411B2AC24A4D35D007D4C0D /* Lottie in Frameworks */,
+				1457CF0824A9EF8D00A21D2F /* Reachability in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				1484113A24A38C0100AC46F3 /* MenuGameController.swift */,
-				14A5F16724A48DE800862E68 /* ScoreViewController.swift */,
+				1457CF1324AA10A200A21D2F /* ScoreViewController.swift */,
 				1484113524A383FA00AC46F3 /* GameViewController.swift */,
 				1411B2A424A4ACCA007D4C0D /* WinViewController.swift */,
 			);
@@ -176,6 +186,7 @@
 		148410FE24A3755E00AC46F3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1457CF1524AA233A00A21D2F /* no-internet-connection.json */,
 				14A5F0ED24A3973B00862E68 /* Sounds */,
 				14A5F0E824A3940B00862E68 /* Grid.atlas */,
 				14A5F0E624A3940200862E68 /* Sprites.atlas */,
@@ -190,6 +201,7 @@
 			children = (
 				148410EA24A3745A00AC46F3 /* AppDelegate.swift */,
 				1457CEFD24A9D05D00A21D2F /* DifferentServices.swift */,
+				1457CF0924AA015500A21D2F /* ReachabilityObserverDelegate.swift */,
 				1484111F24A37D3D00AC46F3 /* Library */,
 			);
 			path = App;
@@ -228,6 +240,7 @@
 			children = (
 				148410F024A3745A00AC46F3 /* Welcome.storyboard */,
 				1484112024A37E7600AC46F3 /* Game.storyboard */,
+				1457CF0F24AA0E0600A21D2F /* NoInternet.storyboard */,
 				1484112224A380AC00AC46F3 /* WKweb.storyboard */,
 				148410F524A3745E00AC46F3 /* LaunchScreen.storyboard */,
 				14A5F16B24A48F9300862E68 /* Xib */,
@@ -239,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */,
+				1457CF1124AA0E3A00A21D2F /* NoInternetViewController.swift */,
 				1457CF0224A9E40500A21D2F /* WebViewController.swift */,
 				1457CF0124A9E3D700A21D2F /* GameViewController */,
 			);
@@ -320,6 +334,7 @@
 			name = "Priest in Egypt";
 			packageProductDependencies = (
 				1411B2AB24A4D35D007D4C0D /* Lottie */,
+				1457CF0724A9EF8D00A21D2F /* Reachability */,
 			);
 			productName = "Priest in Egypt";
 			productReference = 148410E724A3745A00AC46F3 /* Priest in Egypt.app */;
@@ -351,6 +366,7 @@
 			mainGroup = 148410DE24A3745A00AC46F3;
 			packageReferences = (
 				1411B2AA24A4D35D007D4C0D /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				1457CF0624A9EF8D00A21D2F /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = 148410E824A3745A00AC46F3 /* Products */;
 			projectDirPath = "";
@@ -372,6 +388,8 @@
 				14A5F0F724A3973B00862E68 /* Drip.wav in Resources */,
 				14A5F0F524A3973B00862E68 /* Ka-Ching.wav in Resources */,
 				14A5F0F824A3973B00862E68 /* Chomp.wav in Resources */,
+				1457CF1824AA233A00A21D2F /* no-internet-connection.json in Resources */,
+				1457CF1024AA0E0600A21D2F /* NoInternet.storyboard in Resources */,
 				14A5F0F624A3973B00862E68 /* Mining by Moonlight.mp3 in Resources */,
 				1484111824A376B200AC46F3 /* Level_8.json in Resources */,
 				1484111C24A376B200AC46F3 /* Level_1.json in Resources */,
@@ -404,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1457CF1224AA0E3A00A21D2F /* NoInternetViewController.swift in Sources */,
 				1411B2B624A4F238007D4C0D /* LevelCell.swift in Sources */,
 				1457CEFE24A9D05D00A21D2F /* DifferentServices.swift in Sources */,
 				1484112F24A3812D00AC46F3 /* Array2D.swift in Sources */,
@@ -413,12 +432,13 @@
 				1484112E24A3812D00AC46F3 /* Cookie.swift in Sources */,
 				1484113124A3812D00AC46F3 /* Level.swift in Sources */,
 				14C1EDBD24A664FC000FA936 /* Extension+DispatchQueue.swift in Sources */,
+				1457CF1424AA10A300A21D2F /* ScoreViewController.swift in Sources */,
 				1484113624A383FA00AC46F3 /* GameViewController.swift in Sources */,
 				1484113224A3812D00AC46F3 /* Swap.swift in Sources */,
-				14A5F16924A48DE800862E68 /* ScoreViewController.swift in Sources */,
 				1484111E24A378A500AC46F3 /* Device.swift in Sources */,
 				1484113024A3812D00AC46F3 /* LevelData.swift in Sources */,
 				1484112C24A3812D00AC46F3 /* Chain.swift in Sources */,
+				1457CF0A24AA015500A21D2F /* ReachabilityObserverDelegate.swift in Sources */,
 				148410EF24A3745A00AC46F3 /* WelcomeViewController.swift in Sources */,
 				1411B2A324A4946F007D4C0D /* ScoreManager.swift in Sources */,
 				1484113324A3812D00AC46F3 /* Tile.swift in Sources */,
@@ -634,6 +654,14 @@
 				minimumVersion = 3.1.8;
 			};
 		};
+		1457CF0624A9EF8D00A21D2F /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -641,6 +669,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1411B2AA24A4D35D007D4C0D /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		1457CF0724A9EF8D00A21D2F /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1457CF0624A9EF8D00A21D2F /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

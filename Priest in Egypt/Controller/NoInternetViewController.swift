@@ -1,25 +1,22 @@
 //
-//  ViewController.swift
+//  NoInternetViewController.swift
 //  Priest in Egypt
 //
-//  Created by Viktor on 24.06.2020.
+//  Created by Viktor on 29.06.2020.
 //  Copyright © 2020 Viktor. All rights reserved.
 //
 
 import UIKit
 import Lottie
 
-class WelcomeViewController: UIViewController {
+class NoInternetViewController: UIViewController {
+    let service = DifferentServices.shared
     let animationView = AnimationView()
-    
-    @IBOutlet var playButton: UIButton!
-    @IBOutlet var mainBackgroundView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playButton.isHidden = true
+        view.backgroundColor = .black
         setupLoadingView()
-        playButton.pulsate(_repeatCount: 5)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,15 +24,8 @@ class WelcomeViewController: UIViewController {
         startAnimating()
     }
     
-    private func launchTheGame() {
-        let sb = UIStoryboard(name: "Game", bundle: .main)
-        let navigationVC = sb.instantiateInitialViewController() ?? UIViewController()
-        navigationVC.modalPresentationStyle = .fullScreen
-        present(navigationVC, animated: true, completion: nil)
-    }
-    
     fileprivate func setupLoadingView() {
-        let animation = Animation.named("987-estimate")
+        let animation = Animation.named("no-internet-connection")
         
         animationView.animation = animation
         animationView.contentMode = .scaleAspectFit
@@ -54,20 +44,7 @@ class WelcomeViewController: UIViewController {
     fileprivate func startAnimating() {
         animationView.play(fromProgress: 0,
                            toProgress: 1,
-                           loopMode: LottieLoopMode.repeat(0.5),
-                           completion: { (finished) in
-                            if finished {
-                                print("Animation Complete")
-                                self.animationView.isHidden = true
-                                self.playButton.isHidden = false
-                            } else {
-                                print("Animation cancelled")
-                            }
-        })
-    }
-    
-    @IBAction func playButtonPressed(_ sender: UIButton) {
-        self.launchTheGame()
+                           loopMode: LottieLoopMode.loop)
     }
 }
 
