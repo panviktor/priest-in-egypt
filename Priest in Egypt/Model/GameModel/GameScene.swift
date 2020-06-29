@@ -38,7 +38,7 @@ class GameScene: SKScene {
         self.tileWidth = tileWidth
         self.tileHeight = tileHeight
         
-        let background = SKSpriteNode(imageNamed: "Background")
+        let background = SKSpriteNode(imageNamed: "Background2")
         background.size = size
         addChild(background)
         

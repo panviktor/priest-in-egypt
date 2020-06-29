@@ -12,7 +12,6 @@
 		1411B2A724A4ACCA007D4C0D /* WinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1411B2A524A4ACCA007D4C0D /* WinViewController.xib */; };
 		1411B2A924A4C7F3007D4C0D /* Extension+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411B2A824A4C7F3007D4C0D /* Extension+UIButton.swift */; };
 		1411B2AC24A4D35D007D4C0D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1411B2AB24A4D35D007D4C0D /* Lottie */; };
-		1411B2B224A4E649007D4C0D /* 987-estimate.json in Resources */ = {isa = PBXBuildFile; fileRef = 1411B2B124A4E649007D4C0D /* 987-estimate.json */; };
 		1411B2B624A4F238007D4C0D /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411B2B524A4F238007D4C0D /* LevelCell.swift */; };
 		1457CEFE24A9D05D00A21D2F /* DifferentServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CEFD24A9D05D00A21D2F /* DifferentServices.swift */; };
 		1457CF0324A9E40500A21D2F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF0224A9E40500A21D2F /* WebViewController.swift */; };
@@ -69,7 +68,6 @@
 		1411B2A424A4ACCA007D4C0D /* WinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinViewController.swift; sourceTree = "<group>"; };
 		1411B2A524A4ACCA007D4C0D /* WinViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WinViewController.xib; sourceTree = "<group>"; };
 		1411B2A824A4C7F3007D4C0D /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
-		1411B2B124A4E649007D4C0D /* 987-estimate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "987-estimate.json"; sourceTree = "<group>"; };
 		1411B2B524A4F238007D4C0D /* LevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
 		1457CEFD24A9D05D00A21D2F /* DifferentServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferentServices.swift; sourceTree = "<group>"; };
 		1457CF0224A9E40500A21D2F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 				14A5F0E824A3940B00862E68 /* Grid.atlas */,
 				14A5F0E624A3940200862E68 /* Sprites.atlas */,
 				148410F324A3745E00AC46F3 /* Assets.xcassets */,
-				1411B2B124A4E649007D4C0D /* 987-estimate.json */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -382,7 +379,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1411B2B224A4E649007D4C0D /* 987-estimate.json in Resources */,
 				14A5F0F424A3973B00862E68 /* Scrape.wav in Resources */,
 				1484112124A37E7600AC46F3 /* Game.storyboard in Resources */,
 				14A5F0F724A3973B00862E68 /* Drip.wav in Resources */,

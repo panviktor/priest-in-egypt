@@ -7,24 +7,18 @@
 //
 
 import UIKit
-import Lottie
 
 class WelcomeViewController: UIViewController {
-    let animationView = AnimationView()
-    
     @IBOutlet var playButton: UIButton!
     @IBOutlet var mainBackgroundView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playButton.isHidden = true
-        setupLoadingView()
-        playButton.pulsate(_repeatCount: 5)
+        playButton.pulsate(_repeatCount: 10)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        startAnimating()
     }
     
     private func launchTheGame() {
@@ -33,39 +27,7 @@ class WelcomeViewController: UIViewController {
         navigationVC.modalPresentationStyle = .fullScreen
         present(navigationVC, animated: true, completion: nil)
     }
-    
-    fileprivate func setupLoadingView() {
-        let animation = Animation.named("987-estimate")
-        
-        animationView.animation = animation
-        animationView.contentMode = .scaleAspectFit
-        view.addSubview(animationView)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        animationView.backgroundBehavior = .pauseAndRestore
-        animationView.translatesAutoresizingMaskIntoConstraints = false
-        
-        animationView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
-        animationView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        animationView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
-    }
-    
-    fileprivate func startAnimating() {
-        animationView.play(fromProgress: 0,
-                           toProgress: 1,
-                           loopMode: LottieLoopMode.repeat(0.5),
-                           completion: { (finished) in
-                            if finished {
-                                print("Animation Complete")
-                                self.animationView.isHidden = true
-                                self.playButton.isHidden = false
-                            } else {
-                                print("Animation cancelled")
-                            }
-        })
-    }
-    
+
     @IBAction func playButtonPressed(_ sender: UIButton) {
         self.launchTheGame()
     }
