@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "number19.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -9,7 +10,6 @@
       "scale" : "2x"
     },
     {
-      "filename" : "Screenshot 2020-06-26 at 11.05.38.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

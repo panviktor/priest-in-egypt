@@ -22,9 +22,16 @@ class GameViewController: UIViewController {
     @IBOutlet var movesLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var shuffleButton: UIButton!
+    @IBOutlet var exitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        shuffleButton.setImage(UIImage(named: "Shuffle"), for: .normal)
+        shuffleButton.setImage(UIImage(named: "ShufflePress"), for: .highlighted)
+        exitButton.setImage(UIImage(named: "Exit"), for: .normal)
+        exitButton.setImage(UIImage(named: "ExitPress"), for: .highlighted)
+        
         setupLevel(number: currentLevelNum)
     }
     
@@ -56,7 +63,7 @@ class GameViewController: UIViewController {
         
         gameOverPanel.isHidden = true
         shuffleButton.isHidden = true
-        
+          
         // Present the scene.
         skView.presentScene(scene)
         
@@ -160,9 +167,9 @@ class GameViewController: UIViewController {
             totalScore += score
             gameOverPanel.image = UIImage(named: "LevelComplete")
             
-//            if currentLevelNum < numLevels {
-                
-             if currentLevelNum < 11 {
+            //            if currentLevelNum < numLevels {
+            
+            if currentLevelNum < 11 {
                 currentLevelNum += 1
                 delegate?.update(maxLevel: currentLevelNum)
                 self.scoreManager.addNewUnlockedLevel(currentLevelNum)

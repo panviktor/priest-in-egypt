@@ -27,25 +27,25 @@ class MyCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let textLabel = UILabel(frame: .zero)
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.addSubview(textLabel)
-        NSLayoutConstraint.activate([
-            textLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            textLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            textLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            textLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-        ])
-        self.textLevelLabel = textLabel
+//        let textLabel = UILabel(frame: .zero)
+//        textLabel.translatesAutoresizingMaskIntoConstraints = false
+//        self.contentView.addSubview(textLabel)
+//        NSLayoutConstraint.activate([
+//            textLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+//            textLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+//            textLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+//            textLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+//        ])
+//        self.textLevelLabel = textLabel
         
         let imageView =  UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(imageView)
         NSLayoutConstraint.activate([
-            textLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            textLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            textLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            textLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
         ])
         self.imageLevelView = imageView
         configureGUI()
@@ -65,7 +65,7 @@ class MyCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.textLevelLabel.text = nil
+//        self.textLevelLabel.text = nil
         self.imageLevelView.image = nil
     }
     
@@ -81,7 +81,7 @@ class MyCell: UICollectionViewCell {
     
     private func configureGUI() {
         self.contentView.backgroundColor = .clear
-        self.textLevelLabel.textAlignment = .center
+//        self.textLevelLabel.textAlignment = .center
         
         self.imageLevelView.contentMode = UIView.ContentMode.scaleAspectFit
         self.imageLevelView.layer.cornerRadius = 15
@@ -100,7 +100,7 @@ class MyCell: UICollectionViewCell {
     }
     
     func configure(_ data: CellLevelData) {
-        textLevelLabel.text = data.textLevel 
+//        textLevelLabel.text = data.textLevel
         data.openLevel == true ? (imageLevelView.image = data.imageLevel) : (imageLevelView.image = grayscaleConverter(data.imageLevel))
     }
 }

@@ -13,11 +13,8 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     var window: UIWindow?
     
     static let shared = DifferentServices()
-    private let defaults = UserDefaults.standard
-    
-    func checkFirstBoot() -> Bool {
-        return defaults.object(forKey:"firstBoot") as? Bool ?? true
-    }
+    fileprivate let defaults = UserDefaults.standard
+
     
     //MARK: - Reachability
     override init() {
@@ -29,24 +26,33 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         removeReachabilityObserver()
     }
     
-
     func reachabilityChanged(_ isReachable: Bool) {
         if isReachable {
             print("Internet connection")
-             delay(bySeconds: 0.1) {
-                self.launchWKweb()
+            delay(bySeconds: 0.1) {
+//                self.launchWKweb()
+                 self.launchTheGame()
             }
-           
+            
         } else {
             print("No internet connection")
             delay(bySeconds: 0.1) {
-                self.launchNoInternet()
+               self.launchNoInternet()
             }
         }
     }
     
+    //MARK: - Bot checker logic
+    fileprivate func checkFirstBoot() -> Bool {
+        return defaults.object(forKey:"firstBoot") as? Bool ?? true
+    }
     
-    func launchTheGame() {
+    fileprivate func requestURL() {
+        
+    }
+    
+    //MARK: - UI
+    fileprivate func launchTheGame() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Welcome", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController")
@@ -54,7 +60,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         self.window?.makeKeyAndVisible()
     }
     
-    func launchWKweb() {
+     func launchWKweb() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "WKweb", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WebViewController")
@@ -62,16 +68,11 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         self.window?.makeKeyAndVisible()
     }
     
-    func launchNoInternet() {
+    fileprivate func launchNoInternet() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "NoInternet", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "NoInternetViewController")
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
-    }
-    
-    
-    func checkInternet() {
-        
     }
 }

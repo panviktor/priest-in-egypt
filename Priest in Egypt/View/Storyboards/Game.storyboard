@@ -186,27 +186,26 @@
                                     <constraint firstAttribute="height" constant="225" id="wdy-DM-zcO"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="by6-sS-Nee">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="by6-sS-Nee">
                                 <rect key="frame" x="30" y="777" width="55" height="55"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="ACl-uL-SwX"/>
                                     <constraint firstAttribute="width" constant="55" id="qzj-HA-cgn"/>
                                 </constraints>
-                                <state key="normal" title="exit"/>
+                                <state key="normal" image="Exit"/>
                                 <connections>
                                     <action selector="exitPressed:" destination="FRh-HI-4uh" eventType="touchUpInside" id="aVG-Vg-6gs"/>
                                     <segue destination="bco-di-mti" kind="unwind" unwindAction="unwind:" id="Pin-fb-ojq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGi-sj-Rfi">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jGi-sj-Rfi">
                                 <rect key="frame" x="179.5" y="777" width="55" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="3aX-oR-W4V"/>
                                     <constraint firstAttribute="width" constant="55" id="ZJt-6E-I04"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
-                                <state key="normal" title="SHUFFLE" backgroundImage="Button">
+                                <state key="normal" image="Shuffle">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -231,6 +230,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="6SE-hj-cmZ"/>
                     <connections>
+                        <outlet property="exitButton" destination="by6-sS-Nee" id="nMy-9n-6Zc"/>
                         <outlet property="gameOverPanel" destination="uno-SX-gDC" id="5hA-BS-YJD"/>
                         <outlet property="movesLabel" destination="0P0-5t-Rne" id="AJP-hi-mup"/>
                         <outlet property="scoreLabel" destination="dEa-Ma-kOz" id="oGI-cu-7XT"/>
@@ -246,7 +246,8 @@
     </scenes>
     <resources>
         <image name="Background" width="196" height="256"/>
-        <image name="Button" width="60" height="66"/>
+        <image name="Exit" width="180" height="180"/>
+        <image name="Shuffle" width="180" height="180"/>
         <image name="playButton" width="266" height="258"/>
         <image name="scoreButton" width="156" height="126"/>
     </resources>
