@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let service = DifferentServices.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        service.launchTheGame()
+        service.launchWKweb()
         return true
     }
 }

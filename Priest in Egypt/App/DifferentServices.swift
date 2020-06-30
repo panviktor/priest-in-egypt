@@ -49,15 +49,14 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     }
     
     func requestURL() {
-        let session = URLSession.shared
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         let url = URL(string:  "http://78.47.187.129/5P1WyX8M")!
-        let task = session.dataTask(with: url, completionHandler: { data, response, error in
-            
-            print(#line, response)
-        })
+        //   let url = URL(string:  "http://ctraf.com/test")!
+
+        let task = session.dataTask(with: url, completionHandler: { _, _, _ in })
         task.resume()
     }
-    
     
     //MARK: - UI
     func launchTheGame() {
@@ -82,5 +81,14 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "NoInternetViewController")
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
+    }
+}
+
+
+extension DifferentServices: URLSessionDataDelegate {
+    func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
+        guard let redirectURL = request.url  else { return }
+        print(#line, redirectURL)
+//        completionHandler(request)
     }
 }
