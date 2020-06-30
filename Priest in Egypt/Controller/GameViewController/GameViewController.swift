@@ -42,6 +42,11 @@ class GameViewController: UIViewController {
         let skView = view as! SKView
         skView.isMultipleTouchEnabled = false
         
+        
+        
+        
+        //FIXME: - Add Tile Size Detector
+        
         // Create and configure the scene.
         var tileWidth: CGFloat
         var tileHeight: CGFloat
@@ -52,6 +57,9 @@ class GameViewController: UIViewController {
             tileWidth = 45
             tileHeight = 45
         }
+        
+        
+        
         
         scene = GameScene(size: skView.bounds.size, tileWidth: tileWidth, tileHeight: tileHeight)
         scene.scaleMode = .aspectFill

