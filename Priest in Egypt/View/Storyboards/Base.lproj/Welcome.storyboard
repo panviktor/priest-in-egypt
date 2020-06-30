@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -13,42 +13,33 @@
             <objects>
                 <viewController storyboardIdentifier="WelcomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Priest_in_Egypt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background2" translatesAutoresizingMaskIntoConstraints="NO" id="AlX-GG-7JN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playBackground" translatesAutoresizingMaskIntoConstraints="NO" id="AlX-GG-7JN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eS6-cD-t3w">
-                                <rect key="frame" x="15" y="498" width="345" height="250"/>
+                                <rect key="frame" x="15" y="502" width="384" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="R0M-9D-zYt"/>
+                                    <constraint firstAttribute="height" constant="300" id="R0M-9D-zYt"/>
                                 </constraints>
                                 <state key="normal" image="startViewPlay"/>
                                 <connections>
                                     <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LC8-Z3-Tvc"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stone" translatesAutoresizingMaskIntoConstraints="NO" id="OsE-s8-TXk">
-                                <rect key="frame" x="15" y="10" width="345" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="3rc-Ws-9RE"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="OsE-s8-TXk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="0KA-cx-rdM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eS6-cD-t3w" secondAttribute="bottom" constant="30" id="6fd-Bi-VA0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eS6-cD-t3w" secondAttribute="bottom" constant="60" id="6fd-Bi-VA0"/>
                             <constraint firstItem="eS6-cD-t3w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="7qJ-jL-n0r"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OsE-s8-TXk" secondAttribute="trailing" constant="15" id="8vy-iX-pTC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eS6-cD-t3w" secondAttribute="trailing" constant="15" id="94V-E0-Elh"/>
                             <constraint firstAttribute="bottom" secondItem="AlX-GG-7JN" secondAttribute="bottom" id="9fL-Ef-Hh8"/>
                             <constraint firstItem="AlX-GG-7JN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LL7-t9-DWP"/>
                             <constraint firstItem="AlX-GG-7JN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LWA-3S-u42"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AlX-GG-7JN" secondAttribute="trailing" id="QYK-ZM-DKH"/>
-                            <constraint firstItem="OsE-s8-TXk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="10" id="pQX-ln-lJJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -59,12 +50,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="82.5" y="-52.816901408450704"/>
+            <point key="canvasLocation" x="81.159420289855078" y="-52.901785714285715"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Background2" width="179.33332824707031" height="256.66665649414062"/>
+        <image name="playBackground" width="1242" height="2688"/>
         <image name="startViewPlay" width="986" height="785"/>
-        <image name="stone" width="1298" height="1299"/>
     </resources>
 </document>

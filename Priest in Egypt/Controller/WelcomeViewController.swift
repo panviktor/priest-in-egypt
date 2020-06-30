@@ -31,5 +31,11 @@ class WelcomeViewController: UIViewController {
     @IBAction func playButtonPressed(_ sender: UIButton) {
         self.launchTheGame()
     }
+    
+    override var prefersStatusBarHidden: Bool {
+
+        return true
+
+    } 
 }
 

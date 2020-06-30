@@ -48,14 +48,16 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         return defaults.object(forKey:"firstBoot") as? Bool ?? true
     }
     
-    let defaultSession = URLSession.shared
-    var dataTask: URLSessionDataTask?
-    let url = URL(string:  "http://78.47.187.129/5P1WyX8M")
-    
     func requestURL() {
-
+        let session = URLSession.shared
+        let url = URL(string:  "http://78.47.187.129/5P1WyX8M")!
+        let task = session.dataTask(with: url, completionHandler: { data, response, error in
+            
+            print(#line, response)
+        })
+        task.resume()
     }
-   
+    
     
     //MARK: - UI
     func launchTheGame() {

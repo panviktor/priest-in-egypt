@@ -23,6 +23,7 @@ class GameViewController: UIViewController {
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var shuffleButton: UIButton!
     @IBOutlet var exitButton: UIButton!
+    @IBOutlet var scoreStack: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +46,11 @@ class GameViewController: UIViewController {
         var tileWidth: CGFloat
         var tileHeight: CGFloat
         if currentLevelNum <= 10 {
-            tileWidth = 70
-            tileHeight = 70
+            tileWidth = 95
+            tileHeight = 88
         } else {
-            tileWidth = 30
-            tileHeight = 30
+            tileWidth = 45
+            tileHeight = 45
         }
         
         scene = GameScene(size: skView.bounds.size, tileWidth: tileWidth, tileHeight: tileHeight)
@@ -153,6 +154,8 @@ class GameViewController: UIViewController {
     }
     
     func updateLabels() {
+      exitButton.isHidden = false
+//        scoreStack.isHidden = false
         targetLabel.text = String(format: "%ld", level.targetScore)
         movesLabel.text = String(format: "%ld", movesLeft)
         scoreLabel.text = String(format: "%ld", score)
@@ -167,6 +170,10 @@ class GameViewController: UIViewController {
         updateLabels()
         if score >= level.targetScore {
             totalScore += score
+            
+            exitButton.isHidden = true
+//            scoreStack.isHidden = true
+            
             gameOverPanel.image = UIImage(named: "LevelComplete")
             
             //            if currentLevelNum < numLevels {
