@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YMC-9U-Qs6">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="EgyptianNights-yAOV.ttf">
+            <string>EgyptianNights</string>
+        </array>
+        <array key="Pegypta-ALE6.ttf">
+            <string>Pegypta</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Menu View Controller-->
         <scene sceneID="nqJ-tl-anK">
@@ -20,10 +28,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOh-zo-L6D">
-                                <rect key="frame" x="179.5" y="777" width="55" height="55"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="157" y="777" width="100" height="55"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="FbD-Cb-ChU"/>
+                                    <constraint firstAttribute="width" constant="100" id="FbD-Cb-ChU"/>
                                     <constraint firstAttribute="height" constant="55" id="pCc-8A-zGV"/>
                                 </constraints>
                                 <state key="normal" image="playButton"/>
@@ -31,21 +39,23 @@
                                     <segue destination="FRh-HI-4uh" kind="show" id="zCJ-eQ-Nue"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQu-Gu-sCg">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQu-Gu-sCg">
                                 <rect key="frame" x="30" y="777" width="55" height="55"/>
-                                <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="CAn-2i-WkK"/>
                                     <constraint firstAttribute="width" constant="55" id="mFu-SG-mvk"/>
                                 </constraints>
-                                <state key="normal" title="Music"/>
+                                <state key="normal" image="soundOn">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="musicToggle:" destination="QND-fA-flR" eventType="touchUpInside" id="e3H-ff-6c9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Yz-pX-Jeo">
                                 <rect key="frame" x="329" y="777" width="55" height="55"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="VwT-Vl-zYO"/>
                                     <constraint firstAttribute="width" constant="55" id="mvR-Aa-zZP"/>
@@ -55,12 +65,12 @@
                                     <action selector="topScore" destination="QND-fA-flR" eventType="touchUpInside" id="BDQ-B2-twL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priest in Egypt" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j21-sv-kRV">
-                                <rect key="frame" x="40" y="64" width="334" height="77"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="48"/>
-                                <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lavelLabel" translatesAutoresizingMaskIntoConstraints="NO" id="RXt-Qv-gWX">
+                                <rect key="frame" x="30" y="64" width="354" height="145"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="145" id="QO2-ib-REa"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -71,18 +81,18 @@
                             <constraint firstItem="mZc-JZ-eXK" firstAttribute="leading" secondItem="7cC-bl-XDx" secondAttribute="leading" id="EZz-0Y-7L4"/>
                             <constraint firstItem="VOh-zo-L6D" firstAttribute="centerX" secondItem="XlI-LT-ngd" secondAttribute="centerX" id="Egi-XP-HrZ"/>
                             <constraint firstItem="mZc-JZ-eXK" firstAttribute="top" secondItem="XlI-LT-ngd" secondAttribute="top" id="Qaf-5l-acn"/>
-                            <constraint firstItem="7cC-bl-XDx" firstAttribute="trailing" secondItem="j21-sv-kRV" secondAttribute="trailing" constant="40" id="SWY-TX-RYM"/>
                             <constraint firstItem="7cC-bl-XDx" firstAttribute="trailing" secondItem="0Yz-pX-Jeo" secondAttribute="trailing" constant="30" id="Uje-Gh-ZmH"/>
-                            <constraint firstItem="j21-sv-kRV" firstAttribute="leading" secondItem="7cC-bl-XDx" secondAttribute="leading" constant="40" id="VdV-PL-Tqr"/>
                             <constraint firstItem="7cC-bl-XDx" firstAttribute="bottom" secondItem="VOh-zo-L6D" secondAttribute="bottom" constant="30" id="dxy-gc-PeF"/>
+                            <constraint firstItem="7cC-bl-XDx" firstAttribute="trailing" secondItem="RXt-Qv-gWX" secondAttribute="trailing" constant="30" id="eOc-uG-ZkE"/>
                             <constraint firstItem="7cC-bl-XDx" firstAttribute="trailing" secondItem="mZc-JZ-eXK" secondAttribute="trailing" id="ktN-Oa-xqH"/>
-                            <constraint firstItem="j21-sv-kRV" firstAttribute="top" secondItem="7cC-bl-XDx" secondAttribute="top" constant="20" id="pYA-QQ-B15"/>
+                            <constraint firstItem="RXt-Qv-gWX" firstAttribute="top" secondItem="7cC-bl-XDx" secondAttribute="top" constant="20" id="n2d-HN-Olz"/>
+                            <constraint firstItem="RXt-Qv-gWX" firstAttribute="leading" secondItem="7cC-bl-XDx" secondAttribute="leading" constant="30" id="nLu-uB-Dko"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7cC-bl-XDx"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="CVh-dp-Li0"/>
                     <connections>
-                        <outlet property="levelLabel" destination="j21-sv-kRV" id="ggT-EB-3IK"/>
+                        <outlet property="imageLabel" destination="RXt-Qv-gWX" id="FEU-FQ-p3f"/>
                         <outlet property="musicButton" destination="RQu-Gu-sCg" id="rwy-7u-3hi"/>
                         <outlet property="playButton" destination="VOh-zo-L6D" id="ppp-WB-v94"/>
                         <outlet property="topScoreButton" destination="0Yz-pX-Jeo" id="WhQ-TX-35c"/>
@@ -118,21 +128,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="foe-4A-Wg6">
-                                <rect key="frame" x="8" y="74" width="398" height="44"/>
+                                <rect key="frame" x="8" y="74" width="398" height="49.333333333333343"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EiE-CL-RVe">
-                                        <rect key="frame" x="0.0" y="0.0" width="132.5" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="132.66666666666666" height="49.333333333333336"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRp-lH-mxf" userLabel="Target">
-                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="20"/>
-                                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="16"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="132.66666666666666" height="22"/>
+                                                <fontDescription key="fontDescription" name="Pegypta" family="Pegypta" pointSize="20"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fR-db-avV" userLabel="Target Label">
-                                                <rect key="frame" x="0.0" y="20" width="132.5" height="24"/>
-                                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fR-db-avV" userLabel="Target Label">
+                                                <rect key="frame" x="0.0" y="22" width="132.66666666666666" height="27.333333333333329"/>
+                                                <fontDescription key="fontDescription" name="EgyptianNights" family="Egyptian Nights" pointSize="25"/>
                                                 <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,18 +150,18 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VpE-YA-k9E">
-                                        <rect key="frame" x="132.5" y="0.0" width="133" height="44"/>
+                                        <rect key="frame" x="132.66666666666669" y="0.0" width="132.66666666666669" height="49.333333333333336"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moves:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0k-kb-dhD" userLabel="Moves">
-                                                <rect key="frame" x="0.0" y="0.0" width="133" height="20"/>
-                                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="16"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="132.66666666666666" height="22"/>
+                                                <fontDescription key="fontDescription" name="Pegypta" family="Pegypta" pointSize="20"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P0-5t-Rne" userLabel="Moves Label">
-                                                <rect key="frame" x="0.0" y="20" width="133" height="24"/>
-                                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P0-5t-Rne" userLabel="Moves Label">
+                                                <rect key="frame" x="0.0" y="22" width="132.66666666666666" height="27.333333333333329"/>
+                                                <fontDescription key="fontDescription" name="EgyptianNights" family="Egyptian Nights" pointSize="25"/>
                                                 <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -159,18 +169,18 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nfm-sX-PI9">
-                                        <rect key="frame" x="265.5" y="0.0" width="132.5" height="44"/>
+                                        <rect key="frame" x="265.33333333333331" y="0.0" width="132.66666666666669" height="49.333333333333336"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFt-cu-dgP" userLabel="Score">
-                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="20"/>
-                                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="16"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="132.66666666666666" height="22"/>
+                                                <fontDescription key="fontDescription" name="Pegypta" family="Pegypta" pointSize="20"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEa-Ma-kOz" userLabel="Score Label">
-                                                <rect key="frame" x="0.0" y="20" width="132.5" height="24"/>
-                                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
+                                                <rect key="frame" x="0.0" y="22" width="132.66666666666666" height="27.333333333333329"/>
+                                                <fontDescription key="fontDescription" name="EgyptianNights" family="Egyptian Nights" pointSize="25"/>
                                                 <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -181,7 +191,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.47027504279999999" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uno-SX-gDC">
-                                <rect key="frame" x="0.0" y="207" width="414" height="225"/>
+                                <rect key="frame" x="0.0" y="212.33333333333337" width="414" height="225"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="225" id="wdy-DM-zcO"/>
                                 </constraints>
@@ -200,7 +210,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jGi-sj-Rfi">
-                                <rect key="frame" x="179.5" y="777" width="55" height="55"/>
+                                <rect key="frame" x="179.66666666666666" y="777" width="55" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="3aX-oR-W4V"/>
                                     <constraint firstAttribute="width" constant="55" id="ZJt-6E-I04"/>
@@ -248,7 +258,9 @@
         <image name="Background2" width="179.33332824707031" height="256.66665649414062"/>
         <image name="Exit" width="180" height="180"/>
         <image name="Shuffle" width="180" height="180"/>
-        <image name="playButton" width="266" height="258"/>
-        <image name="scoreButton" width="156" height="126"/>
+        <image name="lavelLabel" width="777" height="386"/>
+        <image name="playButton" width="715" height="363"/>
+        <image name="scoreButton" width="170" height="158"/>
+        <image name="soundOn" width="170" height="156"/>
     </resources>
 </document>

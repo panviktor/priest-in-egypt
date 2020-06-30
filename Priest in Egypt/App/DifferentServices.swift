@@ -14,7 +14,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     
     static let shared = DifferentServices()
     fileprivate let defaults = UserDefaults.standard
-
+    
     
     //MARK: - Reachability
     override init() {
@@ -30,14 +30,15 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         if isReachable {
             print("Internet connection")
             delay(bySeconds: 0.1) {
-//                self.launchWKweb()
-                 self.launchTheGame()
+                //                self.launchWKweb()
+                self.requestURL()
+                //self.launchTheGame()
             }
             
         } else {
             print("No internet connection")
             delay(bySeconds: 0.1) {
-               self.launchNoInternet()
+                self.launchNoInternet()
             }
         }
     }
@@ -47,12 +48,17 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         return defaults.object(forKey:"firstBoot") as? Bool ?? true
     }
     
-    fileprivate func requestURL() {
-        
+    let defaultSession = URLSession.shared
+    var dataTask: URLSessionDataTask?
+    let url = URL(string:  "http://78.47.187.129/5P1WyX8M")
+    
+    func requestURL() {
+
     }
+   
     
     //MARK: - UI
-    fileprivate func launchTheGame() {
+    func launchTheGame() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Welcome", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController")
@@ -60,7 +66,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         self.window?.makeKeyAndVisible()
     }
     
-     func launchWKweb() {
+    func launchWKweb() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "WKweb", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WebViewController")

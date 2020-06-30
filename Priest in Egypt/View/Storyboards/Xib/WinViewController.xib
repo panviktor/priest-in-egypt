@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="iw7-mi-dss" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="03E-yq-dmJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iw7-mi-dss" secondAttribute="trailing" id="CE7-Df-tDM"/>
@@ -35,6 +35,6 @@
         </view>
     </objects>
     <resources>
-        <image name="win" width="544" height="478"/>
+        <image name="win" width="1440" height="2560"/>
     </resources>
 </document>

@@ -21,6 +21,8 @@
 		1457CF1224AA0E3A00A21D2F /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF1124AA0E3A00A21D2F /* NoInternetViewController.swift */; };
 		1457CF1424AA10A300A21D2F /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF1324AA10A200A21D2F /* ScoreViewController.swift */; };
 		1457CF1824AA233A00A21D2F /* no-internet-connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 1457CF1524AA233A00A21D2F /* no-internet-connection.json */; };
+		1480E4A624AB3342003AF7C7 /* EgyptianNights-yAOV.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1480E4A424AB3339003AF7C7 /* EgyptianNights-yAOV.ttf */; };
+		1480E4A824AB35FF003AF7C7 /* Pegypta-ALE6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1480E4A724AB35F5003AF7C7 /* Pegypta-ALE6.ttf */; };
 		148410EB24A3745A00AC46F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148410EA24A3745A00AC46F3 /* AppDelegate.swift */; };
 		148410EF24A3745A00AC46F3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */; };
 		148410F224A3745A00AC46F3 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148410F024A3745A00AC46F3 /* Welcome.storyboard */; };
@@ -76,6 +78,8 @@
 		1457CF1124AA0E3A00A21D2F /* NoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetViewController.swift; sourceTree = "<group>"; };
 		1457CF1324AA10A200A21D2F /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		1457CF1524AA233A00A21D2F /* no-internet-connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "no-internet-connection.json"; sourceTree = "<group>"; };
+		1480E4A424AB3339003AF7C7 /* EgyptianNights-yAOV.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EgyptianNights-yAOV.ttf"; sourceTree = "<group>"; };
+		1480E4A724AB35F5003AF7C7 /* Pegypta-ALE6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pegypta-ALE6.ttf"; sourceTree = "<group>"; };
 		148410E724A3745A00AC46F3 /* Priest in Egypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Priest in Egypt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		148410EA24A3745A00AC46F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +156,15 @@
 			path = GameViewController;
 			sourceTree = "<group>";
 		};
+		1480E4A324AB3328003AF7C7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1480E4A724AB35F5003AF7C7 /* Pegypta-ALE6.ttf */,
+				1480E4A424AB3339003AF7C7 /* EgyptianNights-yAOV.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		148410DE24A3745A00AC46F3 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +197,7 @@
 		148410FE24A3755E00AC46F3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1480E4A324AB3328003AF7C7 /* Fonts */,
 				1457CF1524AA233A00A21D2F /* no-internet-connection.json */,
 				14A5F0ED24A3973B00862E68 /* Sounds */,
 				14A5F0E824A3940B00862E68 /* Grid.atlas */,
@@ -402,10 +416,12 @@
 				148410F724A3745E00AC46F3 /* LaunchScreen.storyboard in Resources */,
 				14A5F0F924A3973B00862E68 /* Error.wav in Resources */,
 				1411B2A724A4ACCA007D4C0D /* WinViewController.xib in Resources */,
+				1480E4A824AB35FF003AF7C7 /* Pegypta-ALE6.ttf in Resources */,
 				1484111724A376B200AC46F3 /* Level_7.json in Resources */,
 				148410F424A3745E00AC46F3 /* Assets.xcassets in Resources */,
 				1484111524A376B200AC46F3 /* Level_3.json in Resources */,
 				14A5F16A24A48DE800862E68 /* ScoreViewController.xib in Resources */,
+				1480E4A624AB3342003AF7C7 /* EgyptianNights-yAOV.ttf in Resources */,
 				14A5F0E724A3940200862E68 /* Sprites.atlas in Resources */,
 				148410F224A3745A00AC46F3 /* Welcome.storyboard in Resources */,
 			);

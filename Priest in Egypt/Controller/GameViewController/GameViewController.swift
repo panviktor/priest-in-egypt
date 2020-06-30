@@ -26,13 +26,15 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupButtonUI()
+        setupLevel(number: currentLevelNum)
+    }
+    
+    fileprivate func setupButtonUI() {
         shuffleButton.setImage(UIImage(named: "Shuffle"), for: .normal)
         shuffleButton.setImage(UIImage(named: "ShufflePress"), for: .highlighted)
         exitButton.setImage(UIImage(named: "Exit"), for: .normal)
         exitButton.setImage(UIImage(named: "ExitPress"), for: .highlighted)
-        
-        setupLevel(number: currentLevelNum)
     }
     
     func setupLevel(number levelNumber: Int) {

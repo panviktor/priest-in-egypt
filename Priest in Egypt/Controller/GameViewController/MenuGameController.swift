@@ -15,7 +15,8 @@ protocol MenuViewControllerDelegate: class {
 }
 
 class MenuViewController: UIViewController, BlurViewDelegate, MenuViewControllerDelegate {
-    @IBOutlet var levelLabel: UILabel!
+    
+    @IBOutlet var imageLabel: UIImageView!
     @IBOutlet var musicButton: UIButton!
     @IBOutlet var playButton: UIButton!
     @IBOutlet var topScoreButton: UIButton!
@@ -48,6 +49,9 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
         setupButtons()
         currentUnlockedLevel = scoreManager.currentLevel
         
+        
+        
+        
         self.collectionView.backgroundColor = .clear
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -66,7 +70,7 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
         collectionView.delaysContentTouches = false
         self.view.addSubview(collectionView)
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.levelLabel.bottomAnchor, constant: 20),
+            collectionView.topAnchor.constraint(equalTo: self.imageLabel.bottomAnchor, constant: 20),
             collectionView.bottomAnchor.constraint(equalTo: self.playButton.topAnchor, constant: -20),
             collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
             collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
@@ -84,6 +88,7 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
         sender.pulsate(_repeatCount: 3)
         musicStatus.toggle()
         musicStatus == true ? playMusic() : backgroundMusic?.stop()
+        musicStatus == true ?  musicButton.setImage(UIImage(named: "soundOn"), for: .normal) :  musicButton.setImage(UIImage(named: "soundOff"), for: .normal)
     }
     
     @IBAction func topScore() {
@@ -130,6 +135,7 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
     @IBAction func unwind( _ segue: UIStoryboardSegue) {}
     
     func setupButtons() {
+        musicButton.setImage(UIImage(named: "soundOn"), for: .normal)
         playButton.pulsate(_repeatCount: 10)
         musicButton.layer.cornerRadius = 15
         playButton.layer.cornerRadius = 15

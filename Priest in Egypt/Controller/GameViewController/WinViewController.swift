@@ -19,7 +19,6 @@ class WinViewController: UIViewController {
         tapView.addGestureRecognizer(tapToDismiss)
     }
     
-    
     @objc func tapToDismiss(_ recognizer: UITapGestureRecognizer) {
         delegate?.removeBlurView()
         dismiss(animated: true, completion: nil)

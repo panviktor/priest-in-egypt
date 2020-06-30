@@ -80,14 +80,15 @@ class MyCell: UICollectionViewCell {
     }
     
     private func configureGUI() {
-        self.contentView.backgroundColor = .clear
+        self.contentView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        self.contentView.layer.cornerRadius = 15
 //        self.textLevelLabel.textAlignment = .center
         
         self.imageLevelView.contentMode = UIView.ContentMode.scaleAspectFit
         self.imageLevelView.layer.cornerRadius = 15
         self.imageLevelView.clipsToBounds =  true
         self.imageLevelView.layer.borderWidth = 1.5
-        self.imageLevelView.layer.borderColor = #colorLiteral(red: 0.84406358, green: 0.3853197992, blue: 0.2750463486, alpha: 1)
+        self.imageLevelView.layer.borderColor = #colorLiteral(red: 0.8459544182, green: 0.5704818368, blue: 0.2523650527, alpha: 1)
     }
     
     //FIXME: - add cache
