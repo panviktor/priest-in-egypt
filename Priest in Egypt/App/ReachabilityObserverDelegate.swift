@@ -40,6 +40,10 @@ extension ReachabilityObserverDelegate {
         try reachability.startNotifier()
     }
     
+    var reachable: Bool {
+        reachability.connection != .unavailable
+    }
+    
     /** Unsubscribe */
     func removeReachabilityObserver() {
         reachability.stopNotifier()

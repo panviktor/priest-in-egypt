@@ -13,13 +13,13 @@
 		1411B2A924A4C7F3007D4C0D /* Extension+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411B2A824A4C7F3007D4C0D /* Extension+UIButton.swift */; };
 		1411B2AC24A4D35D007D4C0D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1411B2AB24A4D35D007D4C0D /* Lottie */; };
 		1411B2B624A4F238007D4C0D /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411B2B524A4F238007D4C0D /* LevelCell.swift */; };
+		142796DB24ACE05E0073BEF4 /* ReachabilityObserverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142796DA24ACE05E0073BEF4 /* ReachabilityObserverDelegate.swift */; };
 		142BC2FC24AC595B00D6A2EC /* no-internet-connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */; };
 		142BC30424AC938D00D6A2EC /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142BC30324AC938D00D6A2EC /* NotificationService.swift */; };
 		142BC30824AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1457CEFE24A9D05D00A21D2F /* DifferentServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CEFD24A9D05D00A21D2F /* DifferentServices.swift */; };
 		1457CF0324A9E40500A21D2F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF0224A9E40500A21D2F /* WebViewController.swift */; };
 		1457CF0824A9EF8D00A21D2F /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 1457CF0724A9EF8D00A21D2F /* Reachability */; };
-		1457CF0A24AA015500A21D2F /* ReachabilityObserverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF0924AA015500A21D2F /* ReachabilityObserverDelegate.swift */; };
 		1457CF1024AA0E0600A21D2F /* NoInternet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1457CF0F24AA0E0600A21D2F /* NoInternet.storyboard */; };
 		1457CF1224AA0E3A00A21D2F /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF1124AA0E3A00A21D2F /* NoInternetViewController.swift */; };
 		1457CF1424AA10A300A21D2F /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF1324AA10A200A21D2F /* ScoreViewController.swift */; };
@@ -122,13 +122,13 @@
 		1411B2A524A4ACCA007D4C0D /* WinViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WinViewController.xib; sourceTree = "<group>"; };
 		1411B2A824A4C7F3007D4C0D /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
 		1411B2B524A4F238007D4C0D /* LevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
+		142796DA24ACE05E0073BEF4 /* ReachabilityObserverDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityObserverDelegate.swift; sourceTree = "<group>"; };
 		142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "no-internet-connection.json"; sourceTree = "<group>"; };
 		142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		142BC30324AC938D00D6A2EC /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		142BC30524AC938D00D6A2EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1457CEFD24A9D05D00A21D2F /* DifferentServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferentServices.swift; sourceTree = "<group>"; };
 		1457CF0224A9E40500A21D2F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		1457CF0924AA015500A21D2F /* ReachabilityObserverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityObserverDelegate.swift; sourceTree = "<group>"; };
 		1457CF0F24AA0E0600A21D2F /* NoInternet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoInternet.storyboard; sourceTree = "<group>"; };
 		1457CF1124AA0E3A00A21D2F /* NoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetViewController.swift; sourceTree = "<group>"; };
 		1457CF1324AA10A200A21D2F /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 			children = (
 				148410EA24A3745A00AC46F3 /* AppDelegate.swift */,
 				1457CEFD24A9D05D00A21D2F /* DifferentServices.swift */,
-				1457CF0924AA015500A21D2F /* ReachabilityObserverDelegate.swift */,
+				142796DA24ACE05E0073BEF4 /* ReachabilityObserverDelegate.swift */,
 				1484111F24A37D3D00AC46F3 /* Library */,
 			);
 			path = App;
@@ -590,12 +590,12 @@
 				1484113124A3812D00AC46F3 /* Level.swift in Sources */,
 				14C1EDBD24A664FC000FA936 /* Extension+DispatchQueue.swift in Sources */,
 				1457CF1424AA10A300A21D2F /* ScoreViewController.swift in Sources */,
+				142796DB24ACE05E0073BEF4 /* ReachabilityObserverDelegate.swift in Sources */,
 				1484113624A383FA00AC46F3 /* GameViewController.swift in Sources */,
 				1484113224A3812D00AC46F3 /* Swap.swift in Sources */,
 				1484111E24A378A500AC46F3 /* Device.swift in Sources */,
 				1484113024A3812D00AC46F3 /* LevelData.swift in Sources */,
 				1484112C24A3812D00AC46F3 /* Chain.swift in Sources */,
-				1457CF0A24AA015500A21D2F /* ReachabilityObserverDelegate.swift in Sources */,
 				148410EF24A3745A00AC46F3 /* WelcomeViewController.swift in Sources */,
 				1411B2A324A4946F007D4C0D /* ScoreManager.swift in Sources */,
 				1484113324A3812D00AC46F3 /* Tile.swift in Sources */,
