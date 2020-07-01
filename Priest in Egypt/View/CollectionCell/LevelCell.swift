@@ -10,12 +10,11 @@ import UIKit
 
 struct CellLevelData {
     let openLevel: Bool
-    let imageLevel: UIImage?
+    let imageLevel: String
     let textLevel: String
 }
 
 class MyCell: UICollectionViewCell {
-    weak var textLevelLabel: UILabel!
     weak var imageLevelView: UIImageView!
     
     override var isHighlighted: Bool {
@@ -26,18 +25,6 @@ class MyCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-//        let textLabel = UILabel(frame: .zero)
-//        textLabel.translatesAutoresizingMaskIntoConstraints = false
-//        self.contentView.addSubview(textLabel)
-//        NSLayoutConstraint.activate([
-//            textLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-//            textLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-//            textLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-//            textLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-//        ])
-//        self.textLevelLabel = textLabel
-        
         let imageView =  UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(imageView)
@@ -65,7 +52,6 @@ class MyCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        self.textLevelLabel.text = nil
         self.imageLevelView.image = nil
     }
     
@@ -82,8 +68,6 @@ class MyCell: UICollectionViewCell {
     private func configureGUI() {
         self.contentView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         self.contentView.layer.cornerRadius = 15
-//        self.textLevelLabel.textAlignment = .center
-        
         self.imageLevelView.contentMode = UIView.ContentMode.scaleAspectFit
         self.imageLevelView.layer.cornerRadius = 15
         self.imageLevelView.clipsToBounds =  true
@@ -91,17 +75,7 @@ class MyCell: UICollectionViewCell {
         self.imageLevelView.layer.borderColor = #colorLiteral(red: 0.8459544182, green: 0.5704818368, blue: 0.2523650527, alpha: 1)
     }
     
-    //FIXME: - add cache
-    private func grayscaleConverter(_ image: UIImage?) -> UIImage? {
-        guard let image = image else { return nil }
-        guard let ciImage = CIImage(image: image) else { return nil }
-        let blackAndWhiteCIImage = ciImage.applyingFilter("CIColorControls", parameters: ["inputSaturation": 0, "inputContrast": 1])
-        let blackAndWhiteImage = UIImage(ciImage: blackAndWhiteCIImage)
-        return blackAndWhiteImage
-    }
-    
     func configure(_ data: CellLevelData) {
-//        textLevelLabel.text = data.textLevel
-        data.openLevel == true ? (imageLevelView.image = data.imageLevel) : (imageLevelView.image = grayscaleConverter(data.imageLevel))
+       data.openLevel == true ? (imageLevelView.image = UIImage(named: data.imageLevel)) : (imageLevelView.image = UIImage(named: "\(data.imageLevel)BW"))
     }
 }

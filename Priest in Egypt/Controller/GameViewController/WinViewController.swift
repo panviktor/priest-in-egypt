@@ -15,6 +15,7 @@ class WinViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.clear
         let tapToDismiss = UITapGestureRecognizer(target: self, action: #selector(tapToDismiss(_:)))
         tapView.addGestureRecognizer(tapToDismiss)
     }

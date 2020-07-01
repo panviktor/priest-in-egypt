@@ -150,13 +150,13 @@ extension MenuViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 11
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! MyCell
         let text = String(indexPath.row + 1)
-        let image = UIImage(named: "number\(indexPath.row + 1)")
+        let image = "number\(indexPath.row + 1)"
         let openLevel = (indexPath.row + 1 <= currentUnlockedLevel)
         cell.configure(CellLevelData(openLevel: openLevel, imageLevel: image, textLevel: text))
         return cell

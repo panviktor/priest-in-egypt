@@ -29,8 +29,11 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         if isReachable {
             print("Internet connection")
             delay(bySeconds: 0.1) {
+                
+                //Add checher Launcher logic
+                
                 //                self.launchWKweb()
-                self.requestURL()
+            //    self.checkMainURL()
                 //self.launchTheGame()
             }
             
@@ -47,7 +50,11 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         return defaults.object(forKey:"firstBoot") as? Bool ?? true
     }
     
-    fileprivate func requestURL() {
+    fileprivate func checkGame() -> Bool {
+        return defaults.object(forKey:"game") as? Bool ?? true
+    }
+    
+    fileprivate func checkMainURL() {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         let url = URL(string:  "http://78.47.187.129/5P1WyX8M")!
@@ -61,14 +68,35 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             defaults.set(false, forKey: "firstBoot")
             defaults.set(false, forKey: "game")
             //FIXME: - One Signal Start
+            
+            DispatchQueue.main.async {
+                self.launchWKweb()
+            }
         } else {
             defaults.set(false, forKey: "firstBoot")
             defaults.set(true, forKey: "game")
-            launchTheGame()
+            DispatchQueue.main.async {
+                self.launchTheGame()
+            }
+            
         }
     }
     
     //MARK: - UI
+    func screenLauncher() {
+        if checkFirstBoot() {
+            checkMainURL()
+        } else {
+            DispatchQueue.main.async {
+                if self.checkGame() {
+                    self.launchTheGame()
+                } else {
+                    self.launchWKweb()
+                }
+            }
+        }
+    }
+    
     func launchTheGame() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Welcome", bundle: .main)
@@ -77,7 +105,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         self.window?.makeKeyAndVisible()
     }
     
-    func launchWKweb() {
+   fileprivate func launchWKweb() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "WKweb", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WebViewController")

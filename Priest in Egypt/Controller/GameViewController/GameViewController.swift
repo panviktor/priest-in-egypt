@@ -37,44 +37,39 @@ class GameViewController: UIViewController {
         exitButton.setImage(UIImage(named: "Exit"), for: .normal)
         exitButton.setImage(UIImage(named: "ExitPress"), for: .highlighted)
     }
+
+   fileprivate func sizeDetector(_ currentLevel: Int) -> (CGFloat, CGFloat) {
+        let w: CGFloat = UIScreen.main.bounds.width
+        let h: CGFloat = UIScreen.main.bounds.height
+        var tileWidth: CGFloat
+        var tileHeight: CGFloat
+        tileWidth = (w / (CGFloat(level.numColumns)) * 0.98)
+        tileHeight =  (h / (CGFloat(level.numRows)) * 0.60)
+        return (tileWidth, tileHeight)
+    }
     
     func setupLevel(number levelNumber: Int) {
+         level = Level(filename: "Level_\(levelNumber)")
+        
         let skView = view as! SKView
         skView.isMultipleTouchEnabled = false
-        
-        
-        
-        
-        //FIXME: - Add Tile Size Detector
         
         // Create and configure the scene.
         var tileWidth: CGFloat
         var tileHeight: CGFloat
-        if currentLevelNum <= 10 {
-            tileWidth = 95
-            tileHeight = 88
-        } else {
-            tileWidth = 45
-            tileHeight = 45
-        }
         
-        
-        
+        (tileWidth, tileHeight) = sizeDetector(currentLevelNum)
         
         scene = GameScene(size: skView.bounds.size, tileWidth: tileWidth, tileHeight: tileHeight)
         scene.scaleMode = .aspectFill
         
         // Setup the level.
-        level = Level(filename: "Level_\(levelNumber)")
-        print(#line, level.name)
         scene.level = level
-        
         scene.addTiles()
         scene.swipeHandler = handleSwipe
         
         gameOverPanel.isHidden = true
         shuffleButton.isHidden = true
-          
         // Present the scene.
         skView.presentScene(scene)
         
@@ -162,8 +157,8 @@ class GameViewController: UIViewController {
     }
     
     func updateLabels() {
-      exitButton.isHidden = false
-//        scoreStack.isHidden = false
+        exitButton.isHidden = false
+        //        scoreStack.isHidden = false
         targetLabel.text = String(format: "%ld", level.targetScore)
         movesLabel.text = String(format: "%ld", movesLeft)
         scoreLabel.text = String(format: "%ld", score)
@@ -178,14 +173,10 @@ class GameViewController: UIViewController {
         updateLabels()
         if score >= level.targetScore {
             totalScore += score
-            
             exitButton.isHidden = true
-//            scoreStack.isHidden = true
-            
             gameOverPanel.image = UIImage(named: "LevelComplete")
             
-            //            if currentLevelNum < numLevels {
-            
+            //MARK: - Current Level Num
             if currentLevelNum < 11 {
                 currentLevelNum += 1
                 delegate?.update(maxLevel: currentLevelNum)
