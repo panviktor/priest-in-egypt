@@ -14,6 +14,8 @@
 		1411B2AC24A4D35D007D4C0D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1411B2AB24A4D35D007D4C0D /* Lottie */; };
 		1411B2B624A4F238007D4C0D /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411B2B524A4F238007D4C0D /* LevelCell.swift */; };
 		142BC2FC24AC595B00D6A2EC /* no-internet-connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */; };
+		142BC30424AC938D00D6A2EC /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142BC30324AC938D00D6A2EC /* NotificationService.swift */; };
+		142BC30824AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1457CEFE24A9D05D00A21D2F /* DifferentServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CEFD24A9D05D00A21D2F /* DifferentServices.swift */; };
 		1457CF0324A9E40500A21D2F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF0224A9E40500A21D2F /* WebViewController.swift */; };
 		1457CF0824A9EF8D00A21D2F /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 1457CF0724A9EF8D00A21D2F /* Reachability */; };
@@ -64,6 +66,30 @@
 		14C1EDBD24A664FC000FA936 /* Extension+DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1EDBC24A664FC000FA936 /* Extension+DispatchQueue.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		142BC30624AC938D00D6A2EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 148410DF24A3745A00AC46F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 142BC30024AC938D00D6A2EC;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		142BC30C24AC938D00D6A2EC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				142BC30824AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1411B2A224A4946F007D4C0D /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		1411B2A424A4ACCA007D4C0D /* WinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +97,9 @@
 		1411B2A824A4C7F3007D4C0D /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
 		1411B2B524A4F238007D4C0D /* LevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
 		142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "no-internet-connection.json"; sourceTree = "<group>"; };
+		142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		142BC30324AC938D00D6A2EC /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		142BC30524AC938D00D6A2EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1457CEFD24A9D05D00A21D2F /* DifferentServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferentServices.swift; sourceTree = "<group>"; };
 		1457CF0224A9E40500A21D2F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1457CF0924AA015500A21D2F /* ReachabilityObserverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityObserverDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +152,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		142BC2FE24AC938D00D6A2EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		148410E424A3745A00AC46F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,6 +177,15 @@
 				1411B2B524A4F238007D4C0D /* LevelCell.swift */,
 			);
 			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		142BC30224AC938D00D6A2EC /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				142BC30324AC938D00D6A2EC /* NotificationService.swift */,
+				142BC30524AC938D00D6A2EC /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
 		};
 		1457CF0124A9E3D700A21D2F /* GameViewController */ = {
@@ -167,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				148410E924A3745A00AC46F3 /* Priest in Egypt */,
+				142BC30224AC938D00D6A2EC /* OneSignalNotificationServiceExtension */,
 				148410E824A3745A00AC46F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -175,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				148410E724A3745A00AC46F3 /* Priest in Egypt.app */,
+				142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -327,6 +374,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		142BC30024AC938D00D6A2EC /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 142BC30924AC938D00D6A2EC /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				142BC2FD24AC938D00D6A2EC /* Sources */,
+				142BC2FE24AC938D00D6A2EC /* Frameworks */,
+				142BC2FF24AC938D00D6A2EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		148410E624A3745A00AC46F3 /* Priest in Egypt */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 148410FB24A3745E00AC46F3 /* Build configuration list for PBXNativeTarget "Priest in Egypt" */;
@@ -334,10 +398,12 @@
 				148410E324A3745A00AC46F3 /* Sources */,
 				148410E424A3745A00AC46F3 /* Frameworks */,
 				148410E524A3745A00AC46F3 /* Resources */,
+				142BC30C24AC938D00D6A2EC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				142BC30724AC938D00D6A2EC /* PBXTargetDependency */,
 			);
 			name = "Priest in Egypt";
 			packageProductDependencies = (
@@ -358,6 +424,9 @@
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = Viktor;
 				TargetAttributes = {
+					142BC30024AC938D00D6A2EC = {
+						CreatedOnToolsVersion = 11.5;
+					};
 					148410E624A3745A00AC46F3 = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -381,11 +450,19 @@
 			projectRoot = "";
 			targets = (
 				148410E624A3745A00AC46F3 /* Priest in Egypt */,
+				142BC30024AC938D00D6A2EC /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		142BC2FF24AC938D00D6A2EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		148410E524A3745A00AC46F3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -426,6 +503,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		142BC2FD24AC938D00D6A2EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				142BC30424AC938D00D6A2EC /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		148410E324A3745A00AC46F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -458,6 +543,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		142BC30724AC938D00D6A2EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 142BC30024AC938D00D6A2EC /* OneSignalNotificationServiceExtension */;
+			targetProxy = 142BC30624AC938D00D6A2EC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		148410F024A3745A00AC46F3 /* Welcome.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -478,6 +571,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		142BC30A24AC938D00D6A2EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 428G73UDCV;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LesliePersich.Priest-in-Egypt.OneSignalNotificationServiceExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		142BC30B24AC938D00D6A2EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 428G73UDCV;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LesliePersich.Priest-in-Egypt.OneSignalNotificationServiceExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		148410F924A3745E00AC46F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -595,6 +728,7 @@
 		148410FC24A3745E00AC46F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 428G73UDCV;
@@ -614,6 +748,7 @@
 		148410FD24A3745E00AC46F3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 428G73UDCV;
@@ -633,6 +768,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		142BC30924AC938D00D6A2EC /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				142BC30A24AC938D00D6A2EC /* Debug */,
+				142BC30B24AC938D00D6A2EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		148410E224A3745A00AC46F3 /* Build configuration list for PBXProject "Priest in Egypt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

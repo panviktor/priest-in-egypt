@@ -28,15 +28,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     func reachabilityChanged(_ isReachable: Bool) {
         if isReachable {
             print("Internet connection")
-            delay(bySeconds: 0.1) {
-                
-                //Add checher Launcher logic
-                
-                //                self.launchWKweb()
-            //    self.checkMainURL()
-                //self.launchTheGame()
-            }
-            
+            delay(bySeconds: 0.1) {  }
         } else {
             print("No internet connection")
             delay(bySeconds: 0.1) {
@@ -58,7 +50,6 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         let url = URL(string:  "http://78.47.187.129/5P1WyX8M")!
-        //   let url = URL(string:  "http://ctraf.com/test")!
         let task = session.dataTask(with: url, completionHandler: { _, _, _ in })
         task.resume()
     }
@@ -68,7 +59,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             defaults.set(false, forKey: "firstBoot")
             defaults.set(false, forKey: "game")
             //FIXME: - One Signal Start
-            
+
             DispatchQueue.main.async {
                 self.launchWKweb()
             }
@@ -78,7 +69,6 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             DispatchQueue.main.async {
                 self.launchTheGame()
             }
-            
         }
     }
     
@@ -105,7 +95,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         self.window?.makeKeyAndVisible()
     }
     
-   fileprivate func launchWKweb() {
+    fileprivate func launchWKweb() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "WKweb", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WebViewController")
@@ -127,6 +117,6 @@ extension DifferentServices: URLSessionDataDelegate {
     func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
         guard let redirectURL = request.url  else { return }
         gameOrNot(redirectURL.absoluteString)
-        //        completionHandler(request)
+        completionHandler(request)
     }
 }
