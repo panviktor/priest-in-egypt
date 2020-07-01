@@ -100,7 +100,8 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     
     //MARK: - OneSignal
     private func hasPromptedOneSignal() {
-        OneSignal.sendTag("key", value: "1567")
+        //FIXME: FIX key, tag
+        OneSignal.sendTag("key", value: "175765")
         let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
         let hasPrompted = status.permissionStatus.hasPrompted
         if !hasPrompted {
