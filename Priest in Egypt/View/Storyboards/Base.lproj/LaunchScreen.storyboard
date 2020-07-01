@@ -15,18 +15,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background2" translatesAutoresizingMaskIntoConstraints="NO" id="9Bt-Uw-PhH">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="9Bt-Uw-PhH" secondAttribute="trailing" id="EYC-rq-Fuz"/>
-                            <constraint firstItem="9Bt-Uw-PhH" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="M80-cI-edd"/>
-                            <constraint firstAttribute="bottom" secondItem="9Bt-Uw-PhH" secondAttribute="bottom" id="gsM-xh-TFI"/>
-                            <constraint firstItem="9Bt-Uw-PhH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jjX-Ye-rCd"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -35,7 +24,4 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Background2" width="179.33332824707031" height="256.66665649414062"/>
-    </resources>
 </document>

@@ -54,6 +54,10 @@
 		1484113324A3812D00AC46F3 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1484112B24A3812D00AC46F3 /* Tile.swift */; };
 		1484113624A383FA00AC46F3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1484113524A383FA00AC46F3 /* GameViewController.swift */; };
 		1484113B24A38C0100AC46F3 /* MenuGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1484113A24A38C0100AC46F3 /* MenuGameController.swift */; };
+		14A5362E24AC9CEF00957BB6 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A5362A24AC9CB800957BB6 /* OneSignal.framework */; };
+		14A5362F24AC9CEF00957BB6 /* OneSignal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14A5362A24AC9CB800957BB6 /* OneSignal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		14A5363124AC9D1F00957BB6 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A5362A24AC9CB800957BB6 /* OneSignal.framework */; };
+		14A5363224AC9D1F00957BB6 /* OneSignal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14A5362A24AC9CB800957BB6 /* OneSignal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		14A5F0E724A3940200862E68 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0E624A3940200862E68 /* Sprites.atlas */; };
 		14A5F0E924A3940B00862E68 /* Grid.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0E824A3940B00862E68 /* Grid.atlas */; };
 		14A5F0F424A3973B00862E68 /* Scrape.wav in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0EE24A3973B00862E68 /* Scrape.wav */; };
@@ -86,6 +90,28 @@
 				142BC30824AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14A5363024AC9CEF00957BB6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				14A5362F24AC9CEF00957BB6 /* OneSignal.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14A5363324AC9D1F00957BB6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				14A5363224AC9D1F00957BB6 /* OneSignal.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -139,6 +165,8 @@
 		1484112B24A3812D00AC46F3 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		1484113524A383FA00AC46F3 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1484113A24A38C0100AC46F3 /* MenuGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGameController.swift; sourceTree = "<group>"; };
+		14A5362A24AC9CB800957BB6 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = Carthage/Build/iOS/OneSignal.framework; sourceTree = "<group>"; };
+		14A5363524AC9DE500957BB6 /* Priest in Egypt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Priest in Egypt.entitlements"; sourceTree = "<group>"; };
 		14A5F0E624A3940200862E68 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
 		14A5F0E824A3940B00862E68 /* Grid.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grid.atlas; sourceTree = "<group>"; };
 		14A5F0EE24A3973B00862E68 /* Scrape.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Scrape.wav; sourceTree = "<group>"; };
@@ -156,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14A5363124AC9D1F00957BB6 /* OneSignal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +194,7 @@
 			files = (
 				1411B2AC24A4D35D007D4C0D /* Lottie in Frameworks */,
 				1457CF0824A9EF8D00A21D2F /* Reachability in Frameworks */,
+				14A5362E24AC9CEF00957BB6 /* OneSignal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +244,7 @@
 				148410E924A3745A00AC46F3 /* Priest in Egypt */,
 				142BC30224AC938D00D6A2EC /* OneSignalNotificationServiceExtension */,
 				148410E824A3745A00AC46F3 /* Products */,
+				14A5362924AC9CB800957BB6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,6 +260,7 @@
 		148410E924A3745A00AC46F3 /* Priest in Egypt */ = {
 			isa = PBXGroup;
 			children = (
+				14A5363524AC9DE500957BB6 /* Priest in Egypt.entitlements */,
 				148410F824A3745E00AC46F3 /* Info.plist */,
 				148410FF24A3757700AC46F3 /* App */,
 				1484110024A375AC00AC46F3 /* Model */,
@@ -349,6 +381,14 @@
 			path = GameModel;
 			sourceTree = "<group>";
 		};
+		14A5362924AC9CB800957BB6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14A5362A24AC9CB800957BB6 /* OneSignal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		14A5F0ED24A3973B00862E68 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,6 +421,7 @@
 				142BC2FD24AC938D00D6A2EC /* Sources */,
 				142BC2FE24AC938D00D6A2EC /* Frameworks */,
 				142BC2FF24AC938D00D6A2EC /* Resources */,
+				14A5363324AC9D1F00957BB6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -399,6 +440,8 @@
 				148410E424A3745A00AC46F3 /* Frameworks */,
 				148410E524A3745A00AC46F3 /* Resources */,
 				142BC30C24AC938D00D6A2EC /* Embed App Extensions */,
+				14A5363024AC9CEF00957BB6 /* Embed Frameworks */,
+				14A5363424AC9D6500957BB6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -502,6 +545,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		14A5363424AC9D6500957BB6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/OneSignal.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		142BC2FD24AC938D00D6A2EC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -574,8 +638,13 @@
 		142BC30A24AC938D00D6A2EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 428G73UDCV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -596,6 +665,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 428G73UDCV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -730,8 +803,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Priest in Egypt/Priest in Egypt.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 428G73UDCV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Priest in Egypt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -750,8 +828,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Priest in Egypt/Priest in Egypt.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 428G73UDCV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Priest in Egypt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

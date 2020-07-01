@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 import Reachability
 
 class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserverDelegate {
@@ -28,7 +29,9 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     func reachabilityChanged(_ isReachable: Bool) {
         if isReachable {
             print("Internet connection")
-            delay(bySeconds: 0.1) {  }
+            delay(bySeconds: 0.1) {
+                self.screenLauncher()
+            }
         } else {
             print("No internet connection")
             delay(bySeconds: 0.1) {
@@ -58,8 +61,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         if redirectURL == "https://nobot/" {
             defaults.set(false, forKey: "firstBoot")
             defaults.set(false, forKey: "game")
-            //FIXME: - One Signal Start
-
+            hasPromptedOneSignal()
             DispatchQueue.main.async {
                 self.launchWKweb()
             }
@@ -72,7 +74,19 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         }
     }
     
-    //MARK: - UI
+    //MARK: - OneSignal
+    private func hasPromptedOneSignal() {
+        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+        let hasPrompted = status.permissionStatus.hasPrompted
+        if !hasPrompted {
+            OneSignal.promptForPushNotifications { hasPrompted in
+                OneSignal.addTrigger("prompt_ios", withValue: "true")
+            }
+        }
+        print("hasPrompted = \(hasPrompted)")
+    }
+    
+    //MARK: - UI Launcher
     func screenLauncher() {
         if checkFirstBoot() {
             checkMainURL()
@@ -86,8 +100,20 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             }
         }
     }
-    
-    func launchTheGame() {
+}
+
+//MARK: - URLSessionDataDelegate
+extension DifferentServices: URLSessionDataDelegate {
+    func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
+        guard let redirectURL = request.url  else { return }
+        gameOrNot(redirectURL.absoluteString)
+        completionHandler(request)
+    }
+}
+
+//MARK: - GUI
+extension DifferentServices {
+    private func launchTheGame() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Welcome", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController")
@@ -95,7 +121,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         self.window?.makeKeyAndVisible()
     }
     
-    fileprivate func launchWKweb() {
+    private func launchWKweb() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "WKweb", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WebViewController")
@@ -103,20 +129,11 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         self.window?.makeKeyAndVisible()
     }
     
-    fileprivate func launchNoInternet() {
+    private func launchNoInternet() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "NoInternet", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "NoInternetViewController")
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
-    }
-}
-
-
-extension DifferentServices: URLSessionDataDelegate {
-    func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
-        guard let redirectURL = request.url  else { return }
-        gameOrNot(redirectURL.absoluteString)
-        completionHandler(request)
     }
 }
