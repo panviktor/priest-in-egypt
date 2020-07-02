@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Facebook",
+        "repositoryURL": "https://github.com/facebook/facebook-ios-sdk",
+        "state": {
+          "branch": null,
+          "revision": "a94fbd4ce02114a457e1e55360be5be189f67b95",
+          "version": "7.1.1"
+        }
+      },
+      {
         "package": "Lottie",
         "repositoryURL": "https://github.com/airbnb/lottie-ios",
         "state": {

@@ -8,6 +8,7 @@
 
 import UIKit
 import OneSignal
+import FBSDKCoreKit
 import Reachability
 
 class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserverDelegate {
@@ -22,7 +23,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     static let shared = DifferentServices()
     fileprivate let defaults = UserDefaults.standard
     fileprivate var state: AppState
-    
+    fileprivate var checkRun = false
     
     //MARK: - Reachability
     override init() {
@@ -44,10 +45,10 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             case .WKWeb:
                 launchWKweb()
             case .starting:
-                if checkFirstBoot() {
-                   checkMainURL()
+                if checkFirstBoot() && !checkRun  {
+                    checkMainURL()
                 } else if checkGame() {
-                     launchTheGame()
+                    launchTheGame()
                 } else {
                     launchWKweb()
                 }
@@ -71,7 +72,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     }
     
     fileprivate func checkMainURL() {
-        print(#line, #function)
+        checkRun.toggle()
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         let url = URL(string:  "http://78.47.187.129/5P1WyX8M")!

@@ -14,6 +14,7 @@
 		1411B2AC24A4D35D007D4C0D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1411B2AB24A4D35D007D4C0D /* Lottie */; };
 		1411B2B624A4F238007D4C0D /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411B2B524A4F238007D4C0D /* LevelCell.swift */; };
 		142796DB24ACE05E0073BEF4 /* ReachabilityObserverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142796DA24ACE05E0073BEF4 /* ReachabilityObserverDelegate.swift */; };
+		142796DE24ACF2EC0073BEF4 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 142796DD24ACF2EC0073BEF4 /* FacebookCore */; };
 		142BC2FC24AC595B00D6A2EC /* no-internet-connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */; };
 		142BC30424AC938D00D6A2EC /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142BC30324AC938D00D6A2EC /* NotificationService.swift */; };
 		142BC30824AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -195,6 +196,7 @@
 				1411B2AC24A4D35D007D4C0D /* Lottie in Frameworks */,
 				1457CF0824A9EF8D00A21D2F /* Reachability in Frameworks */,
 				14A5362E24AC9CEF00957BB6 /* OneSignal.framework in Frameworks */,
+				142796DE24ACF2EC0073BEF4 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +454,7 @@
 			packageProductDependencies = (
 				1411B2AB24A4D35D007D4C0D /* Lottie */,
 				1457CF0724A9EF8D00A21D2F /* Reachability */,
+				142796DD24ACF2EC0073BEF4 /* FacebookCore */,
 			);
 			productName = "Priest in Egypt";
 			productReference = 148410E724A3745A00AC46F3 /* Priest in Egypt.app */;
@@ -464,7 +467,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Viktor;
 				TargetAttributes = {
 					142BC30024AC938D00D6A2EC = {
@@ -487,6 +490,7 @@
 			packageReferences = (
 				1411B2AA24A4D35D007D4C0D /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				1457CF0624A9EF8D00A21D2F /* XCRemoteSwiftPackageReference "Reachability" */,
+				142796DC24ACF2EC0073BEF4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 148410E824A3745A00AC46F3 /* Products */;
 			projectDirPath = "";
@@ -889,6 +893,14 @@
 				minimumVersion = 3.1.8;
 			};
 		};
+		142796DC24ACF2EC0073BEF4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.1;
+			};
+		};
 		1457CF0624A9EF8D00A21D2F /* XCRemoteSwiftPackageReference "Reachability" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
@@ -904,6 +916,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1411B2AA24A4D35D007D4C0D /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		142796DD24ACF2EC0073BEF4 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 142796DC24ACF2EC0073BEF4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
 		};
 		1457CF0724A9EF8D00A21D2F /* Reachability */ = {
 			isa = XCSwiftPackageProductDependency;
