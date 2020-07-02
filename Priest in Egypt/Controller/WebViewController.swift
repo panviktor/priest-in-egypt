@@ -16,9 +16,25 @@ class WebViewController: UIViewController {
         super.viewDidLoad()
         webView.navigationDelegate = self
         webView.uiDelegate = self
+        
+        webView.evaluateJavaScript("navigator.appVersion", completionHandler: { (result, error) in
+            debugPrint(result as Any)
+            debugPrint(error as Any)
+            print(#line)
+            if let unwrappedUserAgent = result as? String {
+                print("userAgent: \(unwrappedUserAgent)")
+            } else {
+                print("failed to get the user agent")
+            }
+        })
+        
+        
+        
         webView.load("https://www.apple.com")
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
+        
+        print(#line, #function, webView.customUserAgent!)
     }
     
     override func loadView() {

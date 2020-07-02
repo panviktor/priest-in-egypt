@@ -479,7 +479,7 @@
 				};
 			};
 			buildConfigurationList = 148410E224A3745A00AC46F3 /* Build configuration list for PBXProject "Priest in Egypt" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
