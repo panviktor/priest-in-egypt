@@ -9,16 +9,34 @@
 
 import UIKit
 import OneSignal
-import FacebookCore
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     let service = DifferentServices.shared
+    var deepURL: URL? {
+        didSet {
+            NotificationCenter.default.post(name: .notificationDeepURLHasCome, object: self.deepURL)
+        }
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        //Remove this method to stop OneSignal Debugging
-        //OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
+        ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions )
+        Settings.isAutoInitEnabled = true
+        ApplicationDelegate.initializeSDK(nil)
+        AppLinkUtility.fetchDeferredAppLink { (url, error) in
+            if let error = error {
+                print("Received error while fetching deferred app link %@", error)
+            }
+            if let url = url {
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+                self.deepURL = url
+            }
+        }
         
         //START OneSignal initialization code
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: false]
@@ -56,4 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 
-
+extension Notification.Name {
+    static let notificationDeepURLHasCome = Notification.Name("deepURLHasCome")
+}
