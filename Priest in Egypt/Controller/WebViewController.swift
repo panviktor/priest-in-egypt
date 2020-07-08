@@ -1,6 +1,7 @@
 import UIKit
 import WebKit
 import FacebookCore
+import OneSignal
 
 class WebViewController: UIViewController {
     fileprivate let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -189,6 +190,7 @@ class WebViewController: UIViewController {
         if askRegArray.count == 1 && askRegArray[0] == "0" {
             if !wasRegistration {
                 print("Registration")
+                deepURL =  webView.url?.absoluteString ?? URLBuilder()
                 logCompleteRegistrationEvent(registrationMethod: "complete registration")
                 wasRegistration = true
             }
@@ -201,6 +203,7 @@ class WebViewController: UIViewController {
             case 1:
                 if !wasRegistration {
                     wasDepNumberOne = true
+                    wasRegistration = true
                 } else {
                     if !wasDepNumberOne {
                         print("First Dep" + "\(depNumber) and \(sumNumber)")
@@ -212,6 +215,7 @@ class WebViewController: UIViewController {
             case 2:
                 if !wasRegistration {
                     wasDepNumberTwo = true
+                    wasRegistration = true
                 } else {
                     if !wasDepNumberTwo && wasDepNumberOne {
                         print("Second Dep" + "\(depNumber) and \(sumNumber)")
@@ -223,6 +227,7 @@ class WebViewController: UIViewController {
             case 3:
                 if !wasRegistration {
                     wasDepNumberThree = true
+                    wasRegistration = true
                 } else {
                     if !wasDepNumberThree && wasDepNumberTwo {
                         print("Third Dep" + "\(depNumber) and \(sumNumber)")
@@ -237,23 +242,27 @@ class WebViewController: UIViewController {
         }
     }
     
-    //Facebook function
+    //Facebook & OneSignal Events
     fileprivate func logCompleteRegistrationEvent(registrationMethod: String) {
+        OneSignal.sendTag("key", value: "1")
         let parameters = [AppEvents.ParameterName.registrationMethod.rawValue: registrationMethod]
         AppEvents.logEvent(.completedRegistration, parameters: parameters)
     }
     
     fileprivate func logFirstDepEvent(contentData: String) {
+        OneSignal.sendTag("key", value: "1")
         let parameters = [AppEvents.ParameterName.content.rawValue: contentData ]
         AppEvents.logEvent(.addedToCart, parameters: parameters)
     }
     
     fileprivate func logSecondDepEvent(contentData: String) {
+        OneSignal.sendTag("key", value: "1")
         let parameters = [AppEvents.ParameterName.content.rawValue: contentData ]
         AppEvents.logEvent(.addedToWishlist, parameters: parameters)
     }
     
     fileprivate func logThirdDepEvent(contentData: String) {
+        OneSignal.sendTag("key", value: "1")
         let parameters = [AppEvents.ParameterName.content.rawValue: contentData ]
         AppEvents.logEvent(.addedPaymentInfo, parameters: parameters)
     }

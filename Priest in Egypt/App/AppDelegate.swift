@@ -50,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
         service.screenLauncher()
         
-        
         AppLinkUtility.fetchDeferredAppLink { (url, error) in
             print(#line)
             if let error = error {
@@ -72,7 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationDelegate.shared.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation])
     }
 }
-
 
 extension Notification.Name {
     static let notificationDeepURLHasCome = Notification.Name("deepURLHasCome")
