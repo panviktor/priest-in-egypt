@@ -15,6 +15,8 @@
 		1411B2B624A4F238007D4C0D /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1411B2B524A4F238007D4C0D /* LevelCell.swift */; };
 		142796DB24ACE05E0073BEF4 /* ReachabilityObserverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142796DA24ACE05E0073BEF4 /* ReachabilityObserverDelegate.swift */; };
 		142796DE24ACF2EC0073BEF4 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 142796DD24ACF2EC0073BEF4 /* FacebookCore */; };
+		142884C924B623D600656261 /* SecondNoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142884C724B623D600656261 /* SecondNoInternetViewController.swift */; };
+		142884CA24B623D600656261 /* SecondNoInternetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 142884C824B623D600656261 /* SecondNoInternetViewController.xib */; };
 		142BC2FC24AC595B00D6A2EC /* no-internet-connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */; };
 		142BC30424AC938D00D6A2EC /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142BC30324AC938D00D6A2EC /* NotificationService.swift */; };
 		142BC30824AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -124,6 +126,8 @@
 		1411B2A824A4C7F3007D4C0D /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
 		1411B2B524A4F238007D4C0D /* LevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
 		142796DA24ACE05E0073BEF4 /* ReachabilityObserverDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityObserverDelegate.swift; sourceTree = "<group>"; };
+		142884C724B623D600656261 /* SecondNoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondNoInternetViewController.swift; sourceTree = "<group>"; };
+		142884C824B623D600656261 /* SecondNoInternetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondNoInternetViewController.xib; sourceTree = "<group>"; };
 		142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "no-internet-connection.json"; sourceTree = "<group>"; };
 		142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		142BC30324AC938D00D6A2EC /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -342,6 +346,7 @@
 			children = (
 				148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */,
 				1457CF1124AA0E3A00A21D2F /* NoInternetViewController.swift */,
+				142884C724B623D600656261 /* SecondNoInternetViewController.swift */,
 				1457CF0224A9E40500A21D2F /* WebViewController.swift */,
 				1457CF0124A9E3D700A21D2F /* GameViewController */,
 			);
@@ -407,6 +412,7 @@
 		14A5F16B24A48F9300862E68 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
+				142884C824B623D600656261 /* SecondNoInternetViewController.xib */,
 				14A5F16824A48DE800862E68 /* ScoreViewController.xib */,
 				1411B2A524A4ACCA007D4C0D /* WinViewController.xib */,
 			);
@@ -527,6 +533,7 @@
 				14A5F0E924A3940B00862E68 /* Grid.atlas in Resources */,
 				1484112324A380AC00AC46F3 /* WKweb.storyboard in Resources */,
 				1484111A24A376B200AC46F3 /* Level_6.json in Resources */,
+				142884CA24B623D600656261 /* SecondNoInternetViewController.xib in Resources */,
 				1484111124A376B200AC46F3 /* Level_9.json in Resources */,
 				1484111924A376B200AC46F3 /* Level_11.json in Resources */,
 				1484111B24A376B200AC46F3 /* Level_5.json in Resources */,
@@ -583,6 +590,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				142884C924B623D600656261 /* SecondNoInternetViewController.swift in Sources */,
 				1457CF1224AA0E3A00A21D2F /* NoInternetViewController.swift in Sources */,
 				1411B2B624A4F238007D4C0D /* LevelCell.swift in Sources */,
 				1457CEFE24A9D05D00A21D2F /* DifferentServices.swift in Sources */,

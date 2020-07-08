@@ -41,6 +41,9 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     
     //MARK: - Reachability
     override init() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
         self.state = .starting
         super.init()
         try? addReachabilityObserver()
@@ -57,14 +60,16 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             case .inGame:
                 launchTheGame()
             case .WKWeb:
-                launchWKweb()
+                print(#line)
+                dismmissNoInternet()
             case .starting:
+                print(#line, #function)
                 if firstAppBoot  {
                     checkMainURL()
                 } else if appIsGame {
                     launchTheGame()
                 } else {
-                    launchWKweb()
+                    break
                 }
             }
         } else {
@@ -74,6 +79,13 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             }
         }
         print(#line, state)
+    }
+    
+    
+    private func dismmissNoInternet() {
+        if let topVC = topMostController() {
+            topVC.dismiss(animated: true, completion: nil)
+        }
     }
     
     //MARK: - Bot checker logic
@@ -97,14 +109,14 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             state = .WKWeb
             hasPromptedOneSignal()
             DispatchQueue.main.async {
-               self.launchWKweb()
+                self.launchWKweb()
             }
         } else {
             firstAppBoot = false
             appIsGame = true
             state = .inGame
             DispatchQueue.main.async {
-              self.launchTheGame()
+                self.launchTheGame()
             }
         }
     }
@@ -156,27 +168,44 @@ extension DifferentServices: URLSessionDataDelegate {
 extension DifferentServices {
     private func launchTheGame() {
         state = .inGame
-        window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Welcome", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController")
         self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
     }
     
     private func launchWKweb() {
         state = .WKWeb
-        window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "WKweb", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WebViewController")
         self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
     }
     
     private func launchNoInternet() {
-        window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "NoInternet", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "NoInternetViewController")
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
+        if self.window?.rootViewController == nil {
+            print(#line, #function)
+            self.window?.rootViewController = initialViewController
+        } else {
+            if state != .starting {
+                print(#line, #function)
+                if let topVC = topMostController() {
+                    let noVC = SecondNoInternetViewController()
+                    noVC.modalPresentationStyle = .fullScreen
+                    topVC.present(noVC, animated: true)
+                }
+            }
+        }
+    }
+    
+    func topMostController() -> UIViewController? {
+        guard let window = UIApplication.shared.keyWindow, let rootViewController = window.rootViewController else {
+            return nil
+        }
+        var topController = rootViewController
+        while let newTopController = topController.presentedViewController {
+            topController = newTopController
+        }
+        return topController
     }
 }

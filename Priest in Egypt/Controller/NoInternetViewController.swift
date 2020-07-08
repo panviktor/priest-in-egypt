@@ -12,7 +12,7 @@ import Lottie
 class NoInternetViewController: UIViewController {
     let service = DifferentServices.shared
     let animationView = AnimationView()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
