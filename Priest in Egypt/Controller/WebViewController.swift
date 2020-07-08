@@ -4,6 +4,7 @@ import FacebookCore
 import OneSignal
 
 class WebViewController: UIViewController {
+    fileprivate let service = DifferentServices.shared
     fileprivate let appDelegate = UIApplication.shared.delegate as! AppDelegate
     fileprivate var fbDeepLinkURL: URL?
     fileprivate var deepLinkTimer: Timer?
@@ -46,7 +47,8 @@ class WebViewController: UIViewController {
     
     fileprivate var firstPage = true
     
-    fileprivate var dropboxJSSource = "" {
+    fileprivate var wasGetDropboxUsing = false
+    fileprivate var dropboxJSSource: String = "" {
         didSet {
             if !self.dropboxJSSource.isEmpty && self.dropboxJSSource != "true" {
                 DispatchQueue.main.async {
@@ -169,22 +171,25 @@ class WebViewController: UIViewController {
     
     //MARK: - getDropboxJS
     fileprivate func getDropboxJS() {
-        guard let url = URL(string: dropboxURL) else { return }
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard error == nil else { return }
-            if let data = data {
-                if let jsonString = String(data: data, encoding: .utf8) {
-                    print(#line)
-                    self.dropboxJSSource = jsonString
+        if !wasGetDropboxUsing {
+                 self.wasGetDropboxUsing = true
+            guard let url = URL(string: dropboxURL) else { return }
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard error == nil else { return }
+                if let data = data {
+                    if let jsonString = String(data: data, encoding: .utf8) {
+                        print(#line, #function)
+                   
+                        self.dropboxJSSource = jsonString
+                    }
                 }
-            }
-        }.resume()
+            }.resume()
+        }
     }
     
     private func setupAskRegTimer() {
         regTimer?.invalidate()
         regTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireAskRegTimer), userInfo: nil, repeats: true)
-        regTimer?.tolerance = 0.1
     }
     
     @objc private func fireAskRegTimer() {
@@ -196,6 +201,8 @@ class WebViewController: UIViewController {
     
     //MARK: - FB and OneSignal notification
     private func askRegHandlerJS(_ askReg: String) {
+        print(#line, askReg)
+        
         let askRegArray = askReg.split(separator: ":")
         if askRegArray.count == 1 && askRegArray[0] == "0" {
             if !wasRegistration {
@@ -282,6 +289,10 @@ class WebViewController: UIViewController {
         let navigationVC = sb.instantiateInitialViewController() ?? UIViewController()
         navigationVC.modalPresentationStyle = .fullScreen
         present(navigationVC, animated: true, completion: nil)
+    }
+    
+    deinit {
+        print("WK DEINIT")
     }
 }
 

