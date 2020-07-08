@@ -207,7 +207,7 @@ class WebViewController: UIViewController {
                 } else {
                     if !wasDepNumberOne {
                         print("First Dep" + "\(depNumber) and \(sumNumber)")
-                        logFirstDepEvent(contentData: "First Dep" + "\(depNumber) and \(sumNumber)")
+                        logFirstDepEvent(sumDepOne: "\(sumNumber)")
                         wasRegistration = true
                         wasDepNumberOne = true
                     }
@@ -219,7 +219,7 @@ class WebViewController: UIViewController {
                 } else {
                     if !wasDepNumberTwo && wasDepNumberOne {
                         print("Second Dep" + "\(depNumber) and \(sumNumber)")
-                        logSecondDepEvent(contentData: "Second Dep" + "\(depNumber) and \(sumNumber)")
+                        logSecondDepEvent(sumDepTwo: "\(sumNumber)")
                         wasRegistration = true
                         wasDepNumberTwo = true
                     }
@@ -231,7 +231,7 @@ class WebViewController: UIViewController {
                 } else {
                     if !wasDepNumberThree && wasDepNumberTwo {
                         print("Third Dep" + "\(depNumber) and \(sumNumber)")
-                        logThirdDepEvent(contentData: "Third Dep" + "\(depNumber) and \(sumNumber)")
+                        logThirdDepEvent(sumDepThree: "\(sumNumber)")
                         wasRegistration = true
                         wasDepNumberThree = true
                     }
@@ -244,26 +244,26 @@ class WebViewController: UIViewController {
     
     //Facebook & OneSignal Events
     fileprivate func logCompleteRegistrationEvent(registrationMethod: String) {
-        OneSignal.sendTag("key", value: "1")
+        OneSignal.sendTag("reg", value: "1")
         let parameters = [AppEvents.ParameterName.registrationMethod.rawValue: registrationMethod]
         AppEvents.logEvent(.completedRegistration, parameters: parameters)
     }
     
-    fileprivate func logFirstDepEvent(contentData: String) {
-        OneSignal.sendTag("key", value: "1")
-        let parameters = [AppEvents.ParameterName.content.rawValue: contentData ]
+    fileprivate func logFirstDepEvent(sumDepOne: String) {
+        OneSignal.sendTag("dep1", value: sumDepOne)
+        let parameters = [AppEvents.ParameterName.content.rawValue: sumDepOne ]
         AppEvents.logEvent(.addedToCart, parameters: parameters)
     }
     
-    fileprivate func logSecondDepEvent(contentData: String) {
-        OneSignal.sendTag("key", value: "1")
-        let parameters = [AppEvents.ParameterName.content.rawValue: contentData ]
+    fileprivate func logSecondDepEvent(sumDepTwo: String) {
+        OneSignal.sendTag("dep2", value: sumDepTwo)
+        let parameters = [AppEvents.ParameterName.content.rawValue: sumDepTwo ]
         AppEvents.logEvent(.addedToWishlist, parameters: parameters)
     }
     
-    fileprivate func logThirdDepEvent(contentData: String) {
-        OneSignal.sendTag("key", value: "1")
-        let parameters = [AppEvents.ParameterName.content.rawValue: contentData ]
+    fileprivate func logThirdDepEvent(sumDepThree: String) {
+        OneSignal.sendTag("dep3", value: sumDepThree)
+        let parameters = [AppEvents.ParameterName.content.rawValue: sumDepThree ]
         AppEvents.logEvent(.addedPaymentInfo, parameters: parameters)
     }
 }
