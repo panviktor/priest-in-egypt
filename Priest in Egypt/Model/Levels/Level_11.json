@@ -10,8 +10,8 @@
 
     ],
 
-  "targetScore" : 50,
-  "moves" : 50,
+  "targetScore" : 10000,
+  "moves" : 131,
   
   "numColumns" : 7,
   "numRows" : 8,

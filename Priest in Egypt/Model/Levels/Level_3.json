@@ -6,8 +6,8 @@
                 [1, 1, 1, 1, ],
     ],
     
-    "targetScore" : 100,
-    "moves" : 10,
+    "targetScore" : 1000,
+    "moves" : 30,
     
     "numColumns" : 4,
     "numRows" : 5,
