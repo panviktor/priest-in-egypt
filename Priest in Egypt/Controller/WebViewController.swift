@@ -113,6 +113,17 @@ class WebViewController: UIViewController {
         }
     }
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if (self.isMovingFromParent) {
+          UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
+        }
+
+    }
+     @objc func canRotate() -> Void {}
+    
     //MARK: - URLBuilder
     fileprivate func URLBuilder() -> String {
         var urlComponents = URLComponents()

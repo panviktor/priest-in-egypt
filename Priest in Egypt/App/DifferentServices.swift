@@ -41,8 +41,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     
     //MARK: - Reachability
     override init() {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
+       
         
         self.state = .starting
         super.init()
@@ -60,7 +59,6 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             case .inGame:
                 launchTheGame()
             case .WKWeb:
-                print(#line)
                 dismmissNoInternet()
             case .starting:
                 print(#line, #function)
@@ -167,6 +165,9 @@ extension DifferentServices: URLSessionDataDelegate {
 //MARK: - GUI
 extension DifferentServices {
     private func launchTheGame() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
         state = .inGame
         let storyboard = UIStoryboard(name: "Welcome", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController")
@@ -174,6 +175,9 @@ extension DifferentServices {
     }
     
     private func launchWKweb() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
         state = .WKWeb
         let storyboard = UIStoryboard(name: "WKweb", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WebViewController")
@@ -181,6 +185,9 @@ extension DifferentServices {
     }
     
     private func launchNoInternet() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
         let storyboard = UIStoryboard(name: "NoInternet", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "NoInternetViewController")
         if self.window?.rootViewController == nil {
