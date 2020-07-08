@@ -81,6 +81,7 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     }
     
     fileprivate func gameOrNot(_ redirectURL: String) {
+        print(#file, #function, redirectURL)
         if redirectURL == "https://nobot/" {
             defaults.set(false, forKey: "firstBoot")
             defaults.set(false, forKey: "game")
@@ -101,7 +102,6 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     
     //MARK: - OneSignal
     private func hasPromptedOneSignal() {
-        //FIXME: FIX key, tag
         OneSignal.sendTag("nobot", value: "1")
         let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
         let hasPrompted = status.permissionStatus.hasPrompted
@@ -142,7 +142,7 @@ extension DifferentServices: URLSessionDataDelegate {
     func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
         guard let redirectURL = request.url  else { return }
         gameOrNot(redirectURL.absoluteString)
-        //        completionHandler(request)
+        //completionHandler(request)
     }
 }
 

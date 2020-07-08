@@ -48,10 +48,6 @@ class MenuViewController: UIViewController, BlurViewDelegate, MenuViewController
         playMusic()
         setupButtons()
         currentUnlockedLevel = scoreManager.currentLevel
-        
-        
-        
-        
         self.collectionView.backgroundColor = .clear
         self.collectionView.dataSource = self
         self.collectionView.delegate = self

@@ -48,10 +48,18 @@ class WebViewController: UIViewController {
     
     fileprivate var dropboxJSSource = "" {
         didSet {
-            DispatchQueue.main.async {
-                self.webView.evaluateJavaScript(self.dropboxJSSource)
-                self.webView.evaluateJavaScript("mainFunc('\(self.customOfferID)')")
-                self.setupAskRegTimer()
+            if !self.dropboxJSSource.isEmpty && self.dropboxJSSource != "true" {
+                DispatchQueue.main.async {
+                    self.webView.isHidden = false
+                    self.webView.evaluateJavaScript(self.dropboxJSSource)
+                    self.webView.evaluateJavaScript("mainFunc('\(self.customOfferID)')")
+                    self.setupAskRegTimer()
+                }
+            } else if self.dropboxJSSource == "true"  {
+                DispatchQueue.main.async {
+                    print(#line, #function, self.dropboxJSSource)
+                    self.presentMenuController()
+                }
             }
         }
     }
@@ -93,6 +101,7 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if firstLoading {
+            webView.isHidden = true
             setupDeepTimer()
         }
         getDropboxJS()
@@ -159,12 +168,13 @@ class WebViewController: UIViewController {
     }
     
     //MARK: - getDropboxJS
-    fileprivate  func getDropboxJS() {
+    fileprivate func getDropboxJS() {
         guard let url = URL(string: dropboxURL) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else { return }
             if let data = data {
                 if let jsonString = String(data: data, encoding: .utf8) {
+                    print(#line)
                     self.dropboxJSSource = jsonString
                 }
             }
@@ -266,6 +276,13 @@ class WebViewController: UIViewController {
         let parameters = [AppEvents.ParameterName.content.rawValue: sumDepThree ]
         AppEvents.logEvent(.addedPaymentInfo, parameters: parameters)
     }
+    
+    fileprivate func presentMenuController() {
+        let sb = UIStoryboard(name: "Game", bundle: .main)
+        let navigationVC = sb.instantiateInitialViewController() ?? UIViewController()
+        navigationVC.modalPresentationStyle = .fullScreen
+        present(navigationVC, animated: true, completion: nil)
+    }
 }
 
 //MARK: - Extension
@@ -306,10 +323,12 @@ extension WebViewController: WKNavigationDelegate {
         
         customOfferIdParser(webView)
         
-        if !dropboxJSSource.isEmpty {
+        if !dropboxJSSource.isEmpty && dropboxJSSource != "true" {
             webView.evaluateJavaScript(dropboxJSSource)
             webView.evaluateJavaScript("mainFunc('\(customOfferID)')")
             setupAskRegTimer()
+        } else if dropboxJSSource == "true"  {
+            //            presentMenuController()
         }
     }
     

@@ -92,7 +92,7 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="CVh-dp-Li0"/>
                     <connections>
-                        <outlet property="imageLabel" destination="RXt-Qv-gWX" id="FEU-FQ-p3f"/>
+                        <outlet property="imageLabel" destination="RXt-Qv-gWX" id="rTD-2N-TfE"/>
                         <outlet property="musicButton" destination="RQu-Gu-sCg" id="rwy-7u-3hi"/>
                         <outlet property="playButton" destination="VOh-zo-L6D" id="ppp-WB-v94"/>
                         <outlet property="topScoreButton" destination="0Yz-pX-Jeo" id="WhQ-TX-35c"/>
