@@ -18,7 +18,6 @@
 		142884C924B623D600656261 /* SecondNoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142884C724B623D600656261 /* SecondNoInternetViewController.swift */; };
 		142884CA24B623D600656261 /* SecondNoInternetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 142884C824B623D600656261 /* SecondNoInternetViewController.xib */; };
 		142884CC24B7537C00656261 /* Mining by Moonlight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 142884CB24B7537C00656261 /* Mining by Moonlight.mp3 */; };
-		142884D324B77E1600656261 /* GIFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142884D124B77E1600656261 /* GIFViewController.swift */; };
 		142884D424B77E1600656261 /* GIFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 142884D224B77E1600656261 /* GIFViewController.xib */; };
 		142BC2FC24AC595B00D6A2EC /* no-internet-connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */; };
 		142BC30424AC938D00D6A2EC /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142BC30324AC938D00D6A2EC /* NotificationService.swift */; };
@@ -131,7 +130,6 @@
 		142884C724B623D600656261 /* SecondNoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondNoInternetViewController.swift; sourceTree = "<group>"; };
 		142884C824B623D600656261 /* SecondNoInternetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondNoInternetViewController.xib; sourceTree = "<group>"; };
 		142884CB24B7537C00656261 /* Mining by Moonlight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Mining by Moonlight.mp3"; sourceTree = "<group>"; };
-		142884D124B77E1600656261 /* GIFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFViewController.swift; sourceTree = "<group>"; };
 		142884D224B77E1600656261 /* GIFViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GIFViewController.xib; sourceTree = "<group>"; };
 		142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "no-internet-connection.json"; sourceTree = "<group>"; };
 		142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -351,7 +349,6 @@
 				148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */,
 				1457CF1124AA0E3A00A21D2F /* NoInternetViewController.swift */,
 				142884C724B623D600656261 /* SecondNoInternetViewController.swift */,
-				142884D124B77E1600656261 /* GIFViewController.swift */,
 				1457CF0224A9E40500A21D2F /* WebViewController.swift */,
 				1457CF0124A9E3D700A21D2F /* GameViewController */,
 			);
@@ -602,7 +599,6 @@
 				1411B2B624A4F238007D4C0D /* LevelCell.swift in Sources */,
 				1457CEFE24A9D05D00A21D2F /* DifferentServices.swift in Sources */,
 				1484112F24A3812D00AC46F3 /* Array2D.swift in Sources */,
-				142884D324B77E1600656261 /* GIFViewController.swift in Sources */,
 				1484112D24A3812D00AC46F3 /* GameScene.swift in Sources */,
 				1457CF0324A9E40500A21D2F /* WebViewController.swift in Sources */,
 				1484113B24A38C0100AC46F3 /* MenuGameController.swift in Sources */,
