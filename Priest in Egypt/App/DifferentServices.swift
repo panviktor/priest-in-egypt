@@ -13,6 +13,7 @@ enum AppState {
     case inGame
     case WKWeb
     case starting
+    case GIFVC
 }
 
 class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserverDelegate {    
@@ -31,21 +32,12 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         }
     }
     
-    var secondBotCheck: Bool {
-        get {
-            return defaults.object(forKey: "secondBotCheck") as? Bool ?? false
-        } set (newValue) {
-            defaults.set(newValue, forKey: "secondBotCheck")
-        }
-    }
-    
     var dropboxJSSource: String = "" {
         didSet {
             DispatchQueue.main.async {
                 if !self.dropboxJSSource.isEmpty && self.dropboxJSSource != "true" {
                     self.launchGIF()
                 } else if self.dropboxJSSource == "true" {
-                    
                     self.launchTheGame()
                 }
             }
@@ -85,11 +77,13 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             case .inGame:
                 launchTheGame()
             case .WKWeb:
-                dismmissNoInternet()
+                dismmissTopVC()
             case .starting:
                 if appIsGame {
                     launchTheGame()
                 }
+            case .GIFVC:
+                break
             }
         } else {
             print("No internet connection")
@@ -100,12 +94,12 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         print(#line, state)
     }
     
-    private func dismmissNoInternet() {
+    private func dismmissTopVC() {
         if let topVC = topMostController() {
             topVC.dismiss(animated: true, completion: nil)
         }
     }
-    
+
     //MARK: - UI Launcher
     func screenLauncher() {
         if reachable && !appIsGame {
@@ -131,14 +125,17 @@ extension DifferentServices {
     
     private func launchGIF() {
         window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        state = .GIFVC
         let GIFVC = GIFViewController()
         self.window?.rootViewController = GIFVC
-        window?.makeKeyAndVisible()
     }
     
     func launchWKweb() {
+        dismmissTopVC()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
+        
         state = .WKWeb
         let storyboard = UIStoryboard(name: "WKweb", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WebViewController")
@@ -151,7 +148,6 @@ extension DifferentServices {
         let storyboard = UIStoryboard(name: "NoInternet", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "NoInternetViewController")
         if self.window?.rootViewController == nil {
-            print(#line, #function)
             self.window?.rootViewController = initialViewController
         } else {
             if state != .starting {

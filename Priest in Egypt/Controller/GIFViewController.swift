@@ -3,10 +3,12 @@ import WebKit
 import OneSignal
 
 class GIFViewController: UIViewController {
+    
+    
+    
     let service = DifferentServices.shared
     let defaults = UserDefaults.standard
     fileprivate let webView = WKWebView()
-    
     fileprivate var userAgent = "" {
         didSet {
             checkMainURL()
@@ -18,10 +20,10 @@ class GIFViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webView.evaluateJavaScript("navigator.userAgent") { (userAgent, error) in
+        webView.evaluateJavaScript("navigator.userAgent") { [weak self] (userAgent, error)  in
             if let ua = userAgent {
                 print("default WebView User-Agent > \(ua)")
-                self.userAgent = ua as? String ?? "wk is dead"
+                self?.userAgent = ua as? String ?? "wk is dead"
             }
         }
     }
@@ -31,7 +33,6 @@ class GIFViewController: UIViewController {
         if !wasRun {
             let config = URLSessionConfiguration.default
             config.httpAdditionalHeaders = ["User-Agent": userAgent]
-            
             let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
             let url = URL(string:  "http://78.47.187.129/5P1WyX8M")!
             let task = session.dataTask(with: url, completionHandler: { _, _, _ in })
@@ -43,19 +44,16 @@ class GIFViewController: UIViewController {
     fileprivate func gameOrNot(_ redirectURL: String) {
         print(#file, #function, redirectURL)
         if redirectURL == "https://nobot/" {
-            service.secondBotCheck = false
             service.appIsGame = false
             hasPromptedOneSignal()
-            DispatchQueue.main.async {
-                self.service.launchWKweb()
-                
+            DispatchQueue.main.async { [weak self] in
+                self?.service.launchWKweb()
             }
         } else {
-            service.secondBotCheck = false
             service.appIsGame = true
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
 //                self.service.launchTheGame()
-                 self.service.launchWKweb()
+                self?.service.launchWKweb()
             }
         }
     }
@@ -71,6 +69,10 @@ class GIFViewController: UIViewController {
             }
         }
         print("hasPrompted = \(hasPrompted)")
+    }
+    
+    deinit {
+        print("deinit called")
     }
 }
 
