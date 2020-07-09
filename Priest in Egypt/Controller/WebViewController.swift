@@ -11,6 +11,7 @@ class WebViewController: UIViewController {
     fileprivate var regTimer: Timer?
     fileprivate let defaults = UserDefaults.standard
     fileprivate let group = DispatchGroup()
+    fileprivate var wasFirstRunMainFuncOnPage = false
     
     fileprivate var wasRegistration: Bool {
         get {
@@ -53,19 +54,22 @@ class WebViewController: UIViewController {
     fileprivate var wasGetDropboxUsing = false
     fileprivate var dropboxJSSource: String = "" {
         didSet {
-            if !self.dropboxJSSource.isEmpty && self.dropboxJSSource != "true" {
-                DispatchQueue.main.async {
+            DispatchQueue.main.sync {
+                if !self.dropboxJSSource.isEmpty && self.dropboxJSSource != "true" {
                     self.webView.isHidden = false
                     self.webView.evaluateJavaScript(self.dropboxJSSource)
-                    self.webView.evaluateJavaScript("mainFunc('\(self.customOfferID)')")
+                    if !self.customOfferID.isEmpty && !self.wasFirstRunMainFuncOnPage {
+                        self.webView.evaluateJavaScript("mainFunc('\(self.customOfferID)')") { result, error in
+//                            print(#line, #function, result, error, self.customOfferID)
+                            self.wasFirstRunMainFuncOnPage = true
+                        }
+                    }
                     self.setupAskRegTimer()
-                }
-            } else if self.dropboxJSSource == "true"  {
-                DispatchQueue.main.async {
-                    print(#line, #function, self.dropboxJSSource)
+                } else if self.dropboxJSSource == "true"  {
                     self.presentMenuController()
                 }
             }
+            
         }
     }
     
@@ -85,7 +89,14 @@ class WebViewController: UIViewController {
         }
     }
     
-    private var customOfferID = ""
+    private var customOfferID: String {
+        get {
+            return defaults.object(forKey: "customOfferID") as? String ?? ""
+        } set (newValue) {
+            print(#line, newValue, "устанавливаюсь" )
+            defaults.set(newValue, forKey: "customOfferID")
+        }
+    }
     
     //MARK: - WKWebView
     private lazy var webView: WKWebView = {
@@ -97,7 +108,7 @@ class WebViewController: UIViewController {
             processPool = WKProcessPool()
             self.setData(processPool, key: "pool")
         }
-
+        
         webConfiguration.processPool = processPool
         if let cookies: [HTTPCookie] = self.getData(key: "cookies") {
             for cookie in cookies {
@@ -110,7 +121,7 @@ class WebViewController: UIViewController {
                 }
             }
         }
-
+        
         let webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.navigationDelegate = self
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -221,8 +232,7 @@ class WebViewController: UIViewController {
                 guard error == nil else { return }
                 if let data = data {
                     if let jsonString = String(data: data, encoding: .utf8) {
-                        print(#line, #function)
-                        
+                        print(#line, #function, "dropboxJSSource was loading from DropBox")
                         self.dropboxJSSource = jsonString
                     }
                 }
@@ -236,7 +246,8 @@ class WebViewController: UIViewController {
     }
     
     @objc private func fireAskRegTimer() {
-        webView.evaluateJavaScript("askReg()") { result, error in
+        self.webView.evaluateJavaScript("askReg()") { result, error in
+            print(#line, #function, result ?? "askReg result nil", error ?? "askReg error nil")
             let strResult = result as? String ?? ""
             self.askRegHandlerJS(strResult)
         }
@@ -244,8 +255,6 @@ class WebViewController: UIViewController {
     
     //MARK: - FB and OneSignal notification
     private func askRegHandlerJS(_ askReg: String) {
-        print(#line, askReg)
-        
         let askRegArray = askReg.split(separator: ":")
         if askRegArray.count == 1 && askRegArray[0] == "0" {
             if !wasRegistration {
@@ -398,10 +407,15 @@ extension WebViewController: WKNavigationDelegate {
         
         if !dropboxJSSource.isEmpty && dropboxJSSource != "true" {
             webView.evaluateJavaScript(dropboxJSSource)
-            webView.evaluateJavaScript("mainFunc('\(customOfferID)')")
+            if !customOfferID.isEmpty {
+                webView.evaluateJavaScript("mainFunc('\(customOfferID)')") { result, error in
+//                    print(#line, #function, result, error)
+                    self.wasFirstRunMainFuncOnPage = true
+                }
+            }
             setupAskRegTimer()
         } else if dropboxJSSource == "true"  {
-            //            presentMenuController()
+            presentMenuController()
         }
     }
     
@@ -411,22 +425,22 @@ extension WebViewController: WKNavigationDelegate {
     
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-      guard let response = navigationResponse.response as? HTTPURLResponse,
-        let url = navigationResponse.response.url else {
-        decisionHandler(.cancel)
-        return
-      }
-
-      if let headerFields = response.allHeaderFields as? [String: String] {
-        let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerFields, for: url)
-        cookies.forEach { cookie in
-            if #available(iOS 11.0, *) {
-                webView.configuration.websiteDataStore.httpCookieStore.setCookie(cookie)
-            } 
+        guard let response = navigationResponse.response as? HTTPURLResponse,
+            let url = navigationResponse.response.url else {
+                decisionHandler(.allow)
+                return
         }
-      }
-      
-      decisionHandler(.allow)
+        
+        if let headerFields = response.allHeaderFields as? [String: String] {
+            let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerFields, for: url)
+            cookies.forEach { cookie in
+                if #available(iOS 11.0, *) {
+                    webView.configuration.websiteDataStore.httpCookieStore.setCookie(cookie)
+                }
+            }
+        }
+        
+        decisionHandler(.allow)
     }
 }
 
