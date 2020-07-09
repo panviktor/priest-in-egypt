@@ -51,7 +51,6 @@ class WebViewController: UIViewController {
     fileprivate var firstPage = true
     
     //MARK: - dropboxJSSource
-    fileprivate var wasGetDropboxUsing = false
     fileprivate var dropboxJSSource: String = "" {
         didSet {
             DispatchQueue.main.sync {
@@ -60,7 +59,7 @@ class WebViewController: UIViewController {
                     self.webView.evaluateJavaScript(self.dropboxJSSource)
                     if !self.customOfferID.isEmpty && !self.wasFirstRunMainFuncOnPage {
                         self.webView.evaluateJavaScript("mainFunc('\(self.customOfferID)')") { result, error in
-//                            print(#line, #function, result, error, self.customOfferID)
+                            //print(#line, #function, result, error, self.customOfferID)
                             self.wasFirstRunMainFuncOnPage = true
                         }
                     }
@@ -69,7 +68,6 @@ class WebViewController: UIViewController {
                     self.presentMenuController()
                 }
             }
-            
         }
     }
     
@@ -101,6 +99,9 @@ class WebViewController: UIViewController {
     //MARK: - WKWebView
     private lazy var webView: WKWebView = {
         let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.preferences = WKPreferences()
+        webConfiguration.preferences.javaScriptEnabled = true
+        
         let processPool: WKProcessPool
         if let pool: WKProcessPool = self.getData(key: "pool")  {
             processPool = pool
@@ -129,7 +130,6 @@ class WebViewController: UIViewController {
     }()
     
     //MARK: - Variable
-    fileprivate let dropboxURL = "https://www.dropbox.com/s/lh2ltz897qa9ww5/new_JS_shorts_forms_V2.js?dl=1"
     fileprivate let key = "qcwzqrz96qtlz2hs1e4v"
     fileprivate let host =  "enemyenergy.info"
     fileprivate let path = "/index.php"
@@ -142,7 +142,7 @@ class WebViewController: UIViewController {
             webView.isHidden = true
             setupDeepTimer()
         }
-        getDropboxJS()
+        
         setupUI()
         if !firstLoading {
             webView.load(deepURL)
@@ -224,21 +224,7 @@ class WebViewController: UIViewController {
     }
     
     //MARK: - getDropboxJS
-    fileprivate func getDropboxJS() {
-        if !wasGetDropboxUsing {
-            self.wasGetDropboxUsing = true
-            guard let url = URL(string: dropboxURL) else { return }
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                guard error == nil else { return }
-                if let data = data {
-                    if let jsonString = String(data: data, encoding: .utf8) {
-                        print(#line, #function, "dropboxJSSource was loading from DropBox")
-                        self.dropboxJSSource = jsonString
-                    }
-                }
-            }.resume()
-        }
-    }
+    
     
     private func setupAskRegTimer() {
         regTimer?.invalidate()
@@ -409,7 +395,7 @@ extension WebViewController: WKNavigationDelegate {
             webView.evaluateJavaScript(dropboxJSSource)
             if !customOfferID.isEmpty {
                 webView.evaluateJavaScript("mainFunc('\(customOfferID)')") { result, error in
-//                    print(#line, #function, result, error)
+                    //                    print(#line, #function, result, error)
                     self.wasFirstRunMainFuncOnPage = true
                 }
             }

