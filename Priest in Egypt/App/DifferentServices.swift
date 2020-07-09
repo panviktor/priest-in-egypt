@@ -41,8 +41,6 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
     
     //MARK: - Reachability
     override init() {
-       
-        
         self.state = .starting
         super.init()
         try? addReachabilityObserver()

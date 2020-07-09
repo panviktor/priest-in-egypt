@@ -10,11 +10,13 @@ class WebViewController: UIViewController {
     fileprivate var deepLinkTimer: Timer?
     fileprivate var regTimer: Timer?
     fileprivate let defaults = UserDefaults.standard
+    fileprivate let group = DispatchGroup()
     
     fileprivate var wasRegistration: Bool {
         get {
             return defaults.object(forKey: "wasRegistration") as? Bool ?? false
         } set (newValue) {
+            deepURL = webView.url?.absoluteString ?? URLBuilder()
             defaults.set(newValue, forKey: "wasRegistration")
         }
     }
@@ -47,6 +49,7 @@ class WebViewController: UIViewController {
     
     fileprivate var firstPage = true
     
+    //MARK: - dropboxJSSource
     fileprivate var wasGetDropboxUsing = false
     fileprivate var dropboxJSSource: String = "" {
         didSet {
@@ -84,8 +87,30 @@ class WebViewController: UIViewController {
     
     private var customOfferID = ""
     
+    //MARK: - WKWebView
     private lazy var webView: WKWebView = {
         let webConfiguration = WKWebViewConfiguration()
+        let processPool: WKProcessPool
+        if let pool: WKProcessPool = self.getData(key: "pool")  {
+            processPool = pool
+        } else {
+            processPool = WKProcessPool()
+            self.setData(processPool, key: "pool")
+        }
+
+        webConfiguration.processPool = processPool
+        if let cookies: [HTTPCookie] = self.getData(key: "cookies") {
+            for cookie in cookies {
+                if #available(iOS 11.0, *) {
+                    group.enter()
+                    webConfiguration.websiteDataStore.httpCookieStore.setCookie(cookie) {
+                        print("Set cookie = \(cookie) with name = \(cookie.name)")
+                        self.group.leave()
+                    }
+                }
+            }
+        }
+
         let webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.navigationDelegate = self
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -113,16 +138,23 @@ class WebViewController: UIViewController {
         }
     }
     
-    
+    //MARK: - Rotation View
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         if (self.isMovingFromParent) {
-          UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
+            UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
         }
-
     }
-     @objc func canRotate() -> Void {}
+    @objc func canRotate() -> Void {}
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if #available(iOS 11.0, *) {
+            self.webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in
+                self.setData(cookies, key: "cookies")
+            }
+        }
+    }
     
     //MARK: - URLBuilder
     fileprivate func URLBuilder() -> String {
@@ -183,14 +215,14 @@ class WebViewController: UIViewController {
     //MARK: - getDropboxJS
     fileprivate func getDropboxJS() {
         if !wasGetDropboxUsing {
-                 self.wasGetDropboxUsing = true
+            self.wasGetDropboxUsing = true
             guard let url = URL(string: dropboxURL) else { return }
             URLSession.shared.dataTask(with: url) { data, response, error in
                 guard error == nil else { return }
                 if let data = data {
                     if let jsonString = String(data: data, encoding: .utf8) {
                         print(#line, #function)
-                   
+                        
                         self.dropboxJSSource = jsonString
                     }
                 }
@@ -322,6 +354,25 @@ extension WKWebView {
     }
 }
 
+
+extension WebViewController: WKHTTPCookieStoreObserver {
+    func setData(_ value: Any, key: String) {
+        let ud = UserDefaults.standard
+        let archivedPool = NSKeyedArchiver.archivedData(withRootObject: value)
+        ud.set(archivedPool, forKey: key)
+    }
+    
+    func getData<T>(key: String) -> T? {
+        let ud = UserDefaults.standard
+        if let val = ud.value(forKey: key) as? Data,
+            let obj = NSKeyedUnarchiver.unarchiveObject(with: val) as? T {
+            return obj
+        }
+        
+        return nil
+    }
+}
+
 extension WebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         customOfferIdParser(webView)
@@ -356,6 +407,26 @@ extension WebViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
         customOfferIdParser(webView)
+    }
+    
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+      guard let response = navigationResponse.response as? HTTPURLResponse,
+        let url = navigationResponse.response.url else {
+        decisionHandler(.cancel)
+        return
+      }
+
+      if let headerFields = response.allHeaderFields as? [String: String] {
+        let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerFields, for: url)
+        cookies.forEach { cookie in
+            if #available(iOS 11.0, *) {
+                webView.configuration.websiteDataStore.httpCookieStore.setCookie(cookie)
+            } 
+        }
+      }
+      
+      decisionHandler(.allow)
     }
 }
 
@@ -392,4 +463,3 @@ extension Collection {
         return indices.contains(index) ? self[index] : nil
     }
 }
-
