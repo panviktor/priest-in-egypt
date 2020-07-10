@@ -23,6 +23,8 @@
 		142884D824B8368B00656261 /* Extension+WKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142884D724B8368B00656261 /* Extension+WKWebView.swift */; };
 		142884DA24B836CC00656261 /* Extension+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142884D924B836CC00656261 /* Extension+Collection.swift */; };
 		142884DC24B8372000656261 /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142884DB24B8372000656261 /* Extension+URL.swift */; };
+		142884DE24B85A5300656261 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142884DD24B85A5300656261 /* OneSignal.framework */; };
+		142884DF24B85A5300656261 /* OneSignal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 142884DD24B85A5300656261 /* OneSignal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		142BC2FC24AC595B00D6A2EC /* no-internet-connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */; };
 		142BC30424AC938D00D6A2EC /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142BC30324AC938D00D6A2EC /* NotificationService.swift */; };
 		142BC30824AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -63,10 +65,6 @@
 		1484113324A3812D00AC46F3 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1484112B24A3812D00AC46F3 /* Tile.swift */; };
 		1484113624A383FA00AC46F3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1484113524A383FA00AC46F3 /* GameViewController.swift */; };
 		1484113B24A38C0100AC46F3 /* MenuGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1484113A24A38C0100AC46F3 /* MenuGameController.swift */; };
-		14A5362E24AC9CEF00957BB6 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A5362A24AC9CB800957BB6 /* OneSignal.framework */; };
-		14A5362F24AC9CEF00957BB6 /* OneSignal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14A5362A24AC9CB800957BB6 /* OneSignal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		14A5363124AC9D1F00957BB6 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A5362A24AC9CB800957BB6 /* OneSignal.framework */; };
-		14A5363224AC9D1F00957BB6 /* OneSignal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14A5362A24AC9CB800957BB6 /* OneSignal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		14A5F0E724A3940200862E68 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0E624A3940200862E68 /* Sprites.atlas */; };
 		14A5F0E924A3940B00862E68 /* Grid.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0E824A3940B00862E68 /* Grid.atlas */; };
 		14A5F0F424A3973B00862E68 /* Scrape.wav in Resources */ = {isa = PBXBuildFile; fileRef = 14A5F0EE24A3973B00862E68 /* Scrape.wav */; };
@@ -106,7 +104,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				14A5362F24AC9CEF00957BB6 /* OneSignal.framework in Embed Frameworks */,
+				142884DF24B85A5300656261 /* OneSignal.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,7 +115,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				14A5363224AC9D1F00957BB6 /* OneSignal.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +136,7 @@
 		142884D724B8368B00656261 /* Extension+WKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+WKWebView.swift"; sourceTree = "<group>"; };
 		142884D924B836CC00656261 /* Extension+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Collection.swift"; sourceTree = "<group>"; };
 		142884DB24B8372000656261 /* Extension+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URL.swift"; sourceTree = "<group>"; };
+		142884DD24B85A5300656261 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = Carthage/Build/iOS/OneSignal.framework; sourceTree = "<group>"; };
 		142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "no-internet-connection.json"; sourceTree = "<group>"; };
 		142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		142BC30324AC938D00D6A2EC /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 		1484112B24A3812D00AC46F3 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		1484113524A383FA00AC46F3 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1484113A24A38C0100AC46F3 /* MenuGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGameController.swift; sourceTree = "<group>"; };
-		14A5362A24AC9CB800957BB6 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = Carthage/Build/iOS/OneSignal.framework; sourceTree = "<group>"; };
 		14A5363524AC9DE500957BB6 /* Priest in Egypt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Priest in Egypt.entitlements"; sourceTree = "<group>"; };
 		14A5F0E624A3940200862E68 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
 		14A5F0E824A3940B00862E68 /* Grid.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grid.atlas; sourceTree = "<group>"; };
@@ -199,7 +196,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14A5363124AC9D1F00957BB6 /* OneSignal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,8 +205,8 @@
 			files = (
 				1411B2AC24A4D35D007D4C0D /* Lottie in Frameworks */,
 				1457CF0824A9EF8D00A21D2F /* Reachability in Frameworks */,
-				14A5362E24AC9CEF00957BB6 /* OneSignal.framework in Frameworks */,
 				142796DE24ACF2EC0073BEF4 /* FacebookCore in Frameworks */,
+				142884DE24B85A5300656261 /* OneSignal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +401,7 @@
 		14A5362924AC9CB800957BB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				14A5362A24AC9CB800957BB6 /* OneSignal.framework */,
+				142884DD24B85A5300656261 /* OneSignal.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

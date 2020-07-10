@@ -5,7 +5,6 @@ import OneSignal
 
 class WebViewController: UIViewController {
     //MARK: - 'Variable
-    
     fileprivate let key = "qsg1dawnyv79wa3vp1k4"
     fileprivate let host =  "privatlyrics.site"
     fileprivate let path = "/click.php"
