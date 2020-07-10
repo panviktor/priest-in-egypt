@@ -20,6 +20,9 @@
 		142884CC24B7537C00656261 /* Mining by Moonlight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 142884CB24B7537C00656261 /* Mining by Moonlight.mp3 */; };
 		142884D424B77E1600656261 /* GIFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 142884D224B77E1600656261 /* GIFViewController.xib */; };
 		142884D624B78F3400656261 /* GIFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142884D524B78F3400656261 /* GIFViewController.swift */; };
+		142884D824B8368B00656261 /* Extension+WKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142884D724B8368B00656261 /* Extension+WKWebView.swift */; };
+		142884DA24B836CC00656261 /* Extension+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142884D924B836CC00656261 /* Extension+Collection.swift */; };
+		142884DC24B8372000656261 /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142884DB24B8372000656261 /* Extension+URL.swift */; };
 		142BC2FC24AC595B00D6A2EC /* no-internet-connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */; };
 		142BC30424AC938D00D6A2EC /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142BC30324AC938D00D6A2EC /* NotificationService.swift */; };
 		142BC30824AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -133,6 +136,9 @@
 		142884CB24B7537C00656261 /* Mining by Moonlight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Mining by Moonlight.mp3"; sourceTree = "<group>"; };
 		142884D224B77E1600656261 /* GIFViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GIFViewController.xib; sourceTree = "<group>"; };
 		142884D524B78F3400656261 /* GIFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFViewController.swift; sourceTree = "<group>"; };
+		142884D724B8368B00656261 /* Extension+WKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+WKWebView.swift"; sourceTree = "<group>"; };
+		142884D924B836CC00656261 /* Extension+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Collection.swift"; sourceTree = "<group>"; };
+		142884DB24B8372000656261 /* Extension+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URL.swift"; sourceTree = "<group>"; };
 		142BC2FB24AC595B00D6A2EC /* no-internet-connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "no-internet-connection.json"; sourceTree = "<group>"; };
 		142BC30124AC938D00D6A2EC /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		142BC30324AC938D00D6A2EC /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -231,6 +237,7 @@
 		1457CF0124A9E3D700A21D2F /* GameViewController */ = {
 			isa = PBXGroup;
 			children = (
+				148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */,
 				1484113A24A38C0100AC46F3 /* MenuGameController.swift */,
 				1457CF1324AA10A200A21D2F /* ScoreViewController.swift */,
 				1484113524A383FA00AC46F3 /* GameViewController.swift */,
@@ -348,7 +355,6 @@
 		1484110324A3760B00AC46F3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				148410EE24A3745A00AC46F3 /* WelcomeViewController.swift */,
 				142884D524B78F3400656261 /* GIFViewController.swift */,
 				1457CF1124AA0E3A00A21D2F /* NoInternetViewController.swift */,
 				142884C724B623D600656261 /* SecondNoInternetViewController.swift */,
@@ -373,6 +379,9 @@
 				1484111D24A378A500AC46F3 /* Device.swift */,
 				1411B2A824A4C7F3007D4C0D /* Extension+UIButton.swift */,
 				14C1EDBC24A664FC000FA936 /* Extension+DispatchQueue.swift */,
+				142884D724B8368B00656261 /* Extension+WKWebView.swift */,
+				142884D924B836CC00656261 /* Extension+Collection.swift */,
+				142884DB24B8372000656261 /* Extension+URL.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -607,6 +616,7 @@
 				1457CF0324A9E40500A21D2F /* WebViewController.swift in Sources */,
 				1484113B24A38C0100AC46F3 /* MenuGameController.swift in Sources */,
 				1484112E24A3812D00AC46F3 /* Cookie.swift in Sources */,
+				142884DA24B836CC00656261 /* Extension+Collection.swift in Sources */,
 				1484113124A3812D00AC46F3 /* Level.swift in Sources */,
 				14C1EDBD24A664FC000FA936 /* Extension+DispatchQueue.swift in Sources */,
 				1457CF1424AA10A300A21D2F /* ScoreViewController.swift in Sources */,
@@ -617,9 +627,11 @@
 				1484113024A3812D00AC46F3 /* LevelData.swift in Sources */,
 				1484112C24A3812D00AC46F3 /* Chain.swift in Sources */,
 				148410EF24A3745A00AC46F3 /* WelcomeViewController.swift in Sources */,
+				142884DC24B8372000656261 /* Extension+URL.swift in Sources */,
 				1411B2A324A4946F007D4C0D /* ScoreManager.swift in Sources */,
 				1484113324A3812D00AC46F3 /* Tile.swift in Sources */,
 				148410EB24A3745A00AC46F3 /* AppDelegate.swift in Sources */,
+				142884D824B8368B00656261 /* Extension+WKWebView.swift in Sources */,
 				1411B2A924A4C7F3007D4C0D /* Extension+UIButton.swift in Sources */,
 				1411B2A624A4ACCA007D4C0D /* WinViewController.swift in Sources */,
 			);

