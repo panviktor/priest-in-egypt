@@ -132,10 +132,8 @@ extension DifferentServices {
     }
     
     func launchWKweb() {
-        dismmissTopVC()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        
         state = .WKWeb
         let storyboard = UIStoryboard(name: "WKweb", bundle: .main)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "WebViewController")

@@ -3,12 +3,9 @@ import WebKit
 import OneSignal
 
 class GIFViewController: UIViewController {
-    
-    
-    
     let service = DifferentServices.shared
     let defaults = UserDefaults.standard
-    fileprivate let webView = WKWebView()
+    fileprivate var webView:WKWebView? = WKWebView()
     fileprivate var userAgent = "" {
         didSet {
             checkMainURL()
@@ -20,7 +17,7 @@ class GIFViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webView.evaluateJavaScript("navigator.userAgent") { [weak self] (userAgent, error)  in
+        webView?.evaluateJavaScript("navigator.userAgent") { [weak self] (userAgent, error)  in
             if let ua = userAgent {
                 print("default WebView User-Agent > \(ua)")
                 self?.userAgent = ua as? String ?? "wk is dead"
@@ -47,12 +44,14 @@ class GIFViewController: UIViewController {
             service.appIsGame = false
             hasPromptedOneSignal()
             DispatchQueue.main.async { [weak self] in
+                self?.webView = nil
                 self?.service.launchWKweb()
             }
         } else {
             service.appIsGame = true
             DispatchQueue.main.async { [weak self] in
 //                self.service.launchTheGame()
+                self?.webView = nil
                 self?.service.launchWKweb()
             }
         }
