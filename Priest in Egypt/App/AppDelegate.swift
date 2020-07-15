@@ -4,15 +4,26 @@ import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    let defaults = UserDefaults.standard
     let service = DifferentServices.shared
+    
     var deepURL: URL? {
         didSet {
             NotificationCenter.default.post(name: .notificationDeepURLHasCome, object: self.deepURL)
+            defaultsDeepURL = deepURL!.absoluteString
+        }
+    }
+    
+    var defaultsDeepURL: String {
+        get {
+            return defaults.object(forKey: "defaultsDeepURL") as? String ?? ""
+        } set (newValue)  {
+            defaults.set(newValue, forKey: "defaultsDeepURL")
         }
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions )
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         Settings.isAutoInitEnabled = true
         ApplicationDelegate.initializeSDK(nil)
         AppLinkUtility.fetchDeferredAppLink { (url, error) in
@@ -29,30 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        //START OneSignal initialization code
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: false]
-        
-        // Replace 'YOUR_ONESIGNAL_APP_ID' with your OneSignal App ID.
         OneSignal.initWithLaunchOptions(launchOptions,
                                         appId: "79a3e167-e79f-4de1-9461-f9aeaad0a6b5",
                                         handleNotificationAction: nil,
                                         settings: onesignalInitSettings)
-        
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
-        AppLinkUtility.fetchDeferredAppLink { (url, error) in
-            print(#line)
-            if let error = error {
-                print("Received error while fetching deferred app link %@", error)
-            }
-            if let url = url {
-                if #available(iOS 10, *) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                } else {
-                    UIApplication.shared.openURL(url)
-                }
-            }
-        }
-        
         service.screenLauncher()
         return true
     }

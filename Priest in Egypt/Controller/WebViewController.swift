@@ -81,7 +81,6 @@ class WebViewController: UIViewController {
         get {
             return defaults.object(forKey: "customOfferID") as? String ?? ""
         } set (newValue) {
-            print(#line, newValue, "устанавливаюсь" )
             defaults.set(newValue, forKey: "customOfferID")
         }
     }
@@ -128,7 +127,6 @@ class WebViewController: UIViewController {
         }
         setupUI()
         if !firstLoading {
-            print(#line, deepURL)
             webView.load(deepURL)
         }
     }
@@ -170,14 +168,23 @@ class WebViewController: UIViewController {
             finalStringURL =  baseURLString
         }
         deepURL = finalStringURL
-        print(#line, #function, finalStringURL)
         return finalStringURL
     }
     
     fileprivate func setupDeepTimer() {
-        NotificationCenter.default.addObserver(self, selector: #selector(startWKWebViewWithDeepLink), name: .notificationDeepURLHasCome, object: nil)
-        deepLinkTimer = Timer.scheduledTimer(timeInterval: 8, target: self, selector: #selector(fireDeepTimer), userInfo: nil, repeats: false)
-        deepLinkTimer?.tolerance = 0.1
+        if appDelegate.deepURL == nil {
+            NotificationCenter.default.addObserver(self, selector: #selector(startWKWebViewWithDeepLink), name: .notificationDeepURLHasCome, object: nil)
+            deepLinkTimer = Timer.scheduledTimer(timeInterval: 8, target: self, selector: #selector(fireDeepTimer), userInfo: nil, repeats: false)
+            deepLinkTimer?.tolerance = 0.1
+        } else {
+            let deepurl  = appDelegate.defaultsDeepURL
+            fbDeepLinkURL = URL(string: deepurl)
+            let url = URLBuilder()
+            if firstLoading {
+                webView.load(url)
+            }
+            firstLoading = false
+        }
     }
     
     @objc private func startWKWebViewWithDeepLink() {
