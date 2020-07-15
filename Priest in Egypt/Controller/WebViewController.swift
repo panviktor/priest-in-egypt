@@ -175,9 +175,6 @@ class WebViewController: UIViewController {
         if !appDelegate.defaultsDeepURL.isEmpty {
             let deepurl  = appDelegate.defaultsDeepURL
             fbDeepLinkURL = URL(string: deepurl)
-            print()
-            print(#line, #function, deepurl)
-            print()
             let url = URLBuilder()
             if firstLoading {
                 webView.load(url)
@@ -190,7 +187,6 @@ class WebViewController: UIViewController {
             deepLinkTimer?.tolerance = 0.1
             firstLoading = false
         } else {
-            print(#line, #function)
             let url = URLBuilder()
             if firstLoading {
                 webView.load(url)
