@@ -172,7 +172,7 @@ class WebViewController: UIViewController {
     }
     
     fileprivate func setupDeepTimer() {
-        if appDelegate.deepURL == nil {
+        if appDelegate.deepURL == nil && appDelegate.defaultsDeepURL.isEmpty {
             NotificationCenter.default.addObserver(self, selector: #selector(startWKWebViewWithDeepLink), name: .notificationDeepURLHasCome, object: nil)
             deepLinkTimer = Timer.scheduledTimer(timeInterval: 8, target: self, selector: #selector(fireDeepTimer), userInfo: nil, repeats: false)
             deepLinkTimer?.tolerance = 0.1

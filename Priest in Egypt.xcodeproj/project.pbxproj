@@ -34,6 +34,10 @@
 		1457CF1024AA0E0600A21D2F /* NoInternet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1457CF0F24AA0E0600A21D2F /* NoInternet.storyboard */; };
 		1457CF1224AA0E3A00A21D2F /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF1124AA0E3A00A21D2F /* NoInternetViewController.swift */; };
 		1457CF1424AA10A300A21D2F /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457CF1324AA10A200A21D2F /* ScoreViewController.swift */; };
+		1464D5AE24BF7551004149EC /* Level_13.json in Resources */ = {isa = PBXBuildFile; fileRef = 1464D5AB24BF7551004149EC /* Level_13.json */; };
+		1464D5AF24BF7551004149EC /* Level_12.json in Resources */ = {isa = PBXBuildFile; fileRef = 1464D5AC24BF7551004149EC /* Level_12.json */; };
+		1464D5B024BF7551004149EC /* Level_14.json in Resources */ = {isa = PBXBuildFile; fileRef = 1464D5AD24BF7551004149EC /* Level_14.json */; };
+		1464D5B224BF7586004149EC /* Level_15.json in Resources */ = {isa = PBXBuildFile; fileRef = 1464D5B124BF7586004149EC /* Level_15.json */; };
 		1480E4A624AB3342003AF7C7 /* EgyptianNights-yAOV.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1480E4A424AB3339003AF7C7 /* EgyptianNights-yAOV.ttf */; };
 		1480E4A824AB35FF003AF7C7 /* Pegypta-ALE6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1480E4A724AB35F5003AF7C7 /* Pegypta-ALE6.ttf */; };
 		148410EB24A3745A00AC46F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148410EA24A3745A00AC46F3 /* AppDelegate.swift */; };
@@ -146,6 +150,10 @@
 		1457CF0F24AA0E0600A21D2F /* NoInternet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoInternet.storyboard; sourceTree = "<group>"; };
 		1457CF1124AA0E3A00A21D2F /* NoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetViewController.swift; sourceTree = "<group>"; };
 		1457CF1324AA10A200A21D2F /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		1464D5AB24BF7551004149EC /* Level_13.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_13.json; sourceTree = "<group>"; };
+		1464D5AC24BF7551004149EC /* Level_12.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_12.json; sourceTree = "<group>"; };
+		1464D5AD24BF7551004149EC /* Level_14.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_14.json; sourceTree = "<group>"; };
+		1464D5B124BF7586004149EC /* Level_15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_15.json; sourceTree = "<group>"; };
 		1480E4A424AB3339003AF7C7 /* EgyptianNights-yAOV.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EgyptianNights-yAOV.ttf"; sourceTree = "<group>"; };
 		1480E4A724AB35F5003AF7C7 /* Pegypta-ALE6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pegypta-ALE6.ttf"; sourceTree = "<group>"; };
 		148410E724A3745A00AC46F3 /* Priest in Egypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Priest in Egypt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,6 +339,10 @@
 				1484110524A376B100AC46F3 /* Level_9.json */,
 				1484110824A376B100AC46F3 /* Level_10.json */,
 				1484110D24A376B100AC46F3 /* Level_11.json */,
+				1464D5AC24BF7551004149EC /* Level_12.json */,
+				1464D5AB24BF7551004149EC /* Level_13.json */,
+				1464D5AD24BF7551004149EC /* Level_14.json */,
+				1464D5B124BF7586004149EC /* Level_15.json */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -538,12 +550,14 @@
 				14A5F0F524A3973B00862E68 /* Ka-Ching.wav in Resources */,
 				14A5F0F824A3973B00862E68 /* Chomp.wav in Resources */,
 				1457CF1024AA0E0600A21D2F /* NoInternet.storyboard in Resources */,
+				1464D5B024BF7551004149EC /* Level_14.json in Resources */,
 				1484111824A376B200AC46F3 /* Level_8.json in Resources */,
 				1484111C24A376B200AC46F3 /* Level_1.json in Resources */,
 				14A5F0E924A3940B00862E68 /* Grid.atlas in Resources */,
 				1484112324A380AC00AC46F3 /* WKweb.storyboard in Resources */,
 				1484111A24A376B200AC46F3 /* Level_6.json in Resources */,
 				142884CA24B623D600656261 /* SecondNoInternetViewController.xib in Resources */,
+				1464D5B224BF7586004149EC /* Level_15.json in Resources */,
 				1484111124A376B200AC46F3 /* Level_9.json in Resources */,
 				1484111924A376B200AC46F3 /* Level_11.json in Resources */,
 				1484111B24A376B200AC46F3 /* Level_5.json in Resources */,
@@ -551,6 +565,7 @@
 				1484111324A376B200AC46F3 /* Level_2.json in Resources */,
 				1484111424A376B200AC46F3 /* Level_10.json in Resources */,
 				148410F724A3745E00AC46F3 /* LaunchScreen.storyboard in Resources */,
+				1464D5AE24BF7551004149EC /* Level_13.json in Resources */,
 				14A5F0F924A3973B00862E68 /* Error.wav in Resources */,
 				1411B2A724A4ACCA007D4C0D /* WinViewController.xib in Resources */,
 				1480E4A824AB35FF003AF7C7 /* Pegypta-ALE6.ttf in Resources */,
@@ -558,6 +573,7 @@
 				1484111724A376B200AC46F3 /* Level_7.json in Resources */,
 				148410F424A3745E00AC46F3 /* Assets.xcassets in Resources */,
 				1484111524A376B200AC46F3 /* Level_3.json in Resources */,
+				1464D5AF24BF7551004149EC /* Level_12.json in Resources */,
 				142884D424B77E1600656261 /* GIFViewController.xib in Resources */,
 				14A5F16A24A48DE800862E68 /* ScoreViewController.xib in Resources */,
 				1480E4A624AB3342003AF7C7 /* EgyptianNights-yAOV.ttf in Resources */,
