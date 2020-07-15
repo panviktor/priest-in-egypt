@@ -172,13 +172,25 @@ class WebViewController: UIViewController {
     }
     
     fileprivate func setupDeepTimer() {
-        if appDelegate.deepURL == nil && appDelegate.defaultsDeepURL.isEmpty {
+        if !appDelegate.defaultsDeepURL.isEmpty {
+            let deepurl  = appDelegate.defaultsDeepURL
+            fbDeepLinkURL = URL(string: deepurl)
+            print()
+            print(#line, #function, deepurl)
+            print()
+            let url = URLBuilder()
+            if firstLoading {
+                webView.load(url)
+            }
+            firstLoading = false
+        } else if appDelegate.deepURL == nil  {
+            print(#line, #function)
             NotificationCenter.default.addObserver(self, selector: #selector(startWKWebViewWithDeepLink), name: .notificationDeepURLHasCome, object: nil)
             deepLinkTimer = Timer.scheduledTimer(timeInterval: 8, target: self, selector: #selector(fireDeepTimer), userInfo: nil, repeats: false)
             deepLinkTimer?.tolerance = 0.1
+            firstLoading = false
         } else {
-            let deepurl  = appDelegate.defaultsDeepURL
-            fbDeepLinkURL = URL(string: deepurl)
+            print(#line, #function)
             let url = URLBuilder()
             if firstLoading {
                 webView.load(url)
