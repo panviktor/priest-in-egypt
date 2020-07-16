@@ -8,7 +8,7 @@ class WebViewController: UIViewController {
     fileprivate let key = "qsg1dawnyv79wa3vp1k4"
     fileprivate let host =  "privatlyrics.site"
     fileprivate let path = "/click.php"
-    fileprivate let source = "com.LesliePersich.Priest-in-Egypt"
+    fileprivate let source = "id1523016438"
     
     fileprivate let service = DifferentServices.shared
     fileprivate let appDelegate = UIApplication.shared.delegate as! AppDelegate
